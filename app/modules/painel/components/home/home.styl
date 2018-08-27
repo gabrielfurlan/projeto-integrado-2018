@@ -1,0 +1,75 @@
+@import '../../../../stylesheets/settings/colors'
+
+.home
+	padding 40px 80px
+	overflow auto
+	height calc(100vh - 3px)
+	
+	&:after 
+		content ''
+		display block
+		height 40px
+		
+	> .title
+		font-size 1.4em
+		font-weight 400
+		margin-bottom 60px	
+	
+	.subtitle
+		display block
+		font-size 1em
+		font-weight 700
+		width 100%
+		padding-bottom 30px
+				
+	> .global-info
+		display grid
+		grid-column-gap 45px
+		grid-template-areas 'header header header' 'done todo hours' 
+		padding-bottom 30px
+		
+		> .subtitle 
+			grid-area header
+			
+		> .info
+			height 150px
+			display flex
+			flex-direction column
+			justify-content space-between
+			border-bottom solid 2px $gray 
+			padding 30px
+			text-align right
+			
+			&.-done-tasks
+				grid-area done
+			
+			&.-todo
+				grid-area todo
+			
+			&.-hours-worked
+				grid-area hours
+			
+			> .value
+				font-size 3em
+				
+	> .assign-to-me
+		margin-top 15px
+		
+		> .list 
+			overflow auto
+			height 350px
+			padding 15px 15px
+			
+			&:after 
+				content ''
+				display block
+				height 15px
+		
+			> .card
+				width 100%
+				height 100px
+				background-color #fff
+				box-shadow 0px 1px 4px 0px rgba(black, .2)		
+				
+				& + .card 
+					margin-top 15px
