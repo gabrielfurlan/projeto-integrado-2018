@@ -453,12 +453,18 @@ var Login = exports.Login = function (_Component) {
 						_react2.default.createElement(
 							'h1',
 							{ className: 'title' },
-							'Bem vindo,'
+							'Ol\xE1, Gabriel!'
 						),
 						_react2.default.createElement(
 							'h2',
 							{ className: 'description' },
-							'Fa\xE7a login com sua conta ou solicite um novo cadastro ao administrador'
+							'Caso tenha esquecido sua senha, ',
+							_react2.default.createElement(
+								_reactRouterDom.Link,
+								{ to: '/resetar-senha' },
+								'clique aqui'
+							),
+							'.'
 						),
 						_react2.default.createElement(
 							'fieldset',
@@ -472,7 +478,7 @@ var Login = exports.Login = function (_Component) {
 						)
 					)
 				),
-				_react2.default.createElement('section', { className: 'aprensentation' })
+				_react2.default.createElement('section', { className: 'aprensentation ' + (isValidMail ? '-valided' : '') })
 			);
 		}
 	}]);
@@ -628,7 +634,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".login {\n  display: -ms-grid;\n  display: grid;\n  width: 100%;\n  -ms-grid-columns: 500px auto;\n      grid-template-columns: 500px auto;\n  -ms-grid-rows: 100vh;\n      grid-template-rows: 100vh;\n}\n.login > section.aprensentation {\n  background-image: url(\"/imgs/login-background.png\");\n  position: relative;\n}\n.login > section.aprensentation:after {\n  content: '';\n  display: block;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  background-color: rgba(222,142,225,0.7);\n}\n.login > .content > form.form {\n  height: 100%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-pack: center;\n      justify-content: center;\n  position: relative;\n  padding: 45px 60px;\n  z-index: 1;\n}\n.login > .content > form.form.-hide {\n  display: none;\n  animation: hiding 0.5s;\n}\n.login > .content > form.form.-show {\n  animation: showing 0.5s;\n}\n.login > .content > form.form > .title {\n  font-size: 2.4em;\n  font-weight: 400;\n  margin-bottom: 15px;\n}\n.login > .content > form.form > .description {\n  font-weight: 400;\n  font-size: 1em;\n  line-height: 1.2em;\n}\n.login > .content > form.form > fieldset {\n  margin-top: 45px;\n  white-space: nowrap;\n  box-shadow: 0px 3px 15px 0px rgba(0,0,0,0.2);\n}\n.login > .content > form.form > fieldset > .input {\n  display: inline-block;\n  width: 310px;\n  height: 55px;\n  border-radius: 4px 0px 0px 4px;\n  vertical-align: bottom;\n}\n.login > .content > form.form > fieldset > .button {\n  display: inline-block;\n  width: 160px;\n  height: 55px;\n  border-radius: 0px 4px 4px 0px;\n}\n.login > .content > form.form > fieldset > .button > .loading {\n  width: 50px;\n  height: 50px;\n}\n@keyframes showing {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@keyframes hiding {\n  0% {\n    display: block;\n    opacity: 1;\n  }\n  99% {\n    opacity: 0;\n  }\n  100% {\n    display: none;\n  }\n}\n", ""]);
+exports.push([module.i, ".login {\n  display: -ms-grid;\n  display: grid;\n  width: 100%;\n  -ms-grid-columns: 500px auto;\n      grid-template-columns: 500px auto;\n  -ms-grid-rows: 100vh;\n      grid-template-rows: 100vh;\n}\n.login > section.aprensentation {\n  background-image: url(\"/imgs/login-background.png\");\n  position: relative;\n}\n.login > section.aprensentation:after {\n  content: '';\n  display: block;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  transition-duration: 0.5s;\n  background-color: rgba(222,142,225,0.7);\n}\n.login > section.aprensentation.-valided:after {\n  background-color: rgba(78,130,161,0.7);\n}\n.login > .content > form.form {\n  height: 100%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-pack: center;\n      justify-content: center;\n  position: relative;\n  padding: 45px 60px;\n  z-index: 1;\n}\n.login > .content > form.form.-hide {\n  display: none;\n  animation: hiding 0.5s;\n}\n.login > .content > form.form.-show {\n  animation: showing 0.5s;\n}\n.login > .content > form.form > .title {\n  font-size: 2.4em;\n  font-weight: 400;\n  margin-bottom: 15px;\n}\n.login > .content > form.form > .description {\n  font-weight: 400;\n  font-size: 1em;\n  line-height: 1.2em;\n}\n.login > .content > form.form > .description > a {\n  color: #4e82a1;\n}\n.login > .content > form.form > fieldset {\n  margin-top: 45px;\n  white-space: nowrap;\n  box-shadow: 0px 3px 15px 0px rgba(0,0,0,0.2);\n}\n.login > .content > form.form > fieldset > .input {\n  display: inline-block;\n  width: 310px;\n  height: 55px;\n  border-radius: 4px 0px 0px 4px;\n  vertical-align: bottom;\n}\n.login > .content > form.form > fieldset > .button {\n  display: inline-block;\n  width: 160px;\n  height: 55px;\n  border-radius: 0px 4px 4px 0px;\n}\n.login > .content > form.form > fieldset > .button > .loading {\n  width: 50px;\n  height: 50px;\n}\n@keyframes showing {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@keyframes hiding {\n  0% {\n    display: block;\n    opacity: 1;\n  }\n  99% {\n    opacity: 0;\n  }\n  100% {\n    display: none;\n  }\n}\n", ""]);
 
 // exports
 

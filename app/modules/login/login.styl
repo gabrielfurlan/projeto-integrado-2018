@@ -18,7 +18,12 @@
 			height 100%
 			left 0
 			top 0
+			transition-duration .5s
 			background-color rgba($purple, .7)
+			
+		&.-valided
+			&:after
+				background-color rgba($blue, .7)
 			
 	> .content
 		> form.form
@@ -46,7 +51,10 @@
 				font-weight 400
 				font-size 1em
 				line-height 1.2em
-						
+				
+				> a
+					color $blue
+
 			> fieldset
 				margin-top 45px
 				white-space nowrap

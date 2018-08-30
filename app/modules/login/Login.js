@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import LoginController from './LoginController';
@@ -57,8 +57,8 @@ export class Login extends Component {
 					</form>
 
 					<form className={isValidMail ? 'form -show' : 'form -hide'} onSubmit={this.handleValidPassword}>
-						<h1 className='title'>Bem vindo,</h1>
-						<h2 className='description'>Faça login com sua conta ou solicite um novo cadastro ao administrador</h2>	
+						<h1 className='title'>Olá, Gabriel!</h1>
+						<h2 className='description'>Caso tenha esquecido sua senha, <Link to='/resetar-senha'>clique aqui</Link>.</h2>	
 						<fieldset>
 							<Input className='-password' type='password' id='password' placeholder='Digite sua senha' />
 							<Button type='submit'>
@@ -67,7 +67,7 @@ export class Login extends Component {
 						</fieldset>
 					</form>
 				</section>
-				<section className='aprensentation' />
+				<section className={`aprensentation ${isValidMail ? '-valided' : ''}`} />
 			</div>
 		);
 	}

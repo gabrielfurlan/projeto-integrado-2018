@@ -1,9 +1,31 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import TaskCard from '../../../../commons/components/task-card';
+
 import './home.styl';
 
+const tasks = [
+	{
+		id: 'e23qwe22ds',
+		title: 'Titulo da tarefa #00',
+		priority: 'high',
+		estimate_hours: 5
+	},
+	{
+		id: 'ersfd343ds',
+		title: 'Titulo da tarefa #01',
+		priority: 'low',
+		estimate_hours: 2		
+	}
+];
+
 export default class Home extends Component {
+
+	renderTasks() {
+		return tasks.map(task => <TaskCard {...task} />);
+	}
+
 	render() {
 		return (
 			<section className='home'>
@@ -26,10 +48,13 @@ export default class Home extends Component {
 				<section className='assign-to-me'>
 					<h2 className='subtitle'>Tarefas atribuidas a mim:</h2>
 					<ul className='list'>
-						<li className='card' />
-						<li className='card' />
-						<li className='card' />
-						<li className='card' />
+						{ this.renderTasks() }
+					</ul>
+				</section>
+				<section className='annotations'>
+					<h2 className='subtitle'>Minhas anotações:</h2>
+					<ul className='list'>
+						<span>Nenhuma anotação cadastrada</span>
 					</ul>
 				</section>
 			</section>

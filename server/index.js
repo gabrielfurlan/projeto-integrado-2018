@@ -5,7 +5,7 @@ import compression from 'compression';
 import useragent from 'express-useragent';
 
 const app = express();
-const port = 8080;
+const port = 8888;
 
 app.use(compression());
 
@@ -28,3 +28,4 @@ app.listen(port, err => {
 	if (err) console.log(err);
 	else console.log(`Server online - Listening to port ${port}`);
 });
+

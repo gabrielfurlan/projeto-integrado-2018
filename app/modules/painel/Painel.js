@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import PainelController from './PainelController';
 
 import Home from './components/home';
-import SideBar from './components/side-bar';
+
+import SideBar from '../../commons/components/side-bar';
 
 import './painel.styl';
 

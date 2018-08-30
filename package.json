@@ -4,6 +4,7 @@
   "description": "",
   "main": "server/",
   "dependencies": {
+    "avataaars": "^1.1.0",
     "axios": "^0.18.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -44,7 +45,7 @@
     "webpack": "^4.17.1"
   },
   "scripts": {
-    "start": "nodemon server/ --exec \"eslint app/ && eslint server/ && BABEL_ENV=server babel-node \"",
+    "dev": "nodemon server/ --exec \"eslint app/ && eslint server/ && BABEL_ENV=server babel-node \"",
     "lint": "eslint app/",
     "lint:fix": "eslint app/ --fix"
   },

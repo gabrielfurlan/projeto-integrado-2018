@@ -1,0 +1,49 @@
+@import '../../../stylesheets/settings/colors'
+
+.task-card
+	height 120px
+	background-color #fff
+	box-shadow 0px 1px 4px 0px rgba(black, .1)		
+	border-radius 5px	
+	padding 15px
+	display flex
+	flex-direction column
+	justify-content space-between
+	cursor pointer
+	
+	& + .task-card 
+		margin-top 15px
+		
+	> .title
+		font-size 1em
+		font-weight 400
+						
+	> .basic-infos
+		display flex 
+		justify-content space-between
+		align-items flex-end
+		
+		> .code
+			color $gray 
+			
+		> .priority
+			font-size .8em
+						
+			> img
+				width 20px
+				height 20px
+				vertical-align middle
+				margin-right 10px
+					
+			&.-high
+				color $red
+				
+			&.-low
+				color $green
+				
+			&.-medium 
+				color $yellow
+				
+	&:hover
+		> .title
+			font-weight 700
