@@ -143,6 +143,16 @@ export default class Task extends Component {
 							</li>
 						</ul>
 					</section>
+					<section className='infos'>
+						<h2 className='subtitle'>Gerais</h2>
+						<label className='label'>Status</label>
+						<select className='select'>
+							<option>A fazer</option> 
+							<option>Em progresso</option> 
+							<option>Feito</option> 
+						</select>
+						<label className='label'>Log time</label>
+					</section>
 				</main>
 			</div>
 		);
