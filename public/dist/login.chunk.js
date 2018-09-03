@@ -472,7 +472,7 @@ var Login = exports.Login = function (_Component) {
 							_react2.default.createElement(_input2.default, { className: '-password', type: 'password', id: 'password', placeholder: 'Digite sua senha' }),
 							_react2.default.createElement(
 								_button2.default,
-								{ type: 'submit' },
+								{ type: 'submit', handleClick: null },
 								loading ? _react2.default.createElement('img', { className: 'loading', src: '/icons/rolling.svg' }) : 'Entrar'
 							)
 						)
@@ -615,7 +615,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".input {\n  display: block;\n  height: 40px;\n  padding: 5px 12px;\n  border-radius: 4px;\n  font-size: 1em;\n}\n.input:focus {\n  padding: 5px 12px;\n}\n", ""]);
+exports.push([module.i, ".input {\n  display: block;\n  height: 40px;\n  padding: 5px 12px;\n  border-radius: 4px;\n  font-size: 1em;\n  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.2);\n}\n.input:focus {\n  padding: 5px 12px;\n}\n", ""]);
 
 // exports
 

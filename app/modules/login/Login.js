@@ -61,7 +61,7 @@ export class Login extends Component {
 						<h2 className='description'>Caso tenha esquecido sua senha, <Link to='/resetar-senha'>clique aqui</Link>.</h2>	
 						<fieldset>
 							<Input className='-password' type='password' id='password' placeholder='Digite sua senha' />
-							<Button type='submit'>
+							<Button type='submit' handleClick={null}>
 								{loading ? <img className='loading' src='/icons/rolling.svg' /> : 'Entrar'}
 							</Button>
 						</fieldset>

@@ -3,25 +3,8 @@ import PropTypes from 'prop-types';
 
 import { withRouter } from 'react-router-dom';
 
+import priorities from '../../assets/priorities';
 import './task-card.styl';
-
-const priorities = [
-	{
-		id: 'high',
-		label: 'Alta',
-		icon: '/icons/high-priority.svg'
-	},
-	{
-		id: 'medium',
-		label: 'Média',
-		icon: '/icons/medium-priority.svg'
-	},
-	{
-		id: 'low',
-		label: 'Baixa',
-		icon: '/icons/low-priority.svg'
-	}
-];
 
 class TaskCard extends Component {
 

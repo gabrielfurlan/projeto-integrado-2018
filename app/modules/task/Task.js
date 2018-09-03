@@ -4,12 +4,46 @@ import { Link } from 'react-router-dom';
 import Avatar from 'avataaars';
 
 import Button from '../../commons/components/button';
+import InputGroup from '../../commons/components/input-group';
+import Input from '../../commons/components/input';
+import Modal from '../../commons/components/modal';
+import Select from '../../commons/components/select';
 import SideBar from '../../commons/components/side-bar';
+
+import priorities from '../../commons/assets/priorities';
 
 import './task.styl';
 
+const status = [
+	{
+		id: 'aaa',
+		label: 'aaa'
+	},
+	{
+		id: 'bbb',
+		label: 'bbb'
+	}
+];
+
 export default class Task extends Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			logTimeModalIsOpened: false
+		};
+
+		this.handleToggleLogTimeModal = this.handleToggleLogTimeModal.bind(this);
+	}
+
+	handleToggleLogTimeModal() {
+		const { logTimeModalIsOpened } = { ...this.state };
+		this.setState({ logTimeModalIsOpened: !logTimeModalIsOpened }); 
+	}
+
 	render() {
+		const { logTimeModalIsOpened } = { ...this.state };
+
 		return (
 			<div className='task'>
 				<SideBar />
@@ -145,15 +179,33 @@ export default class Task extends Component {
 					</section>
 					<section className='infos'>
 						<h2 className='subtitle'>Gerais</h2>
-						<label className='label'>Status</label>
-						<select className='select'>
-							<option>A fazer</option> 
-							<option>Em progresso</option> 
-							<option>Feito</option> 
-						</select>
-						<label className='label'>Log time</label>
+						<InputGroup className='status-group' label='Status'>
+							<Select options={status} />
+						</InputGroup>
+						<div className='input-group log-time'>
+							<label className='label'><span>Log Time <img onClick={this.handleToggleLogTimeModal} src='/icons/add.svg'/></span></label>
+							<div className='value'>0h 0m</div> 
+						</div>
+						<div className='input-group priority'>
+							<label className='label'>Prioridade</label>
+							<img src={priorities[0].icon} />
+							{priorities[0].label}
+						</div>
 					</section>
 				</main>
+				<Modal className='add-log-time-modal' opened={logTimeModalIsOpened} handleClose={this.handleToggleLogTimeModal}>
+					<h4 className='title'>Log Time</h4>
+					<InputGroup className='time-group' label='Tampo gasto'>
+						<Input placeholder='0h 0m' />
+					</InputGroup>
+					<InputGroup className='time-group' label='Tampo restante'>
+						<Input placeholder='0h 0m' />
+					</InputGroup>
+					<div className='actions'>
+
+						<Button className='save-action'>Salvar</Button>
+					</div>
+				</Modal>
 			</div>
 		);
 	}
