@@ -1,0 +1,40 @@
+@import '../../../stylesheets/settings/colors'
+
+.select
+	position relative
+	height 40px
+	background-color transparent
+	border solid 1px $gray
+	cursor pointer 
+			
+	> label
+		display inline-block
+		padding 12px 7px
+		width calc(100% - 30px);
+		height 100%
+		cursor pointer
+		use-select none
+				
+	> .icon
+		width 30px
+		vertical-align middle
+		use-select none
+		
+	> .select-dropdown
+		display none
+		position absolute
+		width 100%
+		max-height 120px
+		overflow-y auto
+		background-color white
+		margin-top 15px
+		box-shadow 0px 1px 2px 1px rgba(black, .1)		
+		
+		&.-show
+			display block
+			
+		> li
+			padding 12px 7px
+			
+			&:hover
+				background-color $light-gray

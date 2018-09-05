@@ -1,5 +1,34 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["painel"],{
 
+/***/ "./app/commons/assets/priorities.js":
+/*!******************************************!*\
+  !*** ./app/commons/assets/priorities.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = [{
+	id: 'high',
+	label: 'Alta',
+	icon: '/icons/high-priority.svg'
+}, {
+	id: 'medium',
+	label: 'Média',
+	icon: '/icons/medium-priority.svg'
+}, {
+	id: 'low',
+	label: 'Baixa',
+	icon: '/icons/low-priority.svg'
+}];
+
+/***/ }),
+
 /***/ "./app/commons/components/side-bar/SideBar.js":
 /*!****************************************************!*\
   !*** ./app/commons/components/side-bar/SideBar.js ***!
@@ -190,23 +219,13 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
+var _priorities = __webpack_require__(/*! ../../assets/priorities */ "./app/commons/assets/priorities.js");
+
+var _priorities2 = _interopRequireDefault(_priorities);
+
 __webpack_require__(/*! ./task-card.styl */ "./app/commons/components/task-card/task-card.styl");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var priorities = [{
-	id: 'high',
-	label: 'Alta',
-	icon: '/icons/high-priority.svg'
-}, {
-	id: 'medium',
-	label: 'Média',
-	icon: '/icons/medium-priority.svg'
-}, {
-	id: 'low',
-	label: 'Baixa',
-	icon: '/icons/low-priority.svg'
-}];
 
 var TaskCard = function (_Component) {
 	(0, _inherits3.default)(TaskCard, _Component);
@@ -233,7 +252,7 @@ var TaskCard = function (_Component) {
 			    priority = _props.priority,
 			    title = _props.title;
 
-			var priorityData = priorities.find(function (_ref) {
+			var priorityData = _priorities2.default.find(function (_ref) {
 				var id = _ref.id;
 				return priority === id;
 			});
