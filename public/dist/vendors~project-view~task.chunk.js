@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendors~task"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendors~project-view~task"],{
 
 /***/ "./node_modules/avataaars/dist/avatar/Skin.js":
 /*!****************************************************!*\

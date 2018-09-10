@@ -29,156 +29,6 @@ exports.default = [{
 
 /***/ }),
 
-/***/ "./app/commons/components/button/Button.js":
-/*!*************************************************!*\
-  !*** ./app/commons/components/button/Button.js ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _getPrototypeOf = __webpack_require__(/*! babel-runtime/core-js/object/get-prototype-of */ "./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(/*! babel-runtime/helpers/possibleConstructorReturn */ "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(/*! babel-runtime/helpers/inherits */ "./node_modules/babel-runtime/helpers/inherits.js");
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-__webpack_require__(/*! ./button.styl */ "./app/commons/components/button/button.styl");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Button = function (_Component) {
-	(0, _inherits3.default)(Button, _Component);
-
-	function Button() {
-		(0, _classCallCheck3.default)(this, Button);
-		return (0, _possibleConstructorReturn3.default)(this, (Button.__proto__ || (0, _getPrototypeOf2.default)(Button)).apply(this, arguments));
-	}
-
-	(0, _createClass3.default)(Button, [{
-		key: 'render',
-		value: function render() {
-			var _props = this.props,
-			    className = _props.className,
-			    children = _props.children,
-			    color = _props.color,
-			    handleClick = _props.handleClick,
-			    type = _props.type;
-
-			return _react2.default.createElement(
-				'button',
-				{
-					type: type,
-					className: 'button ' + className + ' ' + color,
-					onClick: handleClick
-				},
-				children
-			);
-		}
-	}]);
-	return Button;
-}(_react.Component);
-
-exports.default = Button;
-
-
-Button.propTypes = {
-	className: _propTypes2.default.string,
-	children: _propTypes2.default.any,
-	color: _propTypes2.default.string,
-	handleClick: _propTypes2.default.func,
-	type: _propTypes2.default.string
-};
-
-Button.defaultProps = {
-	className: '',
-	children: 'Button',
-	color: '-green',
-	handleClick: function handleClick() {
-		return console.log('Not Implemented.');
-	},
-	type: 'button'
-};
-
-/***/ }),
-
-/***/ "./app/commons/components/button/button.styl":
-/*!***************************************************!*\
-  !*** ./app/commons/components/button/button.styl ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/stylus-loader??ref--6-2!./button.styl */ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/button/button.styl");
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {}
-
-/***/ }),
-
-/***/ "./app/commons/components/button/index.js":
-/*!************************************************!*\
-  !*** ./app/commons/components/button/index.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Button = __webpack_require__(/*! ./Button */ "./app/commons/components/button/Button.js");
-
-var _Button2 = _interopRequireDefault(_Button);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Button2.default;
-
-/***/ }),
-
 /***/ "./app/commons/components/input-group/InputGroup.js":
 /*!**********************************************************!*\
   !*** ./app/commons/components/input-group/InputGroup.js ***!
@@ -973,6 +823,156 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./app/commons/components/slim-button/SlimButton.js":
+/*!**********************************************************!*\
+  !*** ./app/commons/components/slim-button/SlimButton.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _getPrototypeOf = __webpack_require__(/*! babel-runtime/core-js/object/get-prototype-of */ "./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(/*! babel-runtime/helpers/possibleConstructorReturn */ "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(/*! babel-runtime/helpers/inherits */ "./node_modules/babel-runtime/helpers/inherits.js");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+__webpack_require__(/*! ./slim-button.styl */ "./app/commons/components/slim-button/slim-button.styl");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SlimButton = function (_Component) {
+	(0, _inherits3.default)(SlimButton, _Component);
+
+	function SlimButton() {
+		(0, _classCallCheck3.default)(this, SlimButton);
+		return (0, _possibleConstructorReturn3.default)(this, (SlimButton.__proto__ || (0, _getPrototypeOf2.default)(SlimButton)).apply(this, arguments));
+	}
+
+	(0, _createClass3.default)(SlimButton, [{
+		key: 'render',
+		value: function render() {
+			var _props = this.props,
+			    className = _props.className,
+			    children = _props.children,
+			    color = _props.color,
+			    handleClick = _props.handleClick,
+			    type = _props.type;
+
+			return _react2.default.createElement(
+				'button',
+				{
+					type: type,
+					className: 'slim-button ' + className + ' ' + color,
+					onClick: handleClick
+				},
+				children
+			);
+		}
+	}]);
+	return SlimButton;
+}(_react.Component);
+
+exports.default = SlimButton;
+
+
+SlimButton.propTypes = {
+	className: _propTypes2.default.string,
+	children: _propTypes2.default.any,
+	color: _propTypes2.default.string,
+	handleClick: _propTypes2.default.func,
+	type: _propTypes2.default.string
+};
+
+SlimButton.defaultProps = {
+	className: '',
+	children: 'SlimButton',
+	color: '-green',
+	handleClick: function handleClick() {
+		return console.log('Not Implemented.');
+	},
+	type: 'button'
+};
+
+/***/ }),
+
+/***/ "./app/commons/components/slim-button/index.js":
+/*!*****************************************************!*\
+  !*** ./app/commons/components/slim-button/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _SlimButton = __webpack_require__(/*! ./SlimButton */ "./app/commons/components/slim-button/SlimButton.js");
+
+var _SlimButton2 = _interopRequireDefault(_SlimButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _SlimButton2.default;
+
+/***/ }),
+
+/***/ "./app/commons/components/slim-button/slim-button.styl":
+/*!*************************************************************!*\
+  !*** ./app/commons/components/slim-button/slim-button.styl ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/stylus-loader??ref--6-2!./slim-button.styl */ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/slim-button/slim-button.styl");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
 /***/ "./app/commons/components/task-card/TaskCard.js":
 /*!******************************************************!*\
   !*** ./app/commons/components/task-card/TaskCard.js ***!
@@ -1166,6 +1166,10 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _extends2 = __webpack_require__(/*! babel-runtime/helpers/extends */ "./node_modules/babel-runtime/helpers/extends.js");
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _getPrototypeOf = __webpack_require__(/*! babel-runtime/core-js/object/get-prototype-of */ "./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -1200,9 +1204,9 @@ var _avataaars = __webpack_require__(/*! avataaars */ "./node_modules/avataaars/
 
 var _avataaars2 = _interopRequireDefault(_avataaars);
 
-var _button = __webpack_require__(/*! ../../commons/components/button */ "./app/commons/components/button/index.js");
+var _slimButton = __webpack_require__(/*! ../../commons/components/slim-button */ "./app/commons/components/slim-button/index.js");
 
-var _button2 = _interopRequireDefault(_button);
+var _slimButton2 = _interopRequireDefault(_slimButton);
 
 var _inputGroup = __webpack_require__(/*! ../../commons/components/input-group */ "./app/commons/components/input-group/index.js");
 
@@ -1275,9 +1279,17 @@ var doneTasks = [{
 var ProjectView = function (_Component) {
 	(0, _inherits3.default)(ProjectView, _Component);
 
-	function ProjectView() {
+	function ProjectView(props) {
 		(0, _classCallCheck3.default)(this, ProjectView);
-		return (0, _possibleConstructorReturn3.default)(this, (ProjectView.__proto__ || (0, _getPrototypeOf2.default)(ProjectView)).apply(this, arguments));
+
+		var _this = (0, _possibleConstructorReturn3.default)(this, (ProjectView.__proto__ || (0, _getPrototypeOf2.default)(ProjectView)).call(this, props));
+
+		_this.state = {
+			isOpenedNewTaskModal: false
+		};
+
+		_this.handleToggleNewTaskModal = _this.handleToggleNewTaskModal.bind(_this);
+		return _this;
 	}
 
 	(0, _createClass3.default)(ProjectView, [{
@@ -1302,8 +1314,20 @@ var ProjectView = function (_Component) {
 			});
 		}
 	}, {
+		key: 'handleToggleNewTaskModal',
+		value: function handleToggleNewTaskModal() {
+			var _state = (0, _extends3.default)({}, this.state),
+			    isOpenedNewTaskModal = _state.isOpenedNewTaskModal;
+
+			isOpenedNewTaskModal = !isOpenedNewTaskModal;
+			this.setState({ isOpenedNewTaskModal: isOpenedNewTaskModal });
+		}
+	}, {
 		key: 'render',
 		value: function render() {
+			var isOpenedNewTaskModal = this.state.isOpenedNewTaskModal;
+
+
 			return _react2.default.createElement(
 				'div',
 				{ className: 'project-view' },
@@ -1335,6 +1359,23 @@ var ProjectView = function (_Component) {
 						'p',
 						{ className: 'description' },
 						'Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. N\xE3o sou faixa preta cumpadi, sou preto inteiris, inteiris. Cevadis im ampola pa arma uma pindureta. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. '
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'project-view-header' },
+						_react2.default.createElement(
+							_slimButton2.default,
+							{ color: '', handleClick: this.handleToggleNewTaskModal },
+							_react2.default.createElement('img', {
+								src: '/icons/add.svg',
+								onMouseOver: function onMouseOver(e) {
+									return e.currentTarget.src = '/icons/add-white.svg';
+								},
+								onMouseOut: function onMouseOut(e) {
+									return e.currentTarget.src = '/icons/add.svg';
+								}
+							})
+						)
 					),
 					_react2.default.createElement(
 						'section',
@@ -1382,7 +1423,8 @@ var ProjectView = function (_Component) {
 							)
 						)
 					)
-				)
+				),
+				_react2.default.createElement(_modal2.default, { opened: isOpenedNewTaskModal, className: 'new-task-modal', handleClose: this.handleToggleNewTaskModal })
 			);
 		}
 	}]);
@@ -1465,25 +1507,6 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/button/button.styl":
-/*!******************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/stylus-loader??ref--6-2!./app/commons/components/button/button.styl ***!
-  \******************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".button {\n  display: block;\n  height: 40px;\n  color: #fff;\n  background-color: #a6a8ad;\n  border-radius: 4px;\n  cursor: pointer;\n  transition-duration: 0.5s;\n}\n.button.-green {\n  background-color: #5dae9f;\n}\n.button.-green:hover {\n  background-color: #4f9488;\n}\n.button.-purple {\n  background-color: #de8ee1;\n}\n.button.-purple:hover {\n  background-color: #c57ec7;\n}\n", ""]);
-
-// exports
 
 
 /***/ }),
@@ -1583,6 +1606,25 @@ exports.push([module.i, ".side-bar {\n  border-radius: 4px;\n  text-align: cente
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/slim-button/slim-button.styl":
+/*!****************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/stylus-loader??ref--6-2!./app/commons/components/slim-button/slim-button.styl ***!
+  \****************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".slim-button {\n  display: block;\n  height: 40px;\n  color: #a6a8ad;\n  border: solid 1px #a6a8ad;\n  background-color: transparent;\n  border-radius: 4px;\n  cursor: pointer;\n  transition-duration: 0.5s;\n  width: 100px;\n}\n.slim-button:hover {\n  background-color: #a6a8ad;\n  color: #fff;\n}\n.slim-button.-green {\n  color: #5dae9f;\n  border: solid 1px #5dae9f;\n}\n.slim-button.-green:hover {\n  background-color: #5dae9f;\n  color: #fff;\n}\n.slim-button.-purple {\n  color: #de8ee1;\n  border: solid 1px #de8ee1;\n}\n.slim-button.-purple:hover {\n  background-color: #de8ee1;\n  color: #fff;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/task-card/task-card.styl":
 /*!************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/stylus-loader??ref--6-2!./app/commons/components/task-card/task-card.styl ***!
@@ -1614,7 +1656,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".project-view {\n  display: -ms-grid;\n  display: grid;\n  width: 100%;\n  -ms-grid-columns: 55px auto;\n      grid-template-columns: 55px auto;\n  -ms-grid-rows: calc(100vh - 3px);\n      grid-template-rows: calc(100vh - 3px);\n  border-top: solid 3px #4e82a1;\n}\n.project-view > .content {\n  padding: 40px 80px;\n  overflow: auto;\n  height: calc(100vh - 3px);\n}\n.project-view > .content:after {\n  content: '';\n  display: block;\n  height: 40px;\n}\n.project-view > .content .subtitle {\n  display: block;\n  font-size: 1em;\n  font-weight: 700;\n  width: 100%;\n  padding-bottom: 30px;\n}\n.project-view > .content > .title {\n  font-size: 1.4em;\n  font-weight: 400;\n  margin-bottom: 30px;\n  color: #a6a8ad;\n}\n.project-view > .content > .title > a {\n  color: #4e82a1;\n  padding-right: 10px;\n}\n.project-view > .content > .title > a + a {\n  padding-left: 10px;\n}\n.project-view > .content > .title > .project-name {\n  display: inline;\n  color: #5d5e61;\n  padding: 10px;\n}\n.project-view > .content > .title > .project-name > .code {\n  margin-left: 3px;\n  margin-bottom: 60px;\n  font-size: 1em;\n  color: #a6a8ad;\n  text-transform: uppercase;\n  font-style: italic;\n}\n.project-view > .content > .description {\n  font-size: 1em;\n  line-height: 1.4em;\n  color: #a6a8ad;\n  margin-bottom: 30px;\n}\n.project-view > .content > .kanban {\n  display: -ms-grid;\n  display: grid;\n  width: 100%;\n  grid-gap: 30px;\n  -ms-grid-columns: 1fr 1fr 1fr;\n      grid-template-columns: 1fr 1fr 1fr;\n  -ms-grid-rows: 100vh;\n      grid-template-rows: 100vh;\n}\n.project-view > .content > .kanban > .state > .title {\n  text-align: center;\n  padding: 10px;\n  font-weight: 400;\n  border: solid 1px rgba(166,168,173,0.3);\n  border-bottom: none;\n  border-radius: 5px 5px 0px 0px;\n  background-color: #4e82a1;\n  color: #fff;\n  font-size: 1em;\n}\n.project-view > .content > .kanban > .state > .list {\n  width: 100%;\n  height: 100%;\n  border: solid 1px rgba(166,168,173,0.3);\n  border-radius: 0px 0px 5px 5px;\n  padding: 15px;\n}\n", ""]);
+exports.push([module.i, ".project-view {\n  display: -ms-grid;\n  display: grid;\n  width: 100%;\n  -ms-grid-columns: 55px auto;\n      grid-template-columns: 55px auto;\n  -ms-grid-rows: calc(100vh - 3px);\n      grid-template-rows: calc(100vh - 3px);\n  border-top: solid 3px #4e82a1;\n}\n.project-view > .content {\n  padding: 40px 80px;\n  overflow: auto;\n  height: calc(100vh - 3px);\n}\n.project-view > .content:after {\n  content: '';\n  display: block;\n  height: 40px;\n}\n.project-view > .content .subtitle {\n  display: block;\n  font-size: 1em;\n  font-weight: 700;\n  width: 100%;\n  padding-bottom: 30px;\n}\n.project-view > .content > .title {\n  font-size: 1.4em;\n  font-weight: 400;\n  margin-bottom: 30px;\n  color: #a6a8ad;\n}\n.project-view > .content > .title > a {\n  color: #4e82a1;\n  padding-right: 10px;\n}\n.project-view > .content > .title > a + a {\n  padding-left: 10px;\n}\n.project-view > .content > .title > .project-name {\n  display: inline;\n  color: #5d5e61;\n  padding: 10px;\n}\n.project-view > .content > .title > .project-name > .code {\n  margin-left: 3px;\n  margin-bottom: 60px;\n  font-size: 1em;\n  color: #a6a8ad;\n  text-transform: uppercase;\n  font-style: italic;\n}\n.project-view > .content > .project-view-header {\n  margin-bottom: 30px;\n  text-align: right;\n}\n.project-view > .content > .project-view-header > .slim-button {\n  display: inline-block;\n  width: auto;\n  height: auto;\n  padding: 0;\n}\n.project-view > .content > .project-view-header > .slim-button > img {\n  padding: 5px;\n  width: 40px;\n}\n.project-view > .content > .description {\n  font-size: 1em;\n  line-height: 1.4em;\n  color: #a6a8ad;\n  margin-bottom: 30px;\n}\n.project-view > .content > .kanban {\n  display: -ms-grid;\n  display: grid;\n  width: 100%;\n  grid-gap: 30px;\n  -ms-grid-columns: 1fr 1fr 1fr;\n      grid-template-columns: 1fr 1fr 1fr;\n  -ms-grid-rows: 100vh;\n      grid-template-rows: 100vh;\n}\n.project-view > .content > .kanban > .state > .title {\n  text-align: center;\n  padding: 15px;\n  font-weight: 400;\n  background-color: rgba(166,168,173,0.4);\n  border-radius: 5px 5px 0px 0px;\n  font-size: 1em;\n}\n.project-view > .content > .kanban > .state > .list {\n  background-color: rgba(166,168,173,0.4);\n  width: 100%;\n  height: 100%;\n  border-radius: 0px 0px 5px 5px;\n  padding: 15px;\n}\n", ""]);
 
 // exports
 

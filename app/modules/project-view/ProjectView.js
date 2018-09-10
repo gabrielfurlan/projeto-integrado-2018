@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Avatar from 'avataaars';
 
-import Button from '../../commons/components/button';
+import SlimButton from '../../commons/components/slim-button';
 import InputGroup from '../../commons/components/input-group';
 import Input from '../../commons/components/input';
 import Modal from '../../commons/components/modal';
@@ -62,6 +62,15 @@ const doneTasks = [
 
 export default class ProjectView extends Component {
 
+	constructor(props) {
+		super(props);
+		this.state = {
+			isOpenedNewTaskModal: false
+		};
+
+		this.handleToggleNewTaskModal = this.handleToggleNewTaskModal.bind(this); 
+	}
+
 	renderToDoTasks() {
 		return toDoTasks.map(task => <TaskCard {...task} />);
 	}
@@ -74,7 +83,15 @@ export default class ProjectView extends Component {
 		return doneTasks.map(task => <TaskCard {...task} />);
 	}
 
+	handleToggleNewTaskModal() {
+		let { isOpenedNewTaskModal } = { ...this.state };
+		isOpenedNewTaskModal = !isOpenedNewTaskModal;
+		this.setState({ isOpenedNewTaskModal });
+	}
+
 	render() {
+		const { isOpenedNewTaskModal } = this.state;
+
 		return (
 			<div className='project-view'>
 				<SideBar />
@@ -84,6 +101,15 @@ export default class ProjectView extends Component {
 						<div className='project-name'>Nome do projeto vai aqui <span className='code'>(e23qwe22ds)</span></div>
 					</h1>
 					<p className='description'>Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. Não sou faixa preta cumpadi, sou preto inteiris, inteiris. Cevadis im ampola pa arma uma pindureta. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. </p>
+					<div className='project-view-header'>
+						<SlimButton color='' handleClick={this.handleToggleNewTaskModal}>
+							<img 
+								src='/icons/add.svg' 
+								onMouseOver={(e) => e.currentTarget.src = '/icons/add-white.svg'} 
+								onMouseOut={(e) => e.currentTarget.src = '/icons/add.svg'} 
+							/>
+						</SlimButton>
+					</div>
 					<section className='kanban'>
 						<div className='state'>
 							<h3 className='title'>A fazer</h3>
@@ -105,6 +131,9 @@ export default class ProjectView extends Component {
 						</div>
 					</section>
 				</main>
+				<Modal opened={isOpenedNewTaskModal} className='new-task-modal' handleClose={this.handleToggleNewTaskModal}>
+				
+				</Modal>
 			</div>
 		);
 	}
