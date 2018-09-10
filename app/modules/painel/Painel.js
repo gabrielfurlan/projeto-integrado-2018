@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import PainelController from './PainelController';
 
 import Home from './components/home';
+import Projects from './components/projects';
 
 import SideBar from '../../commons/components/side-bar';
 
@@ -22,12 +23,17 @@ export class Painel extends Component {
 		return <Home />;
 	}
 
+	renderProjects() {
+		return <Projects />;
+	}
+
 	render() {
 		return (
 			<div className='painel'>
 				<SideBar />
 				<main className='content'>
 					<Route exact path='/painel' render={this.renderHome} />
+					<Route exact path='/painel/projetos' render={this.renderProjects} />
 				</main>
 			</div>
 		);

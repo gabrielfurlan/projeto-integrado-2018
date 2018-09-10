@@ -29,6 +29,161 @@ exports.default = [{
 
 /***/ }),
 
+/***/ "./app/commons/components/project-card/ProjectCard.js":
+/*!************************************************************!*\
+  !*** ./app/commons/components/project-card/ProjectCard.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _getPrototypeOf = __webpack_require__(/*! babel-runtime/core-js/object/get-prototype-of */ "./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(/*! babel-runtime/helpers/possibleConstructorReturn */ "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(/*! babel-runtime/helpers/inherits */ "./node_modules/babel-runtime/helpers/inherits.js");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+__webpack_require__(/*! ./project-card.styl */ "./app/commons/components/project-card/project-card.styl");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ProjectCard = function (_Component) {
+	(0, _inherits3.default)(ProjectCard, _Component);
+
+	function ProjectCard(props) {
+		(0, _classCallCheck3.default)(this, ProjectCard);
+
+		var _this = (0, _possibleConstructorReturn3.default)(this, (ProjectCard.__proto__ || (0, _getPrototypeOf2.default)(ProjectCard)).call(this, props));
+
+		_this.toProject = _this.toProject.bind(_this);
+		return _this;
+	}
+
+	(0, _createClass3.default)(ProjectCard, [{
+		key: 'toProject',
+		value: function toProject() {
+			var _props = this.props,
+			    history = _props.history,
+			    id = _props.id;
+
+			history.push('/projeto/' + id);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var name = this.props.name;
+
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'project-card', onClick: this.toProject },
+				_react2.default.createElement(
+					'h3',
+					{ className: 'title' },
+					name
+				)
+			);
+		}
+	}]);
+	return ProjectCard;
+}(_react.Component);
+
+var clientShape = {
+	id: _propTypes2.default.string.isRequired,
+	name: _propTypes2.default.string.isRequired
+};
+
+ProjectCard.propTypes = {
+	id: _propTypes2.default.string.isRequired,
+	name: _propTypes2.default.string.isRequired,
+	client: _propTypes2.default.shape(clientShape).isRequired
+};
+
+ProjectCard.defaultProps = {};
+
+exports.default = (0, _reactRouterDom.withRouter)(ProjectCard);
+
+/***/ }),
+
+/***/ "./app/commons/components/project-card/index.js":
+/*!******************************************************!*\
+  !*** ./app/commons/components/project-card/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _ProjectCard = __webpack_require__(/*! ./ProjectCard */ "./app/commons/components/project-card/ProjectCard.js");
+
+var _ProjectCard2 = _interopRequireDefault(_ProjectCard);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _ProjectCard2.default;
+
+/***/ }),
+
+/***/ "./app/commons/components/project-card/project-card.styl":
+/*!***************************************************************!*\
+  !*** ./app/commons/components/project-card/project-card.styl ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/stylus-loader??ref--6-2!./project-card.styl */ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/project-card/project-card.styl");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
 /***/ "./app/commons/components/side-bar/SideBar.js":
 /*!****************************************************!*\
   !*** ./app/commons/components/side-bar/SideBar.js ***!
@@ -409,6 +564,10 @@ var _home = __webpack_require__(/*! ./components/home */ "./app/modules/painel/c
 
 var _home2 = _interopRequireDefault(_home);
 
+var _projects = __webpack_require__(/*! ./components/projects */ "./app/modules/painel/components/projects/index.js");
+
+var _projects2 = _interopRequireDefault(_projects);
+
 var _sideBar = __webpack_require__(/*! ../../commons/components/side-bar */ "./app/commons/components/side-bar/index.js");
 
 var _sideBar2 = _interopRequireDefault(_sideBar);
@@ -435,6 +594,11 @@ var Painel = exports.Painel = function (_Component) {
 			return _react2.default.createElement(_home2.default, null);
 		}
 	}, {
+		key: 'renderProjects',
+		value: function renderProjects() {
+			return _react2.default.createElement(_projects2.default, null);
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
@@ -444,7 +608,8 @@ var Painel = exports.Painel = function (_Component) {
 				_react2.default.createElement(
 					'main',
 					{ className: 'content' },
-					_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/painel', render: this.renderHome })
+					_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/painel', render: this.renderHome }),
+					_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/painel/projetos', render: this.renderProjects })
 				)
 			);
 		}
@@ -713,6 +878,171 @@ exports.default = _Home2.default;
 
 /***/ }),
 
+/***/ "./app/modules/painel/components/projects/Projects.js":
+/*!************************************************************!*\
+  !*** ./app/modules/painel/components/projects/Projects.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _extends2 = __webpack_require__(/*! babel-runtime/helpers/extends */ "./node_modules/babel-runtime/helpers/extends.js");
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _getPrototypeOf = __webpack_require__(/*! babel-runtime/core-js/object/get-prototype-of */ "./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(/*! babel-runtime/helpers/possibleConstructorReturn */ "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(/*! babel-runtime/helpers/inherits */ "./node_modules/babel-runtime/helpers/inherits.js");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _projectCard = __webpack_require__(/*! ../../../../commons/components/project-card */ "./app/commons/components/project-card/index.js");
+
+var _projectCard2 = _interopRequireDefault(_projectCard);
+
+__webpack_require__(/*! ./projects.styl */ "./app/modules/painel/components/projects/projects.styl");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var projects = [{
+	id: 'asdasdasd',
+	name: 'Projeto Teste #1',
+	client: {
+		id: 'aushdashdajs',
+		name: 'Client #1'
+	}
+}, {
+	id: 'asassdasd',
+	name: 'Projeto Teste #2',
+	client: {
+		id: 'aushdashdaja',
+		name: 'Client #2'
+	}
+}];
+
+var Projects = function (_Component) {
+	(0, _inherits3.default)(Projects, _Component);
+
+	function Projects() {
+		(0, _classCallCheck3.default)(this, Projects);
+		return (0, _possibleConstructorReturn3.default)(this, (Projects.__proto__ || (0, _getPrototypeOf2.default)(Projects)).apply(this, arguments));
+	}
+
+	(0, _createClass3.default)(Projects, [{
+		key: 'renderProjects',
+		value: function renderProjects() {
+			return projects.map(function (project) {
+				return _react2.default.createElement(_projectCard2.default, (0, _extends3.default)({ key: project.id }, project));
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'section',
+				{ className: 'projects' },
+				_react2.default.createElement(
+					'h1',
+					{ className: 'title' },
+					'Projetos'
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'list' },
+					this.renderProjects()
+				)
+			);
+		}
+	}]);
+	return Projects;
+}(_react.Component);
+
+exports.default = Projects;
+
+
+Projects.propTypes = {};
+
+Projects.defaultProps = {};
+
+/***/ }),
+
+/***/ "./app/modules/painel/components/projects/index.js":
+/*!*********************************************************!*\
+  !*** ./app/modules/painel/components/projects/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Projects = __webpack_require__(/*! ./Projects */ "./app/modules/painel/components/projects/Projects.js");
+
+var _Projects2 = _interopRequireDefault(_Projects);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _Projects2.default;
+
+/***/ }),
+
+/***/ "./app/modules/painel/components/projects/projects.styl":
+/*!**************************************************************!*\
+  !*** ./app/modules/painel/components/projects/projects.styl ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/stylus-loader??ref--6-2!./projects.styl */ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/modules/painel/components/projects/projects.styl");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
 /***/ "./app/modules/painel/index.js":
 /*!*************************************!*\
   !*** ./app/modules/painel/index.js ***!
@@ -786,6 +1116,25 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/project-card/project-card.styl":
+/*!******************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/stylus-loader??ref--6-2!./app/commons/components/project-card/project-card.styl ***!
+  \******************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".project-card {\n  height: 120px;\n  background-color: #fff;\n  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.1);\n  border-radius: 5px;\n  padding: 15px;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  cursor: pointer;\n}\n.project-card + .project-card {\n  margin-top: 15px;\n}\n.project-card > .title {\n  font-size: 1em;\n  font-weight: 400;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/side-bar/side-bar.styl":
 /*!**********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/stylus-loader??ref--6-2!./app/commons/components/side-bar/side-bar.styl ***!
@@ -837,6 +1186,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 // module
 exports.push([module.i, ".home {\n  padding: 40px 80px;\n  overflow: auto;\n  height: calc(100vh - 3px);\n}\n.home:after {\n  content: '';\n  display: block;\n  height: 40px;\n}\n.home > .title {\n  font-size: 1.4em;\n  font-weight: 400;\n  margin-bottom: 60px;\n}\n.home .subtitle {\n  display: block;\n  font-size: 1em;\n  font-weight: 700;\n  width: 100%;\n  padding-bottom: 30px;\n}\n.home > .global-info {\n  display: -ms-grid;\n  display: grid;\n  grid-column-gap: 45px;\n  grid-template-areas: 'header header header' 'done todo hours';\n  padding-bottom: 30px;\n}\n.home > .global-info > .subtitle {\n  grid-area: header;\n}\n.home > .global-info > .info {\n  height: 150px;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  border-bottom: solid 2px #4e82a1;\n  padding: 30px;\n  text-align: right;\n  background-color: #fff;\n  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.1);\n}\n.home > .global-info > .info.-done-tasks {\n  grid-area: done;\n}\n.home > .global-info > .info.-todo {\n  grid-area: todo;\n}\n.home > .global-info > .info.-hours-worked {\n  grid-area: hours;\n}\n.home > .global-info > .info > .value {\n  font-size: 3em;\n  color: #4e82a1;\n}\n.home > .assign-to-me,\n.home > .annotations {\n  width: calc(33% - 30px);\n  display: inline-block;\n  margin-top: 45px;\n}\n.home > .assign-to-me > .list,\n.home > .annotations > .list {\n  overflow: auto;\n  height: 350px;\n  padding-right: 30px;\n  padding-left: 3px;\n  padding-top: 3px;\n}\n.home > .assign-to-me > .list:after,\n.home > .annotations > .list:after {\n  content: '';\n  display: block;\n  height: 15px;\n}\n.home > .annotations {\n  margin-left: 60px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/modules/painel/components/projects/projects.styl":
+/*!*****************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/stylus-loader??ref--6-2!./app/modules/painel/components/projects/projects.styl ***!
+  \*****************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".projects {\n  padding: 40px 80px;\n  overflow: auto;\n  height: calc(100vh - 3px);\n}\n.projects:after {\n  content: '';\n  display: block;\n  height: 40px;\n}\n.projects > .title {\n  font-size: 1.4em;\n  font-weight: 400;\n  margin-bottom: 60px;\n}\n", ""]);
 
 // exports
 
