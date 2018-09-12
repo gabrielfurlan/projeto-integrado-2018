@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["painel"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendors~painel~task"],{
 
 /***/ "./app/commons/assets/priorities.js":
 /*!******************************************!*\
