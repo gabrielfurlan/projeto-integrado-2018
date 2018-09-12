@@ -16,6 +16,7 @@ import './stylesheets/settings/devices.styl';
 const login = () => register("login", import(/* webpackChunkName: "login" */ "./modules/login/index"));
 const painel = () => register("painel", import(/* webpackChunkName: "painel" */ "./modules/painel/index"));
 const task = () => register("task", import(/* webpackChunkName: "task" */ "./modules/task/index"));
+const projectView = () => register("projectView", import(/* webpackChunkName: "project-view" */ "./modules/project-view/index"));
 
 const register = module(store);
 
@@ -26,6 +27,7 @@ ReactDom.render(
 				<Route exact path='/' component={() => <AsyncComponent moduleProvider={login} />} />
 				<Route path='/painel' component={() => <AsyncComponent moduleProvider={painel} />} />
 				<Route path='/tarefa/:id' component={() => <AsyncComponent moduleProvider={task} />} />
+				<Route path='/projeto/:id' component={() => <AsyncComponent moduleProvider={projectView} />} />
 			</Switch>
 		</Router>
 	</Provider>,
