@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import PainelController from './PainelController';
 
+import Analyts from './components/analysts';
+import Clients from './components/clients';
 import Home from './components/home';
 import Projects from './components/projects';
 
@@ -17,6 +19,9 @@ export class Painel extends Component {
 	constructor(props) {
 		super(props);
 		this.renderHome = this.renderHome.bind(this);
+		this.renderProjects = this.renderProjects.bind(this);
+		this.renderClients = this.renderClients.bind(this);
+		this.renderAnalysts = this.renderAnalysts.bind(this);
 	} 
 
 	renderHome() {
@@ -27,6 +32,14 @@ export class Painel extends Component {
 		return <Projects />;
 	}
 
+	renderClients() {
+		return <Clients />;
+	}
+
+	renderAnalysts() {
+		return <Analyts />;
+	}
+
 	render() {
 		return (
 			<div className='painel'>
@@ -34,6 +47,8 @@ export class Painel extends Component {
 				<main className='content'>
 					<Route exact path='/painel' render={this.renderHome} />
 					<Route exact path='/painel/projetos' render={this.renderProjects} />
+					<Route exact path='/painel/clientes' render={this.renderClients} />
+					<Route exact path='/painel/analistas' render={this.renderAnalysts} />
 				</main>
 			</div>
 		);

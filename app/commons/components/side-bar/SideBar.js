@@ -5,10 +5,21 @@ import Avatar from 'avataaars';
 import Brand from '../brand';
 
 import { NavLink } from 'react-router-dom';
+import links from './links';
  
 import './side-bar.styl';
 
 export default class SideBar extends Component {
+
+	renderLinks() {
+		return links.map(({ icon, label, to }) => (
+			<NavLink exact title={label} className='link' to={to} >
+				<img src={icon} alt={label} />
+				{label}
+			</NavLink>
+		));
+	}
+
 	render() {
 		return (
 			<div className='side-bar'>
@@ -32,18 +43,7 @@ export default class SideBar extends Component {
 					<span className='name'>Gabriel Furlan</span>
 				</div>
 				<nav className='navigation'>
-					<NavLink exact title='Home' className='link' to='/painel'>
-						<img src='/icons/global.svg' alt='Home' />
-						Home
-					</NavLink>
-					<NavLink title='Projetos' className='link' to='/painel/projetos'>
-						<img src='/icons/projects.svg' alt='Projetos' />
-						Projetos
-					</NavLink>
-					<NavLink title='Configuração' className='link' to='/painel/config'>
-						<img src='/icons/user-config.svg' alt='Configuração' />
-						Configurações
-					</NavLink>
+					{ this.renderLinks() }
 				</nav>
 			</div>
 		);

@@ -14,11 +14,11 @@ class TaskCard extends Component {
 	}
 	
 	handleClick(e) {
-		this.props.history.push(`/tarefa/${e.target.id}`);
+		this.props.history.push(`/tarefa/${e.currentTarget.id}`);
 	}
 
 	render() {
-		const { id, priority, title } = this.props;
+		const { id, priority, title, small } = this.props;
 		const priorityData = priorities.find(({ id }) => priority === id);
 
 		return (
@@ -27,7 +27,7 @@ class TaskCard extends Component {
 				<div className='basic-infos'>
 					<span className={`priority -${priorityData.id}`}>
 						<img src={priorityData.icon} />
-						{priorityData.label} Prioridade
+						<span className={small ? '-hide' : ''}>{priorityData.label} Prioridade</span>
 					</span>
 					<span className='code'>{id}</span>
 				</div>
@@ -41,14 +41,16 @@ TaskCard.propTypes = {
 	id: PropTypes.string,
 	title: PropTypes.string,
 	priority: PropTypes.string,
-	estimate_hours: PropTypes.number
+	estimate_hours: PropTypes.number,
+	small: PropTypes.bool
 };
 
 TaskCard.defaultProps = {
 	id: 'XXX-X',
 	title: 'Tarefa com um título padrão',
 	priority: 'low',
-	estimate_hours: 0
+	estimate_hours: 0,
+	small: false
 };
 
 export default withRouter(TaskCard);

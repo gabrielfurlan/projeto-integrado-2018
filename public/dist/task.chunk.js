@@ -995,6 +995,10 @@ var _brand2 = _interopRequireDefault(_brand);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
+var _links = __webpack_require__(/*! ./links */ "./app/commons/components/side-bar/links.js");
+
+var _links2 = _interopRequireDefault(_links);
+
 __webpack_require__(/*! ./side-bar.styl */ "./app/commons/components/side-bar/side-bar.styl");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -1008,6 +1012,21 @@ var SideBar = function (_Component) {
 	}
 
 	(0, _createClass3.default)(SideBar, [{
+		key: 'renderLinks',
+		value: function renderLinks() {
+			return _links2.default.map(function (_ref) {
+				var icon = _ref.icon,
+				    label = _ref.label,
+				    to = _ref.to;
+				return _react2.default.createElement(
+					_reactRouterDom.NavLink,
+					{ exact: true, title: label, className: 'link', to: to },
+					_react2.default.createElement('img', { src: icon, alt: label }),
+					label
+				);
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
@@ -1043,24 +1062,7 @@ var SideBar = function (_Component) {
 				_react2.default.createElement(
 					'nav',
 					{ className: 'navigation' },
-					_react2.default.createElement(
-						_reactRouterDom.NavLink,
-						{ exact: true, title: 'Home', className: 'link', to: '/painel' },
-						_react2.default.createElement('img', { src: '/icons/global.svg', alt: 'Home' }),
-						'Home'
-					),
-					_react2.default.createElement(
-						_reactRouterDom.NavLink,
-						{ title: 'Projetos', className: 'link', to: '/painel/projetos' },
-						_react2.default.createElement('img', { src: '/icons/projects.svg', alt: 'Projetos' }),
-						'Projetos'
-					),
-					_react2.default.createElement(
-						_reactRouterDom.NavLink,
-						{ title: 'Configura\xE7\xE3o', className: 'link', to: '/painel/config' },
-						_react2.default.createElement('img', { src: '/icons/user-config.svg', alt: 'Configura\xE7\xE3o' }),
-						'Configura\xE7\xF5es'
-					)
+					this.renderLinks()
 				)
 			);
 		}
@@ -1098,6 +1100,43 @@ var _SideBar2 = _interopRequireDefault(_SideBar);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _SideBar2.default;
+
+/***/ }),
+
+/***/ "./app/commons/components/side-bar/links.js":
+/*!**************************************************!*\
+  !*** ./app/commons/components/side-bar/links.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = [{
+	icon: '/icons/dashboard.svg',
+	label: 'Home',
+	to: '/painel'
+}, {
+	icon: '/icons/puzzle.svg',
+	label: 'Projects',
+	to: '/painel/projetos'
+}, {
+	icon: '/icons/conversation.svg',
+	label: 'Clientes',
+	to: '/painel/clientes'
+}, {
+	icon: '/icons/user.svg',
+	label: 'Analistas',
+	to: '/painel/analistas'
+}, {
+	icon: '/icons/configuration.svg',
+	label: 'Configuração',
+	to: '/painel/configuracao'
+}];
 
 /***/ }),
 
@@ -1692,7 +1731,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".button {\n  display: block;\n  height: 40px;\n  color: #fff;\n  background-color: #a6a8ad;\n  border-radius: 4px;\n  cursor: pointer;\n  transition-duration: 0.5s;\n}\n.button.-green {\n  background-color: #5dae9f;\n}\n.button.-green:hover {\n  background-color: #4f9488;\n}\n.button.-purple {\n  background-color: #de8ee1;\n}\n.button.-purple:hover {\n  background-color: #c57ec7;\n}\n", ""]);
+exports.push([module.i, ".button {\n  display: block;\n  height: 40px;\n  color: #fff;\n  background-color: #a6a8ad;\n  border-radius: 4px;\n  cursor: pointer;\n  transition-duration: 0.5s;\n}\n.button.-green {\n  background-color: #3eeeb0;\n}\n.button.-green:hover {\n  background-color: #4f9488;\n}\n.button.-orange {\n  background-color: #e1a246;\n}\n.button.-orange:hover {\n  background-color: #c7903e;\n}\n", ""]);
 
 // exports
 
@@ -1787,7 +1826,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".side-bar {\n  border-radius: 4px;\n  text-align: center;\n  padding-top: 45px;\n  padding-bottom: 30px;\n  position: -webkit-sticky;\n  position: sticky;\n  background-color: #fff;\n  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.1);\n}\n.side-bar > .user-info {\n  width: 100%;\n  text-align: center;\n  margin-top: 60px;\n}\n.side-bar > .user-info > .avatar {\n  display: block;\n  margin-bottom: 15px;\n}\n.side-bar > .user-info > .avatar > svg {\n  width: 80px;\n  height: 80px;\n}\n.side-bar > .user-info > .name {\n  color: #a6a8ad;\n  font-weight: 500;\n}\n.side-bar > img.logo {\n  width: 35px;\n  padding-bottom: 45px;\n  border-bottom: solid 1px rgba(166,168,173,0.3);\n}\n.side-bar > .navigation {\n  margin-top: 60px;\n  text-align: left;\n}\n.side-bar > .navigation > a.link {\n  display: block;\n  color: #a6a8ad;\n  padding: 15px;\n  font-size: 1em;\n}\n.side-bar > .navigation > a.link.active {\n  box-shadow: 3px 0px 0px 0px #e1a246 inset;\n  color: $dark-gray;\n  font-weight: 500;\n}\n.side-bar > .navigation > a.link > img {\n  vertical-align: middle;\n  margin-right: 10px;\n  display: inline-block;\n  width: 20px;\n}\n.side-bar > .navigation > a.link + a.link {\n  margin-top: 5px;\n}\n", ""]);
+exports.push([module.i, ".side-bar {\n  border-radius: 4px;\n  text-align: center;\n  padding-top: 45px;\n  padding-bottom: 30px;\n  position: -webkit-sticky;\n  position: sticky;\n  background-color: #fff;\n  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.1);\n}\n.side-bar > .user-info {\n  width: 100%;\n  text-align: center;\n  margin-top: 60px;\n}\n.side-bar > .user-info > .avatar {\n  display: block;\n  margin-bottom: 15px;\n}\n.side-bar > .user-info > .avatar > svg {\n  width: 80px;\n  height: 80px;\n}\n.side-bar > .user-info > .name {\n  color: #a6a8ad;\n  font-weight: 500;\n}\n.side-bar > img.logo {\n  width: 35px;\n  padding-bottom: 45px;\n  border-bottom: solid 1px rgba(166,168,173,0.3);\n}\n.side-bar > .navigation {\n  margin-top: 60px;\n  text-align: left;\n}\n.side-bar > .navigation > a.link {\n  display: block;\n  color: #a6a8ad;\n  padding: 15px;\n  font-size: 1em;\n}\n.side-bar > .navigation > a.link.active {\n  box-shadow: 3px 0px 0px 0px #e1a246 inset;\n  color: #000;\n  font-weight: 500;\n}\n.side-bar > .navigation > a.link > img {\n  vertical-align: middle;\n  margin-right: 10px;\n  display: inline-block;\n  width: 20px;\n}\n.side-bar > .navigation > a.link + a.link {\n  margin-top: 5px;\n}\n", ""]);
 
 // exports
 
@@ -1806,7 +1845,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".task {\n  display: -ms-grid;\n  display: grid;\n  width: 100%;\n  -ms-grid-columns: 200px auto;\n      grid-template-columns: 200px auto;\n  -ms-grid-rows: calc(100vh - 3px);\n      grid-template-rows: calc(100vh - 3px);\n}\n.task > .content {\n  padding: 40px 80px;\n  overflow: auto;\n  height: calc(100vh - 3px);\n}\n.task > .content:after {\n  content: '';\n  display: block;\n  height: 40px;\n}\n.task > .content .subtitle {\n  display: block;\n  font-size: 1em;\n  font-weight: 700;\n  width: 100%;\n  padding-bottom: 30px;\n}\n.task > .content > .title {\n  font-size: 1.4em;\n  font-weight: 400;\n  margin-bottom: 30px;\n  color: #a6a8ad;\n}\n.task > .content > .title > a {\n  color: #a6a8ad;\n  padding-right: 10px;\n}\n.task > .content > .title > a + a {\n  padding-left: 10px;\n}\n.task > .content > .title > .task-name {\n  display: inline;\n  color: #5d5e61;\n  padding: 10px;\n}\n.task > .content > .title > .task-name > .code {\n  margin-left: 3px;\n  margin-bottom: 60px;\n  font-size: 1em;\n  color: #a6a8ad;\n  text-transform: uppercase;\n  font-style: italic;\n}\n.task > .content > .description {\n  font-size: 1em;\n  line-height: 1.4em;\n  color: #a6a8ad;\n}\n.task > .content > .files {\n  margin-top: 30px;\n}\n.task > .content > .files > .uploader {\n  margin-bottom: 15px;\n}\n.task > .content > .files > .uploader > input {\n  display: none;\n}\n.task > .content > .files > .uploader > label {\n  display: inline-block;\n  color: #a6a8ad;\n  cursor: pointer;\n}\n.task > .content > .files > .uploader > label > img {\n  width: 30px;\n  vertical-align: middle;\n  margin-right: 10px;\n}\n.task > .content > .files > .uploader:hover {\n  color: #4e82a1;\n}\n.task > .content > .files > .file-list > .not-found {\n  font-size: 0.9em;\n  color: #a6a8ad;\n}\n.task > .content > .comments {\n  width: calc(50% - 30px);\n  display: inline-block;\n  margin-top: 60px;\n  vertical-align: top;\n  margin-right: 60px;\n}\n.task > .content > .comments > .subtitle {\n  padding-bottom: 45px;\n}\n.task > .content > .comments > .list > .comment-card {\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: 50px auto;\n      grid-template-columns: 50px auto;\n}\n.task > .content > .comments > .list > .comment-card + .comment-card {\n  margin-top: 45px;\n}\n.task > .content > .comments > .list > .comment-card > .avatar-wrapper {\n  padding-right: 10px;\n}\n.task > .content > .comments > .list > .comment-card > .avatar-wrapper > svg {\n  width: 100%;\n  height: auto;\n}\n.task > .content > .comments > .list > .comment-card > .content > .comment-header {\n  margin-bottom: 15px;\n}\n.task > .content > .comments > .list > .comment-card > .content > .comment-header > .name {\n  display: inline-block;\n  font-size: 1em;\n}\n.task > .content > .comments > .list > .comment-card > .content > .comment-header > .created-at {\n  color: #a6a8ad;\n  margin-left: 15px;\n}\n.task > .content > .comments > .list > .comment-card > .content > .text {\n  width: 100%;\n  line-height: 1.4em;\n}\n.task > .content > .comments > .list > .comment-input {\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: 50px auto;\n      grid-template-columns: 50px auto;\n  margin-top: 45px;\n}\n.task > .content > .comments > .list > .comment-input > .avatar-wrapper {\n  padding-right: 10px;\n}\n.task > .content > .comments > .list > .comment-input > .avatar-wrapper > svg {\n  width: 100%;\n  height: auto;\n}\n.task > .content > .comments > .list > .comment-input > .content > .comment-header {\n  margin-bottom: 15px;\n}\n.task > .content > .comments > .list > .comment-input > .content > .comment-header > .name {\n  display: inline-block;\n  font-size: 1em;\n  color: #5dae9f;\n}\n.task > .content > .comments > .list > .comment-input > .content > .text-area {\n  width: 100%;\n  height: 100px;\n  border-radius: 4px;\n  resize: none;\n  border: solid 1px #a6a8ad;\n  padding: 12px;\n}\n.task > .content > .comments > .list > .comment-input > .content > .actions {\n  margin-top: 15px;\n  text-align: right;\n}\n.task > .content > .comments > .list > .comment-input > .content > .actions > .send {\n  display: inline-block;\n  padding: 0px 15px;\n}\n.task > .content > .infos {\n  width: calc(50% - 30px);\n  display: inline-block;\n  margin-top: 60px;\n}\n.task > .content > .infos > .input-group > .label {\n  width: 100%;\n  height: 40px;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  -ms-flex-align: center;\n      align-items: center;\n}\n.task > .content > .infos > .input-group + .input-group {\n  margin-top: 30px;\n}\n.task > .content > .infos > .input-group.status-group > .select {\n  width: 160px;\n}\n.task > .content > .infos > .log-time > .label span {\n  width: 100%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  -ms-flex-align: center;\n      align-items: center;\n}\n.task > .content > .infos > .log-time > .label span > img {\n  width: 40px;\n  cursor: pointer;\n}\n.task > .content > .infos > .log-time > .value {\n  font-style: italic;\n}\n.task > .content > .infos > .priority > img {\n  width: 30px;\n  vertical-align: middle;\n  margin-right: 10px;\n}\n.task > .add-log-time-modal > .modal > .title {\n  font-size: 1.2em;\n  margin-bottom: 45px;\n}\n.task > .add-log-time-modal > .modal > .input-group.time-group {\n  width: calc(50% - 5px);\n  display: inline-block;\n}\n.task > .add-log-time-modal > .modal > .input-group.time-group + .input-group {\n  margin-left: 10px;\n}\n.task > .add-log-time-modal > .modal > .input-group.time-group > .input {\n  width: 100%;\n}\n.task > .add-log-time-modal > .modal > .actions {\n  width: 100%;\n  margin-top: 45px;\n}\n.task > .add-log-time-modal > .modal > .actions > .save-action {\n  width: 100px;\n}\n", ""]);
+exports.push([module.i, ".task {\n  display: -ms-grid;\n  display: grid;\n  width: 100%;\n  -ms-grid-columns: 200px auto;\n      grid-template-columns: 200px auto;\n  -ms-grid-rows: calc(100vh - 3px);\n      grid-template-rows: calc(100vh - 3px);\n}\n.task > .content {\n  padding: 40px 80px;\n  overflow: auto;\n  height: calc(100vh - 3px);\n}\n.task > .content:after {\n  content: '';\n  display: block;\n  height: 40px;\n}\n.task > .content .subtitle {\n  display: block;\n  font-size: 1em;\n  font-weight: 700;\n  width: 100%;\n  padding-bottom: 30px;\n}\n.task > .content > .title {\n  font-size: 1.4em;\n  font-weight: 400;\n  margin-bottom: 30px;\n  color: #a6a8ad;\n}\n.task > .content > .title > a {\n  color: #a6a8ad;\n  padding-right: 10px;\n}\n.task > .content > .title > a + a {\n  padding-left: 10px;\n}\n.task > .content > .title > .task-name {\n  display: inline;\n  color: #5d5e61;\n  padding: 10px;\n}\n.task > .content > .title > .task-name > .code {\n  margin-left: 3px;\n  margin-bottom: 60px;\n  font-size: 1em;\n  color: #a6a8ad;\n  text-transform: uppercase;\n  font-style: italic;\n}\n.task > .content > .description {\n  font-size: 1em;\n  line-height: 1.4em;\n  color: #a6a8ad;\n}\n.task > .content > .files {\n  margin-top: 30px;\n}\n.task > .content > .files > .uploader {\n  margin-bottom: 15px;\n}\n.task > .content > .files > .uploader > input {\n  display: none;\n}\n.task > .content > .files > .uploader > label {\n  display: inline-block;\n  color: #a6a8ad;\n  cursor: pointer;\n}\n.task > .content > .files > .uploader > label > img {\n  width: 30px;\n  vertical-align: middle;\n  margin-right: 10px;\n}\n.task > .content > .files > .uploader:hover {\n  color: #6d53ee;\n}\n.task > .content > .files > .file-list > .not-found {\n  font-size: 0.9em;\n  color: #a6a8ad;\n}\n.task > .content > .comments {\n  width: calc(50% - 30px);\n  display: inline-block;\n  margin-top: 60px;\n  vertical-align: top;\n  margin-right: 60px;\n}\n.task > .content > .comments > .subtitle {\n  padding-bottom: 45px;\n}\n.task > .content > .comments > .list > .comment-card {\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: 50px auto;\n      grid-template-columns: 50px auto;\n}\n.task > .content > .comments > .list > .comment-card + .comment-card {\n  margin-top: 45px;\n}\n.task > .content > .comments > .list > .comment-card > .avatar-wrapper {\n  padding-right: 10px;\n}\n.task > .content > .comments > .list > .comment-card > .avatar-wrapper > svg {\n  width: 100%;\n  height: auto;\n}\n.task > .content > .comments > .list > .comment-card > .content > .comment-header {\n  margin-bottom: 15px;\n}\n.task > .content > .comments > .list > .comment-card > .content > .comment-header > .name {\n  display: inline-block;\n  font-size: 1em;\n}\n.task > .content > .comments > .list > .comment-card > .content > .comment-header > .created-at {\n  color: #a6a8ad;\n  margin-left: 15px;\n}\n.task > .content > .comments > .list > .comment-card > .content > .text {\n  width: 100%;\n  line-height: 1.4em;\n}\n.task > .content > .comments > .list > .comment-input {\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: 50px auto;\n      grid-template-columns: 50px auto;\n  margin-top: 45px;\n}\n.task > .content > .comments > .list > .comment-input > .avatar-wrapper {\n  padding-right: 10px;\n}\n.task > .content > .comments > .list > .comment-input > .avatar-wrapper > svg {\n  width: 100%;\n  height: auto;\n}\n.task > .content > .comments > .list > .comment-input > .content > .comment-header {\n  margin-bottom: 15px;\n}\n.task > .content > .comments > .list > .comment-input > .content > .comment-header > .name {\n  display: inline-block;\n  font-size: 1em;\n  color: #3eeeb0;\n}\n.task > .content > .comments > .list > .comment-input > .content > .text-area {\n  width: 100%;\n  height: 100px;\n  border-radius: 4px;\n  resize: none;\n  border: solid 1px #a6a8ad;\n  padding: 12px;\n}\n.task > .content > .comments > .list > .comment-input > .content > .actions {\n  margin-top: 15px;\n  text-align: right;\n}\n.task > .content > .comments > .list > .comment-input > .content > .actions > .send {\n  display: inline-block;\n  padding: 0px 15px;\n}\n.task > .content > .infos {\n  width: calc(50% - 30px);\n  display: inline-block;\n  margin-top: 60px;\n}\n.task > .content > .infos > .input-group > .label {\n  width: 100%;\n  height: 40px;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  -ms-flex-align: center;\n      align-items: center;\n}\n.task > .content > .infos > .input-group + .input-group {\n  margin-top: 30px;\n}\n.task > .content > .infos > .input-group.status-group > .select {\n  width: 160px;\n}\n.task > .content > .infos > .log-time > .label span {\n  width: 100%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  -ms-flex-align: center;\n      align-items: center;\n}\n.task > .content > .infos > .log-time > .label span > img {\n  width: 40px;\n  cursor: pointer;\n}\n.task > .content > .infos > .log-time > .value {\n  font-style: italic;\n}\n.task > .content > .infos > .priority > img {\n  width: 30px;\n  vertical-align: middle;\n  margin-right: 10px;\n}\n.task > .add-log-time-modal > .modal > .title {\n  font-size: 1.2em;\n  margin-bottom: 45px;\n}\n.task > .add-log-time-modal > .modal > .input-group.time-group {\n  width: calc(50% - 5px);\n  display: inline-block;\n}\n.task > .add-log-time-modal > .modal > .input-group.time-group + .input-group {\n  margin-left: 10px;\n}\n.task > .add-log-time-modal > .modal > .input-group.time-group > .input {\n  width: 100%;\n}\n.task > .add-log-time-modal > .modal > .actions {\n  width: 100%;\n  margin-top: 45px;\n}\n.task > .add-log-time-modal > .modal > .actions > .save-action {\n  width: 100px;\n}\n", ""]);
 
 // exports
 

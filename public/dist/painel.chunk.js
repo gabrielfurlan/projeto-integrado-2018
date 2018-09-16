@@ -29,6 +29,155 @@ exports.default = [{
 
 /***/ }),
 
+/***/ "./app/commons/components/analyst-card/AnalystCard.js":
+/*!************************************************************!*\
+  !*** ./app/commons/components/analyst-card/AnalystCard.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _getPrototypeOf = __webpack_require__(/*! babel-runtime/core-js/object/get-prototype-of */ "./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(/*! babel-runtime/helpers/possibleConstructorReturn */ "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(/*! babel-runtime/helpers/inherits */ "./node_modules/babel-runtime/helpers/inherits.js");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+__webpack_require__(/*! ./analyst-card.styl */ "./app/commons/components/analyst-card/analyst-card.styl");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var AnalystCard = function (_Component) {
+	(0, _inherits3.default)(AnalystCard, _Component);
+
+	function AnalystCard(props) {
+		(0, _classCallCheck3.default)(this, AnalystCard);
+
+		var _this = (0, _possibleConstructorReturn3.default)(this, (AnalystCard.__proto__ || (0, _getPrototypeOf2.default)(AnalystCard)).call(this, props));
+
+		_this.toAnalyst = _this.toAnalyst.bind(_this);
+		return _this;
+	}
+
+	(0, _createClass3.default)(AnalystCard, [{
+		key: 'toAnalyst',
+		value: function toAnalyst() {
+			var _props = this.props,
+			    history = _props.history,
+			    id = _props.id;
+
+			history.push('/analista/' + id);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var name = this.props.name;
+
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'analyst-card', onClick: this.toAnalyst },
+				_react2.default.createElement(
+					'h3',
+					{ className: 'title' },
+					name
+				)
+			);
+		}
+	}]);
+	return AnalystCard;
+}(_react.Component);
+
+AnalystCard.propTypes = {
+	id: _propTypes2.default.string.isRequired,
+	name: _propTypes2.default.string.isRequired
+};
+
+AnalystCard.defaultProps = {};
+
+exports.default = (0, _reactRouterDom.withRouter)(AnalystCard);
+
+/***/ }),
+
+/***/ "./app/commons/components/analyst-card/analyst-card.styl":
+/*!***************************************************************!*\
+  !*** ./app/commons/components/analyst-card/analyst-card.styl ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/stylus-loader??ref--6-2!./analyst-card.styl */ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/analyst-card/analyst-card.styl");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
+/***/ "./app/commons/components/analyst-card/index.js":
+/*!******************************************************!*\
+  !*** ./app/commons/components/analyst-card/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _AnalystCard = __webpack_require__(/*! ./AnalystCard */ "./app/commons/components/analyst-card/AnalystCard.js");
+
+var _AnalystCard2 = _interopRequireDefault(_AnalystCard);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _AnalystCard2.default;
+
+/***/ }),
+
 /***/ "./app/commons/components/brand/Brand.js":
 /*!***********************************************!*\
   !*** ./app/commons/components/brand/Brand.js ***!
@@ -142,6 +291,160 @@ var _Brand2 = _interopRequireDefault(_Brand);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _Brand2.default;
+
+/***/ }),
+
+/***/ "./app/commons/components/client-card/ClientCard.js":
+/*!**********************************************************!*\
+  !*** ./app/commons/components/client-card/ClientCard.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _getPrototypeOf = __webpack_require__(/*! babel-runtime/core-js/object/get-prototype-of */ "./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(/*! babel-runtime/helpers/possibleConstructorReturn */ "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(/*! babel-runtime/helpers/inherits */ "./node_modules/babel-runtime/helpers/inherits.js");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+__webpack_require__(/*! ./client-card.styl */ "./app/commons/components/client-card/client-card.styl");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ClientCard = function (_Component) {
+	(0, _inherits3.default)(ClientCard, _Component);
+
+	function ClientCard(props) {
+		(0, _classCallCheck3.default)(this, ClientCard);
+
+		var _this = (0, _possibleConstructorReturn3.default)(this, (ClientCard.__proto__ || (0, _getPrototypeOf2.default)(ClientCard)).call(this, props));
+
+		_this.toClient = _this.toClient.bind(_this);
+		return _this;
+	}
+
+	(0, _createClass3.default)(ClientCard, [{
+		key: 'toClient',
+		value: function toClient() {
+			var _props = this.props,
+			    history = _props.history,
+			    id = _props.id;
+
+			history.push('/client/' + id);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var name = this.props.name;
+
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'client-card', onClick: this.toClient },
+				_react2.default.createElement(
+					'h3',
+					{ className: 'title' },
+					name
+				)
+			);
+		}
+	}]);
+	return ClientCard;
+}(_react.Component);
+
+var clientShape = {
+	id: _propTypes2.default.string.isRequired,
+	name: _propTypes2.default.string.isRequired
+};
+
+ClientCard.propTypes = {
+	id: _propTypes2.default.string.isRequired,
+	name: _propTypes2.default.string.isRequired
+};
+
+ClientCard.defaultProps = {};
+
+exports.default = (0, _reactRouterDom.withRouter)(ClientCard);
+
+/***/ }),
+
+/***/ "./app/commons/components/client-card/client-card.styl":
+/*!*************************************************************!*\
+  !*** ./app/commons/components/client-card/client-card.styl ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/stylus-loader??ref--6-2!./client-card.styl */ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/client-card/client-card.styl");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
+/***/ "./app/commons/components/client-card/index.js":
+/*!*****************************************************!*\
+  !*** ./app/commons/components/client-card/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _ClientCard = __webpack_require__(/*! ./ClientCard */ "./app/commons/components/client-card/ClientCard.js");
+
+var _ClientCard2 = _interopRequireDefault(_ClientCard);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _ClientCard2.default;
 
 /***/ }),
 
@@ -352,6 +655,10 @@ var _brand2 = _interopRequireDefault(_brand);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
+var _links = __webpack_require__(/*! ./links */ "./app/commons/components/side-bar/links.js");
+
+var _links2 = _interopRequireDefault(_links);
+
 __webpack_require__(/*! ./side-bar.styl */ "./app/commons/components/side-bar/side-bar.styl");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -365,6 +672,21 @@ var SideBar = function (_Component) {
 	}
 
 	(0, _createClass3.default)(SideBar, [{
+		key: 'renderLinks',
+		value: function renderLinks() {
+			return _links2.default.map(function (_ref) {
+				var icon = _ref.icon,
+				    label = _ref.label,
+				    to = _ref.to;
+				return _react2.default.createElement(
+					_reactRouterDom.NavLink,
+					{ exact: true, title: label, className: 'link', to: to },
+					_react2.default.createElement('img', { src: icon, alt: label }),
+					label
+				);
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
@@ -400,24 +722,7 @@ var SideBar = function (_Component) {
 				_react2.default.createElement(
 					'nav',
 					{ className: 'navigation' },
-					_react2.default.createElement(
-						_reactRouterDom.NavLink,
-						{ exact: true, title: 'Home', className: 'link', to: '/painel' },
-						_react2.default.createElement('img', { src: '/icons/global.svg', alt: 'Home' }),
-						'Home'
-					),
-					_react2.default.createElement(
-						_reactRouterDom.NavLink,
-						{ title: 'Projetos', className: 'link', to: '/painel/projetos' },
-						_react2.default.createElement('img', { src: '/icons/projects.svg', alt: 'Projetos' }),
-						'Projetos'
-					),
-					_react2.default.createElement(
-						_reactRouterDom.NavLink,
-						{ title: 'Configura\xE7\xE3o', className: 'link', to: '/painel/config' },
-						_react2.default.createElement('img', { src: '/icons/user-config.svg', alt: 'Configura\xE7\xE3o' }),
-						'Configura\xE7\xF5es'
-					)
+					this.renderLinks()
 				)
 			);
 		}
@@ -455,6 +760,43 @@ var _SideBar2 = _interopRequireDefault(_SideBar);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _SideBar2.default;
+
+/***/ }),
+
+/***/ "./app/commons/components/side-bar/links.js":
+/*!**************************************************!*\
+  !*** ./app/commons/components/side-bar/links.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = [{
+	icon: '/icons/dashboard.svg',
+	label: 'Home',
+	to: '/painel'
+}, {
+	icon: '/icons/puzzle.svg',
+	label: 'Projects',
+	to: '/painel/projetos'
+}, {
+	icon: '/icons/conversation.svg',
+	label: 'Clientes',
+	to: '/painel/clientes'
+}, {
+	icon: '/icons/user.svg',
+	label: 'Analistas',
+	to: '/painel/analistas'
+}, {
+	icon: '/icons/configuration.svg',
+	label: 'Configuração',
+	to: '/painel/configuracao'
+}];
 
 /***/ }),
 
@@ -550,7 +892,7 @@ var TaskCard = function (_Component) {
 	(0, _createClass3.default)(TaskCard, [{
 		key: 'handleClick',
 		value: function handleClick(e) {
-			this.props.history.push('/tarefa/' + e.target.id);
+			this.props.history.push('/tarefa/' + e.currentTarget.id);
 		}
 	}, {
 		key: 'render',
@@ -558,7 +900,8 @@ var TaskCard = function (_Component) {
 			var _props = this.props,
 			    id = _props.id,
 			    priority = _props.priority,
-			    title = _props.title;
+			    title = _props.title,
+			    small = _props.small;
 
 			var priorityData = _priorities2.default.find(function (_ref) {
 				var id = _ref.id;
@@ -580,8 +923,12 @@ var TaskCard = function (_Component) {
 						'span',
 						{ className: 'priority -' + priorityData.id },
 						_react2.default.createElement('img', { src: priorityData.icon }),
-						priorityData.label,
-						' Prioridade'
+						_react2.default.createElement(
+							'span',
+							{ className: small ? '-hide' : '' },
+							priorityData.label,
+							' Prioridade'
+						)
 					),
 					_react2.default.createElement(
 						'span',
@@ -599,14 +946,16 @@ TaskCard.propTypes = {
 	id: _propTypes2.default.string,
 	title: _propTypes2.default.string,
 	priority: _propTypes2.default.string,
-	estimate_hours: _propTypes2.default.number
+	estimate_hours: _propTypes2.default.number,
+	small: _propTypes2.default.bool
 };
 
 TaskCard.defaultProps = {
 	id: 'XXX-X',
 	title: 'Tarefa com um título padrão',
 	priority: 'low',
-	estimate_hours: 0
+	estimate_hours: 0,
+	small: false
 };
 
 exports.default = (0, _reactRouterDom.withRouter)(TaskCard);
@@ -713,6 +1062,14 @@ var _PainelController = __webpack_require__(/*! ./PainelController */ "./app/mod
 
 var _PainelController2 = _interopRequireDefault(_PainelController);
 
+var _analysts = __webpack_require__(/*! ./components/analysts */ "./app/modules/painel/components/analysts/index.js");
+
+var _analysts2 = _interopRequireDefault(_analysts);
+
+var _clients = __webpack_require__(/*! ./components/clients */ "./app/modules/painel/components/clients/index.js");
+
+var _clients2 = _interopRequireDefault(_clients);
+
 var _home = __webpack_require__(/*! ./components/home */ "./app/modules/painel/components/home/index.js");
 
 var _home2 = _interopRequireDefault(_home);
@@ -738,6 +1095,9 @@ var Painel = exports.Painel = function (_Component) {
 		var _this = (0, _possibleConstructorReturn3.default)(this, (Painel.__proto__ || (0, _getPrototypeOf2.default)(Painel)).call(this, props));
 
 		_this.renderHome = _this.renderHome.bind(_this);
+		_this.renderProjects = _this.renderProjects.bind(_this);
+		_this.renderClients = _this.renderClients.bind(_this);
+		_this.renderAnalysts = _this.renderAnalysts.bind(_this);
 		return _this;
 	}
 
@@ -752,6 +1112,16 @@ var Painel = exports.Painel = function (_Component) {
 			return _react2.default.createElement(_projects2.default, null);
 		}
 	}, {
+		key: 'renderClients',
+		value: function renderClients() {
+			return _react2.default.createElement(_clients2.default, null);
+		}
+	}, {
+		key: 'renderAnalysts',
+		value: function renderAnalysts() {
+			return _react2.default.createElement(_analysts2.default, null);
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
@@ -762,7 +1132,9 @@ var Painel = exports.Painel = function (_Component) {
 					'main',
 					{ className: 'content' },
 					_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/painel', render: this.renderHome }),
-					_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/painel/projetos', render: this.renderProjects })
+					_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/painel/projetos', render: this.renderProjects }),
+					_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/painel/clientes', render: this.renderClients }),
+					_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/painel/analistas', render: this.renderAnalysts })
 				)
 			);
 		}
@@ -793,6 +1165,320 @@ exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapSt
 
 "use strict";
 
+
+/***/ }),
+
+/***/ "./app/modules/painel/components/analysts/Analysts.js":
+/*!************************************************************!*\
+  !*** ./app/modules/painel/components/analysts/Analysts.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _extends2 = __webpack_require__(/*! babel-runtime/helpers/extends */ "./node_modules/babel-runtime/helpers/extends.js");
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _getPrototypeOf = __webpack_require__(/*! babel-runtime/core-js/object/get-prototype-of */ "./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(/*! babel-runtime/helpers/possibleConstructorReturn */ "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(/*! babel-runtime/helpers/inherits */ "./node_modules/babel-runtime/helpers/inherits.js");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _analystCard = __webpack_require__(/*! ../../../../commons/components/analyst-card */ "./app/commons/components/analyst-card/index.js");
+
+var _analystCard2 = _interopRequireDefault(_analystCard);
+
+__webpack_require__(/*! ./analysts.styl */ "./app/modules/painel/components/analysts/analysts.styl");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var analysts = [{
+	id: 'asdasdasd',
+	name: 'Analista Teste #1'
+}, {
+	id: 'asassdasd',
+	name: 'Analista Teste #2'
+}];
+
+var Analysts = function (_Component) {
+	(0, _inherits3.default)(Analysts, _Component);
+
+	function Analysts() {
+		(0, _classCallCheck3.default)(this, Analysts);
+		return (0, _possibleConstructorReturn3.default)(this, (Analysts.__proto__ || (0, _getPrototypeOf2.default)(Analysts)).apply(this, arguments));
+	}
+
+	(0, _createClass3.default)(Analysts, [{
+		key: 'renderAnalysts',
+		value: function renderAnalysts() {
+			return analysts.map(function (analyst) {
+				return _react2.default.createElement(_analystCard2.default, (0, _extends3.default)({ key: analyst.id }, analyst));
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'section',
+				{ className: 'analysts' },
+				_react2.default.createElement(
+					'h1',
+					{ className: 'title' },
+					'Analistas'
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'list' },
+					this.renderAnalysts()
+				)
+			);
+		}
+	}]);
+	return Analysts;
+}(_react.Component);
+
+exports.default = Analysts;
+
+
+Analysts.propTypes = {};
+
+Analysts.defaultProps = {};
+
+/***/ }),
+
+/***/ "./app/modules/painel/components/analysts/analysts.styl":
+/*!**************************************************************!*\
+  !*** ./app/modules/painel/components/analysts/analysts.styl ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/stylus-loader??ref--6-2!./analysts.styl */ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/modules/painel/components/analysts/analysts.styl");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
+/***/ "./app/modules/painel/components/analysts/index.js":
+/*!*********************************************************!*\
+  !*** ./app/modules/painel/components/analysts/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Analysts = __webpack_require__(/*! ./Analysts */ "./app/modules/painel/components/analysts/Analysts.js");
+
+var _Analysts2 = _interopRequireDefault(_Analysts);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _Analysts2.default;
+
+/***/ }),
+
+/***/ "./app/modules/painel/components/clients/Clients.js":
+/*!**********************************************************!*\
+  !*** ./app/modules/painel/components/clients/Clients.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _extends2 = __webpack_require__(/*! babel-runtime/helpers/extends */ "./node_modules/babel-runtime/helpers/extends.js");
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _getPrototypeOf = __webpack_require__(/*! babel-runtime/core-js/object/get-prototype-of */ "./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(/*! babel-runtime/helpers/possibleConstructorReturn */ "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(/*! babel-runtime/helpers/inherits */ "./node_modules/babel-runtime/helpers/inherits.js");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _clientCard = __webpack_require__(/*! ../../../../commons/components/client-card */ "./app/commons/components/client-card/index.js");
+
+var _clientCard2 = _interopRequireDefault(_clientCard);
+
+__webpack_require__(/*! ./clients.styl */ "./app/modules/painel/components/clients/clients.styl");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var clients = [{
+	id: 'asdasdasd',
+	name: 'Cliente Teste #1'
+}, {
+	id: 'asassdasd',
+	name: 'Cliente Teste #2'
+}];
+
+var Clients = function (_Component) {
+	(0, _inherits3.default)(Clients, _Component);
+
+	function Clients() {
+		(0, _classCallCheck3.default)(this, Clients);
+		return (0, _possibleConstructorReturn3.default)(this, (Clients.__proto__ || (0, _getPrototypeOf2.default)(Clients)).apply(this, arguments));
+	}
+
+	(0, _createClass3.default)(Clients, [{
+		key: 'renderClients',
+		value: function renderClients() {
+			return clients.map(function (client) {
+				return _react2.default.createElement(_clientCard2.default, (0, _extends3.default)({ key: client.id }, client));
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'section',
+				{ className: 'clients' },
+				_react2.default.createElement(
+					'h1',
+					{ className: 'title' },
+					'Cliente'
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'list' },
+					this.renderClients()
+				)
+			);
+		}
+	}]);
+	return Clients;
+}(_react.Component);
+
+exports.default = Clients;
+
+
+Clients.propTypes = {};
+
+Clients.defaultProps = {};
+
+/***/ }),
+
+/***/ "./app/modules/painel/components/clients/clients.styl":
+/*!************************************************************!*\
+  !*** ./app/modules/painel/components/clients/clients.styl ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/stylus-loader??ref--6-2!./clients.styl */ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/modules/painel/components/clients/clients.styl");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
+/***/ "./app/modules/painel/components/clients/index.js":
+/*!********************************************************!*\
+  !*** ./app/modules/painel/components/clients/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Clients = __webpack_require__(/*! ./Clients */ "./app/modules/painel/components/clients/Clients.js");
+
+var _Clients2 = _interopRequireDefault(_Clients);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _Clients2.default;
 
 /***/ }),
 
@@ -1269,6 +1955,25 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/analyst-card/analyst-card.styl":
+/*!******************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/stylus-loader??ref--6-2!./app/commons/components/analyst-card/analyst-card.styl ***!
+  \******************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".analyst-card {\n  height: 120px;\n  background-color: #fff;\n  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.1);\n  border-radius: 5px;\n  padding: 15px;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  cursor: pointer;\n}\n.analyst-card + .analyst-card {\n  margin-top: 15px;\n}\n.analyst-card > .title {\n  font-size: 1em;\n  font-weight: 400;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/brand/brand.styl":
 /*!****************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/stylus-loader??ref--6-2!./app/commons/components/brand/brand.styl ***!
@@ -1282,6 +1987,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, ".brand {\n  font-family: 'Pacifico', cursive;\n  font-size: 2.4em;\n  color: $dark-gray;\n}\n.brand.-white {\n  color: #fff;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/client-card/client-card.styl":
+/*!****************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/stylus-loader??ref--6-2!./app/commons/components/client-card/client-card.styl ***!
+  \****************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".client-card {\n  height: 120px;\n  background-color: #fff;\n  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.1);\n  border-radius: 5px;\n  padding: 15px;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  cursor: pointer;\n}\n.client-card + .client-card {\n  margin-top: 15px;\n}\n.client-card > .title {\n  font-size: 1em;\n  font-weight: 400;\n}\n", ""]);
 
 // exports
 
@@ -1319,7 +2043,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".side-bar {\n  border-radius: 4px;\n  text-align: center;\n  padding-top: 45px;\n  padding-bottom: 30px;\n  position: -webkit-sticky;\n  position: sticky;\n  background-color: #fff;\n  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.1);\n}\n.side-bar > .user-info {\n  width: 100%;\n  text-align: center;\n  margin-top: 60px;\n}\n.side-bar > .user-info > .avatar {\n  display: block;\n  margin-bottom: 15px;\n}\n.side-bar > .user-info > .avatar > svg {\n  width: 80px;\n  height: 80px;\n}\n.side-bar > .user-info > .name {\n  color: #a6a8ad;\n  font-weight: 500;\n}\n.side-bar > img.logo {\n  width: 35px;\n  padding-bottom: 45px;\n  border-bottom: solid 1px rgba(166,168,173,0.3);\n}\n.side-bar > .navigation {\n  margin-top: 60px;\n  text-align: left;\n}\n.side-bar > .navigation > a.link {\n  display: block;\n  color: #a6a8ad;\n  padding: 15px;\n  font-size: 1em;\n}\n.side-bar > .navigation > a.link.active {\n  box-shadow: 3px 0px 0px 0px #e1a246 inset;\n  color: $dark-gray;\n  font-weight: 500;\n}\n.side-bar > .navigation > a.link > img {\n  vertical-align: middle;\n  margin-right: 10px;\n  display: inline-block;\n  width: 20px;\n}\n.side-bar > .navigation > a.link + a.link {\n  margin-top: 5px;\n}\n", ""]);
+exports.push([module.i, ".side-bar {\n  border-radius: 4px;\n  text-align: center;\n  padding-top: 45px;\n  padding-bottom: 30px;\n  position: -webkit-sticky;\n  position: sticky;\n  background-color: #fff;\n  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.1);\n}\n.side-bar > .user-info {\n  width: 100%;\n  text-align: center;\n  margin-top: 60px;\n}\n.side-bar > .user-info > .avatar {\n  display: block;\n  margin-bottom: 15px;\n}\n.side-bar > .user-info > .avatar > svg {\n  width: 80px;\n  height: 80px;\n}\n.side-bar > .user-info > .name {\n  color: #a6a8ad;\n  font-weight: 500;\n}\n.side-bar > img.logo {\n  width: 35px;\n  padding-bottom: 45px;\n  border-bottom: solid 1px rgba(166,168,173,0.3);\n}\n.side-bar > .navigation {\n  margin-top: 60px;\n  text-align: left;\n}\n.side-bar > .navigation > a.link {\n  display: block;\n  color: #a6a8ad;\n  padding: 15px;\n  font-size: 1em;\n}\n.side-bar > .navigation > a.link.active {\n  box-shadow: 3px 0px 0px 0px #e1a246 inset;\n  color: #000;\n  font-weight: 500;\n}\n.side-bar > .navigation > a.link > img {\n  vertical-align: middle;\n  margin-right: 10px;\n  display: inline-block;\n  width: 20px;\n}\n.side-bar > .navigation > a.link + a.link {\n  margin-top: 5px;\n}\n", ""]);
 
 // exports
 
@@ -1338,7 +2062,45 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".task-card {\n  height: 120px;\n  background-color: #fff;\n  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.1);\n  border-radius: 5px;\n  padding: 15px;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  cursor: pointer;\n}\n.task-card + .task-card {\n  margin-top: 15px;\n}\n.task-card > .title {\n  font-size: 1em;\n  font-weight: 400;\n}\n.task-card > .basic-infos {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  -ms-flex-align: end;\n      align-items: flex-end;\n}\n.task-card > .basic-infos > .code {\n  color: #a6a8ad;\n}\n.task-card > .basic-infos > .priority {\n  font-size: 0.8em;\n}\n.task-card > .basic-infos > .priority > img {\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  margin-right: 10px;\n}\n.task-card > .basic-infos > .priority.-high {\n  color: #cc6c67;\n}\n.task-card > .basic-infos > .priority.-low {\n  color: #5dae9f;\n}\n.task-card > .basic-infos > .priority.-medium {\n  color: #f4ff5f;\n}\n.task-card:hover > .title {\n  font-weight: 700;\n}\n", ""]);
+exports.push([module.i, ".task-card {\n  height: 120px;\n  background-color: #fff;\n  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.1);\n  border-radius: 5px;\n  padding: 15px;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  cursor: pointer;\n}\n.task-card + .task-card {\n  margin-top: 15px;\n}\n.task-card > .title {\n  font-size: 1em;\n  font-weight: 400;\n}\n.task-card > .basic-infos {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  -ms-flex-align: end;\n      align-items: flex-end;\n}\n.task-card > .basic-infos > .code {\n  color: #a6a8ad;\n}\n.task-card > .basic-infos > .priority {\n  font-size: 0.8em;\n}\n.task-card > .basic-infos > .priority > img {\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  margin-right: 10px;\n}\n.task-card > .basic-infos > .priority > .-hide {\n  display: none;\n}\n.task-card > .basic-infos > .priority.-high {\n  color: #cc6c67;\n}\n.task-card > .basic-infos > .priority.-low {\n  color: #3eeeb0;\n}\n.task-card > .basic-infos > .priority.-medium {\n  color: #d4f841;\n}\n.task-card:hover > .title {\n  font-weight: 700;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/modules/painel/components/analysts/analysts.styl":
+/*!*****************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/stylus-loader??ref--6-2!./app/modules/painel/components/analysts/analysts.styl ***!
+  \*****************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".analysts {\n  padding: 40px 80px;\n  overflow: auto;\n  height: calc(100vh - 3px);\n}\n.analysts:after {\n  content: '';\n  display: block;\n  height: 40px;\n}\n.analysts > .title {\n  font-size: 1.4em;\n  font-weight: 400;\n  margin-bottom: 60px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/modules/painel/components/clients/clients.styl":
+/*!***************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/stylus-loader??ref--6-2!./app/modules/painel/components/clients/clients.styl ***!
+  \***************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".clients {\n  padding: 40px 80px;\n  overflow: auto;\n  height: calc(100vh - 3px);\n}\n.clients:after {\n  content: '';\n  display: block;\n  height: 40px;\n}\n.clients > .title {\n  font-size: 1.4em;\n  font-weight: 400;\n  margin-bottom: 60px;\n}\n", ""]);
 
 // exports
 

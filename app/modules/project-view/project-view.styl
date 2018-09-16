@@ -3,9 +3,8 @@
 .project-view 
 	display grid
 	width 100%
-	grid-template-columns 55px auto
+	grid-template-columns 200px auto
 	grid-template-rows calc(100vh - 3px)
-	border-top solid 3px $blue 
 			
 	> .content
 		padding 40px 80px
@@ -31,7 +30,7 @@
 			color $gray
 			
 			> a
-				color $blue
+				color $orange
 				padding-right 10px
 				
 				& + a 
@@ -54,11 +53,8 @@
 			margin-bottom 30px
 			text-align right
 			
-			> .slim-button
+			> .plus-button
 				display inline-block
-				width auto
-				height auto
-				padding 0
 				
 				> img
 					padding 5px
@@ -73,8 +69,8 @@
 		> .kanban
 			display grid
 			width 100%
-			grid-gap 30px
-			grid-template-columns 1fr 1fr 1fr
+			grid-gap 15px
+			grid-template-columns 1fr 1fr 1fr 1fr
 			grid-template-rows 100vh
 					
 			> .state 
@@ -91,6 +87,8 @@
 					width 100%
 					height 100%	
 					border-radius 0px 0px 5px 5px
-					padding 15px								
+					padding 10px								
 					
+					> .task-card + .task-card
+						margin-top 10px
 		

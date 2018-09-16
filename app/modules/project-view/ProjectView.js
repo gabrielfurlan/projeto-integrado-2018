@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Avatar from 'avataaars';
 
-import SlimButton from '../../commons/components/slim-button';
+import PlusButton from '../../commons/components/plus-button';
 import InputGroup from '../../commons/components/input-group';
 import Input from '../../commons/components/input';
 import Modal from '../../commons/components/modal';
@@ -72,15 +72,19 @@ export default class ProjectView extends Component {
 	}
 
 	renderToDoTasks() {
-		return toDoTasks.map(task => <TaskCard {...task} />);
+		return toDoTasks.map(task => <TaskCard small {...task} />);
 	}
 
 	renderInProgressTasks() {
-		return inProgressTasks.map(task => <TaskCard {...task} />);
+		return inProgressTasks.map(task => <TaskCard small {...task} />);
 	}
 
 	renderDoneTasks() {
-		return doneTasks.map(task => <TaskCard {...task} />);
+		return doneTasks.map(task => <TaskCard small {...task} />);
+	}
+
+	renderQATasks() {
+		return [].map(task => <TaskCard small {...task} />);
 	}
 
 	handleToggleNewTaskModal() {
@@ -102,13 +106,7 @@ export default class ProjectView extends Component {
 					</h1>
 					<p className='description'>Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. Não sou faixa preta cumpadi, sou preto inteiris, inteiris. Cevadis im ampola pa arma uma pindureta. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. </p>
 					<div className='project-view-header'>
-						<SlimButton color='' handleClick={this.handleToggleNewTaskModal}>
-							<img 
-								src='/icons/add.svg' 
-								onMouseOver={(e) => e.currentTarget.src = '/icons/add-white.svg'} 
-								onMouseOut={(e) => e.currentTarget.src = '/icons/add.svg'} 
-							/>
-						</SlimButton>
+						<PlusButton handleClick={this.handleToggleNewTaskModal} />
 					</div>
 					<section className='kanban'>
 						<div className='state'>
@@ -121,6 +119,12 @@ export default class ProjectView extends Component {
 							<h3 className='title'>Fazendo</h3>
 							<ul className='list'>
 								{this.renderInProgressTasks()}
+							</ul>
+						</div>
+						<div className='state'>
+							<h3 className='title'>Homologação</h3>
+							<ul className='list'>
+								{this.renderQATasks()}
 							</ul>
 						</div>
 						<div className='state'>
