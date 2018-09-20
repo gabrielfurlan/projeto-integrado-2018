@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendors~login"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["login"],{
 
 /***/ "./app/commons/components/input/Input.js":
 /*!***********************************************!*\
