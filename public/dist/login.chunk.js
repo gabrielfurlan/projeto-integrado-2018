@@ -354,6 +354,201 @@ exports.default = ValidationHelper;
 
 /***/ }),
 
+/***/ "./app/commons/repositories/BaseRepository.js":
+/*!****************************************************!*\
+  !*** ./app/commons/repositories/BaseRepository.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/babel-runtime/regenerator/index.js");
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(/*! babel-runtime/helpers/asyncToGenerator */ "./node_modules/babel-runtime/helpers/asyncToGenerator.js");
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ROOT_URL = 'http://localhost:8080';
+
+var Baseository = function () {
+	function Baseository() {
+		(0, _classCallCheck3.default)(this, Baseository);
+	}
+
+	(0, _createClass3.default)(Baseository, [{
+		key: 'getOrigin',
+		value: function getOrigin(endpoint) {
+			return _axios2.default.get(endpoint);
+		}
+	}, {
+		key: 'get',
+		value: function get(endpoint) {
+			return this.resolvePromise(_axios2.default.get('' + ROOT_URL + endpoint));
+		}
+	}, {
+		key: 'post',
+		value: function post(endpoint, body) {
+			return this.resolvePromise(_axios2.default.post('' + ROOT_URL + endpoint, body));
+		}
+	}, {
+		key: 'put',
+		value: function put(endpoint, body) {
+			return this.resolvePromise(_axios2.default.put('' + ROOT_URL + endpoint, body));
+		}
+	}, {
+		key: 'delete',
+		value: function _delete(endpoint) {
+			return this.resolvePromise(_axios2.default.delete('' + ROOT_URL + endpoint));
+		}
+	}, {
+		key: 'resolvePromise',
+		value: function () {
+			var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(promise) {
+				var response;
+				return _regenerator2.default.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								response = void 0;
+								_context.prev = 1;
+								_context.next = 4;
+								return promise;
+
+							case 4:
+								response = _context.sent;
+								_context.next = 11;
+								break;
+
+							case 7:
+								_context.prev = 7;
+								_context.t0 = _context['catch'](1);
+
+								console.log(_context.t0);
+								return _context.abrupt('return', {
+									code: 501,
+									message: 'Internal Server Error'
+								});
+
+							case 11:
+								return _context.abrupt('return', response.data);
+
+							case 12:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this, [[1, 7]]);
+			}));
+
+			function resolvePromise(_x) {
+				return _ref.apply(this, arguments);
+			}
+
+			return resolvePromise;
+		}()
+	}]);
+	return Baseository;
+}();
+
+exports.default = Baseository;
+
+/***/ }),
+
+/***/ "./app/commons/repositories/UsersRepository.js":
+/*!*****************************************************!*\
+  !*** ./app/commons/repositories/UsersRepository.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _getPrototypeOf = __webpack_require__(/*! babel-runtime/core-js/object/get-prototype-of */ "./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(/*! babel-runtime/helpers/possibleConstructorReturn */ "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(/*! babel-runtime/helpers/inherits */ "./node_modules/babel-runtime/helpers/inherits.js");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _BaseRepository2 = __webpack_require__(/*! ./BaseRepository */ "./app/commons/repositories/BaseRepository.js");
+
+var _BaseRepository3 = _interopRequireDefault(_BaseRepository2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var UsersRepository = function (_BaseRepository) {
+	(0, _inherits3.default)(UsersRepository, _BaseRepository);
+
+	function UsersRepository() {
+		(0, _classCallCheck3.default)(this, UsersRepository);
+		return (0, _possibleConstructorReturn3.default)(this, (UsersRepository.__proto__ || (0, _getPrototypeOf2.default)(UsersRepository)).apply(this, arguments));
+	}
+
+	(0, _createClass3.default)(UsersRepository, [{
+		key: 'findOne',
+
+
+		/*
+  	* @method findOne 
+  	* @param key {String} it is user email or id  
+  	* @return {Promise} returns promise content user request 
+  */
+		value: function findOne(key) {
+			return this.get('/user/' + key);
+		}
+	}, {
+		key: 'verifyPassword',
+		value: function verifyPassword(id, password) {
+			return this.post('/user/' + id + '/verify', { password: password });
+		}
+	}]);
+	return UsersRepository;
+}(_BaseRepository3.default);
+
+exports.default = UsersRepository;
+
+/***/ }),
+
 /***/ "./app/modules/login/Login.js":
 /*!************************************!*\
   !*** ./app/modules/login/Login.js ***!
@@ -434,9 +629,11 @@ var Login = exports.Login = function (_Component) {
 			loading: false,
 			auth: {
 				id: null,
+				first_name: null,
+				last_name: null,
 				email: '',
 				password: '',
-				keepLogged: false
+				keep_logged: false
 			},
 			errors: {
 				email: null,
@@ -506,7 +703,9 @@ var Login = exports.Login = function (_Component) {
 						_react2.default.createElement(
 							'h1',
 							{ className: 'title' },
-							'Ol\xE1, Gabriel!'
+							'Ol\xE1, ',
+							auth.first_name,
+							'!'
 						),
 						_react2.default.createElement(
 							'h2',
@@ -523,6 +722,11 @@ var Login = exports.Login = function (_Component) {
 							'fieldset',
 							null,
 							_react2.default.createElement(_input2.default, { handleChange: this.controller.handleTextChange, value: auth.password, className: '-password', type: 'password', id: 'password', placeholder: 'Digite sua senha' }),
+							_react2.default.createElement(
+								'p',
+								{ className: 'error ' + (errors.password ? '' : '-hide') },
+								errors.password
+							),
 							_react2.default.createElement(
 								_slimButton2.default,
 								{ type: 'submit', handleClick: null, color: '-orange' },
@@ -566,9 +770,17 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/babel-runtime/regenerator/index.js");
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
 var _extends2 = __webpack_require__(/*! babel-runtime/helpers/extends */ "./node_modules/babel-runtime/helpers/extends.js");
 
 var _extends3 = _interopRequireDefault(_extends2);
+
+var _asyncToGenerator2 = __webpack_require__(/*! babel-runtime/helpers/asyncToGenerator */ "./node_modules/babel-runtime/helpers/asyncToGenerator.js");
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
 
@@ -578,11 +790,27 @@ var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
+var _UsersRepository = __webpack_require__(/*! ../../commons/repositories/UsersRepository */ "./app/commons/repositories/UsersRepository.js");
+
+var _UsersRepository2 = _interopRequireDefault(_UsersRepository);
+
 var _ValidationHelper = __webpack_require__(/*! ../../commons/helpers/ValidationHelper */ "./app/commons/helpers/ValidationHelper.js");
 
 var _ValidationHelper2 = _interopRequireDefault(_ValidationHelper);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var messageEmailErrors = {
+	404: 'Usuário não encontrado, verifique se o email está correto.',
+	500: 'Erro no servidor, contate o administrador do sistema.',
+	501: 'Erro no servidor, contate o administrador do sistema.'
+};
+
+var messagePasswordErrors = {
+	405: 'Senha incorreta, tente novamente.',
+	500: 'Erro no servidor, contate o administrador do sistema.',
+	501: 'Erro no servidor, contate o administrador do sistema.'
+};
 
 var LoginController = function () {
 	function LoginController(getProps, getState, setState) {
@@ -595,50 +823,179 @@ var LoginController = function () {
 		this.handleValidMail = this.handleValidMail.bind(this);
 		this.handleValidPassword = this.handleValidPassword.bind(this);
 		this.handleTextChange = this.handleTextChange.bind(this);
+
+		this.usersRepository = new _UsersRepository2.default();
 	}
 
 	(0, _createClass3.default)(LoginController, [{
 		key: 'handleValidMail',
-		value: function handleValidMail(e) {
-			var _this = this;
+		value: function () {
+			var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(e) {
+				var _this = this;
 
-			var _getState = this.getState(),
-			    loading = _getState.loading,
-			    auth = _getState.auth,
-			    errors = _getState.errors;
+				var _getState, loading, auth, errors, response, user;
 
-			e.preventDefault();
+				return _regenerator2.default.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								_getState = this.getState(), loading = _getState.loading, auth = _getState.auth, errors = _getState.errors;
 
-			if (loading) return;
+								e.preventDefault();
 
-			// Checking if the email field is empty
-			if (!auth.email) {
-				this.setState({ errors: (0, _extends3.default)({}, errors, { email: 'Por favor, preencha o campo email.' }) });
-				return;
+								if (!loading) {
+									_context.next = 4;
+									break;
+								}
+
+								return _context.abrupt('return');
+
+							case 4:
+								this.setState({ loading: true });
+
+								// Checking if the email field is empty
+
+								if (auth.email) {
+									_context.next = 8;
+									break;
+								}
+
+								this.setState({ errors: (0, _extends3.default)({}, errors, { email: 'Por favor, preencha o campo email.' }) });
+								return _context.abrupt('return');
+
+							case 8:
+								if (_ValidationHelper2.default.isEmail(auth.email)) {
+									_context.next = 11;
+									break;
+								}
+
+								this.setState({ errors: (0, _extends3.default)({}, errors, { email: 'Email é inválido, tente novamente.' }) });
+								return _context.abrupt('return');
+
+							case 11:
+								_context.next = 13;
+								return this.usersRepository.findOne(auth.email);
+
+							case 13:
+								response = _context.sent;
+
+								if (response.user) {
+									_context.next = 17;
+									break;
+								}
+
+								setTimeout(function () {
+									return _this.setState({
+										errors: (0, _extends3.default)({}, errors, { email: messageEmailErrors[response.status] }),
+										loading: false
+									});
+								}, 1200);
+
+								return _context.abrupt('return');
+
+							case 17:
+								user = (0, _extends3.default)({}, auth, {
+									first_name: response.user.firstName,
+									last_name: response.user.lastName,
+									id: response.user.id,
+									email: response.email
+								});
+
+
+								setTimeout(function () {
+									return _this.setState({ isValidMail: true, loading: false, auth: user });
+								}, 1200);
+
+							case 19:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
+
+			function handleValidMail(_x) {
+				return _ref.apply(this, arguments);
 			}
 
-			// Checking if the email is valid
-			if (!_ValidationHelper2.default.isEmail(auth.email)) {
-				this.setState({ errors: (0, _extends3.default)({}, errors, { email: 'Email é inválido, tente novamente.' }) });
-				return;
-			}
-
-			this.setState({ errors: (0, _extends3.default)({}, errors, { email: null }) });
-
-			this.setState({ loading: true });
-			setTimeout(function () {
-				return _this.setState({ isValidMail: true, loading: false });
-			}, 1200);
-		}
+			return handleValidMail;
+		}()
 	}, {
 		key: 'handleValidPassword',
-		value: function handleValidPassword(e) {
-			e.preventDefault();
-			if (this.getState().loading) return;
+		value: function () {
+			var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(e) {
+				var _this2 = this;
 
-			this.setState({ loading: true });
-			this.getProps().history.push('/painel');
-		}
+				var _getState2, loading, auth, errors, response;
+
+				return _regenerator2.default.wrap(function _callee2$(_context2) {
+					while (1) {
+						switch (_context2.prev = _context2.next) {
+							case 0:
+								_getState2 = this.getState(), loading = _getState2.loading, auth = _getState2.auth, errors = _getState2.errors;
+
+								e.preventDefault();
+
+								if (!loading) {
+									_context2.next = 4;
+									break;
+								}
+
+								return _context2.abrupt('return');
+
+							case 4:
+
+								this.setState({ loading: true });
+
+								// Checking if the password field is empty
+
+								if (auth.password) {
+									_context2.next = 8;
+									break;
+								}
+
+								this.setState({ errors: (0, _extends3.default)({}, errors, { password: 'Por favor, preencha o campo de senha.' }) });
+								return _context2.abrupt('return');
+
+							case 8:
+								_context2.next = 10;
+								return this.usersRepository.verifyPassword(auth.id, auth.password);
+
+							case 10:
+								response = _context2.sent;
+
+								if (!(response.status != 200)) {
+									_context2.next = 14;
+									break;
+								}
+
+								setTimeout(function () {
+									return _this2.setState({
+										errors: (0, _extends3.default)({}, errors, { password: messagePasswordErrors[response.status] }),
+										loading: false
+									});
+								}, 1200);
+
+								return _context2.abrupt('return');
+
+							case 14:
+
+								this.getProps().history.push('/painel');
+
+							case 15:
+							case 'end':
+								return _context2.stop();
+						}
+					}
+				}, _callee2, this);
+			}));
+
+			function handleValidPassword(_x2) {
+				return _ref2.apply(this, arguments);
+			}
+
+			return handleValidPassword;
+		}()
 	}, {
 		key: 'handleTextChange',
 		value: function handleTextChange(e) {

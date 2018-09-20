@@ -19,9 +19,11 @@ export class Login extends Component {
 			loading: false,
 			auth: {
 				id: null,
+				first_name: null,
+				last_name: null,
 				email: '',
 				password: '',
-				keepLogged: false
+				keep_logged: false
 			},
 			errors: {
 				email: null,
@@ -56,10 +58,11 @@ export class Login extends Component {
 					</form>
 
 					<form className={isValidMail ? 'form -show' : 'form -hide'} onSubmit={this.controller.handleValidPassword}>
-						<h1 className='title'>Olá, Gabriel!</h1>
+						<h1 className='title'>Olá, {auth.first_name}!</h1>
 						<h2 className='description'>Caso tenha esquecido sua senha, <Link to='/resetar-senha'>clique aqui</Link>.</h2>	
 						<fieldset>
 							<Input handleChange={this.controller.handleTextChange} value={auth.password} className='-password' type='password' id='password' placeholder='Digite sua senha' />
+							<p className={`error ${errors.password ? '' : '-hide'}`}>{errors.password}</p>
 							<SlimButton type='submit' handleClick={null} color='-orange'>
 								{loading ? <img className='loading' src='/icons/rolling.svg' /> : 'Entrar'}
 							</SlimButton>
