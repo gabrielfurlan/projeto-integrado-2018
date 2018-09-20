@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["login"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendors~login"],{
 
 /***/ "./app/commons/components/input/Input.js":
 /*!***********************************************!*\
@@ -354,201 +354,6 @@ exports.default = ValidationHelper;
 
 /***/ }),
 
-/***/ "./app/commons/repositories/BaseRepository.js":
-/*!****************************************************!*\
-  !*** ./app/commons/repositories/BaseRepository.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/babel-runtime/regenerator/index.js");
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = __webpack_require__(/*! babel-runtime/helpers/asyncToGenerator */ "./node_modules/babel-runtime/helpers/asyncToGenerator.js");
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-
-var _axios2 = _interopRequireDefault(_axios);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ROOT_URL = 'http://localhost:8080';
-
-var Baseository = function () {
-	function Baseository() {
-		(0, _classCallCheck3.default)(this, Baseository);
-	}
-
-	(0, _createClass3.default)(Baseository, [{
-		key: 'getOrigin',
-		value: function getOrigin(endpoint) {
-			return _axios2.default.get(endpoint);
-		}
-	}, {
-		key: 'get',
-		value: function get(endpoint) {
-			return this.resolvePromise(_axios2.default.get('' + ROOT_URL + endpoint));
-		}
-	}, {
-		key: 'post',
-		value: function post(endpoint, body) {
-			return this.resolvePromise(_axios2.default.post('' + ROOT_URL + endpoint, body));
-		}
-	}, {
-		key: 'put',
-		value: function put(endpoint, body) {
-			return this.resolvePromise(_axios2.default.put('' + ROOT_URL + endpoint, body));
-		}
-	}, {
-		key: 'delete',
-		value: function _delete(endpoint) {
-			return this.resolvePromise(_axios2.default.delete('' + ROOT_URL + endpoint));
-		}
-	}, {
-		key: 'resolvePromise',
-		value: function () {
-			var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(promise) {
-				var response;
-				return _regenerator2.default.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								response = void 0;
-								_context.prev = 1;
-								_context.next = 4;
-								return promise;
-
-							case 4:
-								response = _context.sent;
-								_context.next = 11;
-								break;
-
-							case 7:
-								_context.prev = 7;
-								_context.t0 = _context['catch'](1);
-
-								console.log(_context.t0);
-								return _context.abrupt('return', {
-									code: 501,
-									message: 'Internal Server Error'
-								});
-
-							case 11:
-								return _context.abrupt('return', response.data);
-
-							case 12:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this, [[1, 7]]);
-			}));
-
-			function resolvePromise(_x) {
-				return _ref.apply(this, arguments);
-			}
-
-			return resolvePromise;
-		}()
-	}]);
-	return Baseository;
-}();
-
-exports.default = Baseository;
-
-/***/ }),
-
-/***/ "./app/commons/repositories/UsersRepository.js":
-/*!*****************************************************!*\
-  !*** ./app/commons/repositories/UsersRepository.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _getPrototypeOf = __webpack_require__(/*! babel-runtime/core-js/object/get-prototype-of */ "./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(/*! babel-runtime/helpers/possibleConstructorReturn */ "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(/*! babel-runtime/helpers/inherits */ "./node_modules/babel-runtime/helpers/inherits.js");
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _BaseRepository2 = __webpack_require__(/*! ./BaseRepository */ "./app/commons/repositories/BaseRepository.js");
-
-var _BaseRepository3 = _interopRequireDefault(_BaseRepository2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var UsersRepository = function (_BaseRepository) {
-	(0, _inherits3.default)(UsersRepository, _BaseRepository);
-
-	function UsersRepository() {
-		(0, _classCallCheck3.default)(this, UsersRepository);
-		return (0, _possibleConstructorReturn3.default)(this, (UsersRepository.__proto__ || (0, _getPrototypeOf2.default)(UsersRepository)).apply(this, arguments));
-	}
-
-	(0, _createClass3.default)(UsersRepository, [{
-		key: 'findOne',
-
-
-		/*
-  	* @method findOne 
-  	* @param key {String} it is user email or id  
-  	* @return {Promise} returns promise content user request 
-  */
-		value: function findOne(key) {
-			return this.get('/user/' + key);
-		}
-	}, {
-		key: 'verifyPassword',
-		value: function verifyPassword(id, password) {
-			return this.post('/user/' + id + '/verify', { password: password });
-		}
-	}]);
-	return UsersRepository;
-}(_BaseRepository3.default);
-
-exports.default = UsersRepository;
-
-/***/ }),
-
 /***/ "./app/modules/login/Login.js":
 /*!************************************!*\
   !*** ./app/modules/login/Login.js ***!
@@ -612,6 +417,8 @@ var _input = __webpack_require__(/*! ../../commons/components/input */ "./app/co
 
 var _input2 = _interopRequireDefault(_input);
 
+var _authActions = __webpack_require__(/*! ../../commons/actions/authActions */ "./app/commons/actions/authActions.js");
+
 __webpack_require__(/*! ./login.styl */ "./app/modules/login/login.styl");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -633,6 +440,7 @@ var Login = exports.Login = function (_Component) {
 				last_name: null,
 				email: '',
 				password: '',
+				role: '',
 				keep_logged: false
 			},
 			errors: {
@@ -750,7 +558,9 @@ var mapStateToProps = function mapStateToProps(state) {
 	return {};
 };
 
-var mapDispatchToProps = {};
+var mapDispatchToProps = {
+	setAuthAction: _authActions.setAuthAction
+};
 
 exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Login));
 
@@ -898,6 +708,7 @@ var LoginController = function () {
 									first_name: response.user.firstName,
 									last_name: response.user.lastName,
 									id: response.user.id,
+									role: response.user.role,
 									email: response.email
 								});
 
@@ -926,7 +737,7 @@ var LoginController = function () {
 			var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(e) {
 				var _this2 = this;
 
-				var _getState2, loading, auth, errors, response;
+				var _getState2, loading, auth, errors, response, user;
 
 				return _regenerator2.default.wrap(function _callee2$(_context2) {
 					while (1) {
@@ -979,10 +790,22 @@ var LoginController = function () {
 								return _context2.abrupt('return');
 
 							case 14:
+								user = {
+									first_name: auth.first_name,
+									last_name: auth.last_name,
+									id: auth.id,
+									email: auth.email,
+									role: auth.role
+								};
 
+
+								window.sessionStorage.setItem('id', user.id);
+								window.sessionStorage.setItem('loggedIn', 'true');
+
+								this.getProps().setAuthAction(user);
 								this.getProps().history.push('/painel');
 
-							case 15:
+							case 19:
 							case 'end':
 								return _context2.stop();
 						}

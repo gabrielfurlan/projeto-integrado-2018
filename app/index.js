@@ -23,12 +23,14 @@ const register = module(store);
 ReactDom.render(
 	<Provider store={store}>
 		<Router>
-			<Switch>
+			<Application>
 				<Route exact path='/' component={() => <AsyncComponent moduleProvider={login} />} />
-				<Route path='/painel' component={() => <AsyncComponent moduleProvider={painel} />} />
-				<Route path='/tarefa/:id' component={() => <AsyncComponent moduleProvider={task} />} />
-				<Route path='/projeto/:id' component={() => <AsyncComponent moduleProvider={projectView} />} />
-			</Switch>
+				<PrivateRoute>
+					<Route path='/painel' component={() => <AsyncComponent moduleProvider={painel} />} />
+					<Route path='/tarefa/:id' component={() => <AsyncComponent moduleProvider={task} />} />
+					<Route path='/projeto/:id' component={() => <AsyncComponent moduleProvider={projectView} />} />
+				</PrivateRoute>
+			</Application>
 		</Router>
 	</Provider>,
 	document.getElementById('root')

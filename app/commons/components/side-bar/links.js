@@ -2,26 +2,31 @@ export default [
 	{
 		icon: '/icons/dashboard.svg', 
 		label: 'Home', 
-		to: '/painel'
+		to: '/painel',
+		access: ['manager', 'analyst']
 	},
 	{
 		icon: '/icons/puzzle.svg', 
 		label: 'Projects', 
-		to: '/painel/projetos'
+		to: '/painel/projetos',
+		access: ['manager', 'analyst']
 	},
 	{
 		icon: '/icons/conversation.svg', 
 		label: 'Clientes', 
-		to: '/painel/clientes'
+		to: '/painel/clientes',
+		access: ['manager']
 	},
 	{
 		icon: '/icons/user.svg', 
 		label: 'Analistas', 
-		to: '/painel/analistas'
+		to: '/painel/analistas',
+		access: ['manager']
 	},
 	{
 		icon: '/icons/configuration.svg', 
 		label: 'Configuração', 
-		to: '/painel/configuracao'
+		to: '/painel/configuracao',
+		access: ['manager', 'analyst']
 	},
 ];

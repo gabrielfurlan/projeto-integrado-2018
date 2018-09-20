@@ -12,6 +12,8 @@ import Projects from './components/projects';
 
 import SideBar from '../../commons/components/side-bar';
 
+import { resetAuthAction } from '../../commons/actions/authActions';
+
 import './painel.styl';
 
 export class Painel extends Component {
@@ -22,6 +24,7 @@ export class Painel extends Component {
 		this.renderProjects = this.renderProjects.bind(this);
 		this.renderClients = this.renderClients.bind(this);
 		this.renderAnalysts = this.renderAnalysts.bind(this);
+		this.handleLogout = this.handleLogout.bind(this);
 	} 
 
 	renderHome() {
@@ -40,10 +43,19 @@ export class Painel extends Component {
 		return <Analyts />;
 	}
 
+	handleLogout() {
+		this.props.resetAuthAction();
+		window.sessionStorage.setItem('id', '');
+		window.sessionStorage.setItem('loggedIn', 'false');
+		this.props.history.push('/');
+	}
+
 	render() {
+		const { auth } = this.props;
+
 		return (
 			<div className='painel'>
-				<SideBar />
+				<SideBar auth={auth} handleLogout={this.handleLogout} />
 				<main className='content'>
 					<Route exact path='/painel' render={this.renderHome} />
 					<Route exact path='/painel/projetos' render={this.renderProjects} />
@@ -65,11 +77,11 @@ Painel.defualtProps = {
 };
 
 const mapStateToProps = state => ({
-
+	auth: state.auth
 });
 
 const mapDispatchToProps = {
-
+	resetAuthAction
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Painel));

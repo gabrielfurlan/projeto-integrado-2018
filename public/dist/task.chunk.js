@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["task"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["project-view~task"],{
 
 /***/ "./app/commons/assets/priorities.js":
 /*!******************************************!*\
@@ -26,122 +26,6 @@ exports.default = [{
 	label: 'Baixa',
 	icon: '/icons/low-priority.svg'
 }];
-
-/***/ }),
-
-/***/ "./app/commons/components/brand/Brand.js":
-/*!***********************************************!*\
-  !*** ./app/commons/components/brand/Brand.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _getPrototypeOf = __webpack_require__(/*! babel-runtime/core-js/object/get-prototype-of */ "./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(/*! babel-runtime/helpers/possibleConstructorReturn */ "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(/*! babel-runtime/helpers/inherits */ "./node_modules/babel-runtime/helpers/inherits.js");
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-__webpack_require__(/*! ./brand.styl */ "./app/commons/components/brand/brand.styl");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Brand = function (_Component) {
-	(0, _inherits3.default)(Brand, _Component);
-
-	function Brand() {
-		(0, _classCallCheck3.default)(this, Brand);
-		return (0, _possibleConstructorReturn3.default)(this, (Brand.__proto__ || (0, _getPrototypeOf2.default)(Brand)).apply(this, arguments));
-	}
-
-	(0, _createClass3.default)(Brand, [{
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement(
-				'span',
-				{ className: 'brand' },
-				'loop'
-			);
-		}
-	}]);
-	return Brand;
-}(_react.Component);
-
-exports.default = Brand;
-
-/***/ }),
-
-/***/ "./app/commons/components/brand/brand.styl":
-/*!*************************************************!*\
-  !*** ./app/commons/components/brand/brand.styl ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/stylus-loader??ref--6-2!./brand.styl */ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/brand/brand.styl");
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {}
-
-/***/ }),
-
-/***/ "./app/commons/components/brand/index.js":
-/*!***********************************************!*\
-  !*** ./app/commons/components/brand/index.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Brand = __webpack_require__(/*! ./Brand */ "./app/commons/components/brand/Brand.js");
-
-var _Brand2 = _interopRequireDefault(_Brand);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Brand2.default;
 
 /***/ }),
 
@@ -948,134 +832,9 @@ if(false) {}
   !*** ./app/commons/components/side-bar/SideBar.js ***!
   \****************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _getPrototypeOf = __webpack_require__(/*! babel-runtime/core-js/object/get-prototype-of */ "./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(/*! babel-runtime/helpers/possibleConstructorReturn */ "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(/*! babel-runtime/helpers/inherits */ "./node_modules/babel-runtime/helpers/inherits.js");
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _avataaars = __webpack_require__(/*! avataaars */ "./node_modules/avataaars/dist/index.js");
-
-var _avataaars2 = _interopRequireDefault(_avataaars);
-
-var _brand = __webpack_require__(/*! ../brand */ "./app/commons/components/brand/index.js");
-
-var _brand2 = _interopRequireDefault(_brand);
-
-var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-
-var _links = __webpack_require__(/*! ./links */ "./app/commons/components/side-bar/links.js");
-
-var _links2 = _interopRequireDefault(_links);
-
-__webpack_require__(/*! ./side-bar.styl */ "./app/commons/components/side-bar/side-bar.styl");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SideBar = function (_Component) {
-	(0, _inherits3.default)(SideBar, _Component);
-
-	function SideBar() {
-		(0, _classCallCheck3.default)(this, SideBar);
-		return (0, _possibleConstructorReturn3.default)(this, (SideBar.__proto__ || (0, _getPrototypeOf2.default)(SideBar)).apply(this, arguments));
-	}
-
-	(0, _createClass3.default)(SideBar, [{
-		key: 'renderLinks',
-		value: function renderLinks() {
-			return _links2.default.map(function (_ref) {
-				var icon = _ref.icon,
-				    label = _ref.label,
-				    to = _ref.to;
-				return _react2.default.createElement(
-					_reactRouterDom.NavLink,
-					{ exact: true, title: label, className: 'link', to: to },
-					_react2.default.createElement('img', { src: icon, alt: label }),
-					label
-				);
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement(
-				'div',
-				{ className: 'side-bar' },
-				_react2.default.createElement(_brand2.default, null),
-				_react2.default.createElement(
-					'div',
-					{ className: 'user-info' },
-					_react2.default.createElement(
-						'figure',
-						{ className: 'avatar' },
-						_react2.default.createElement(_avataaars2.default, {
-							avatarStyle: 'Circle',
-							topType: 'WinterHat3',
-							accessoriesType: 'Blank',
-							hatColor: 'Black',
-							facialHairType: 'BeardLight',
-							facialHairColor: 'Black',
-							clotheType: 'BlazerSweater',
-							eyeType: 'Wink',
-							eyebrowType: 'SadConcernedNatural',
-							mouthType: 'Smile',
-							skinColor: 'Brown'
-						})
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'name' },
-						'Gabriel Furlan'
-					)
-				),
-				_react2.default.createElement(
-					'nav',
-					{ className: 'navigation' },
-					this.renderLinks()
-				)
-			);
-		}
-	}]);
-	return SideBar;
-}(_react.Component);
-
-exports.default = SideBar;
-
-
-SideBar.propTypes = {};
-
-SideBar.defualtProps = {};
+throw new Error("Module build failed: SyntaxError: Unexpected token, expected , (21:33)\n\n\u001b[0m \u001b[90m 19 | \u001b[39m\trenderLinks() {\n \u001b[90m 20 | \u001b[39m\t\t\u001b[36mconst\u001b[39m { auth } \u001b[33m=\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mprops\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 21 | \u001b[39m\t\t\u001b[36mreturn\u001b[39m links\u001b[33m.\u001b[39mfilter({ access } \u001b[33m=>\u001b[39m access\u001b[33m.\u001b[39mfindIndex(role \u001b[33m=>\u001b[39m role \u001b[33m===\u001b[39m auth\u001b[33m.\u001b[39mrole) \u001b[33m!=\u001b[39m \u001b[33m-\u001b[39m\u001b[35m1\u001b[39m)\u001b[33m.\u001b[39mmap(({ icon\u001b[33m,\u001b[39m label\u001b[33m,\u001b[39m to }) \u001b[33m=>\u001b[39m (\n \u001b[90m    | \u001b[39m\t\t                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 22 | \u001b[39m\t\t\t\u001b[33m<\u001b[39m\u001b[33mNavLink\u001b[39m exact title\u001b[33m=\u001b[39m{label} className\u001b[33m=\u001b[39m\u001b[32m'link'\u001b[39m to\u001b[33m=\u001b[39m{to} \u001b[33m>\u001b[39m\n \u001b[90m 23 | \u001b[39m\t\t\t\t\u001b[33m<\u001b[39m\u001b[33mimg\u001b[39m src\u001b[33m=\u001b[39m{icon} alt\u001b[33m=\u001b[39m{label} \u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 24 | \u001b[39m\t\t\t\t{label}\u001b[0m\n");
 
 /***/ }),
 
@@ -1100,68 +859,6 @@ var _SideBar2 = _interopRequireDefault(_SideBar);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _SideBar2.default;
-
-/***/ }),
-
-/***/ "./app/commons/components/side-bar/links.js":
-/*!**************************************************!*\
-  !*** ./app/commons/components/side-bar/links.js ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.default = [{
-	icon: '/icons/dashboard.svg',
-	label: 'Home',
-	to: '/painel'
-}, {
-	icon: '/icons/puzzle.svg',
-	label: 'Projects',
-	to: '/painel/projetos'
-}, {
-	icon: '/icons/conversation.svg',
-	label: 'Clientes',
-	to: '/painel/clientes'
-}, {
-	icon: '/icons/user.svg',
-	label: 'Analistas',
-	to: '/painel/analistas'
-}, {
-	icon: '/icons/configuration.svg',
-	label: 'Configuração',
-	to: '/painel/configuracao'
-}];
-
-/***/ }),
-
-/***/ "./app/commons/components/side-bar/side-bar.styl":
-/*!*******************************************************!*\
-  !*** ./app/commons/components/side-bar/side-bar.styl ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/stylus-loader??ref--6-2!./side-bar.styl */ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/side-bar/side-bar.styl");
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {}
 
 /***/ }),
 
@@ -1700,25 +1397,6 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/brand/brand.styl":
-/*!****************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/stylus-loader??ref--6-2!./app/commons/components/brand/brand.styl ***!
-  \****************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".brand {\n  font-family: 'Pacifico', cursive;\n  font-size: 2.4em;\n  color: $dark-gray;\n}\n.brand.-white {\n  color: #fff;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/button/button.styl":
 /*!******************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/stylus-loader??ref--6-2!./app/commons/components/button/button.styl ***!
@@ -1808,25 +1486,6 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, ".select {\n  position: relative;\n  height: 40px;\n  background-color: transparent;\n  border: solid 1px #a6a8ad;\n  cursor: pointer;\n}\n.select > label {\n  display: inline-block;\n  padding: 12px 7px;\n  width: calc(100% - 30px);\n  height: 100%;\n  cursor: pointer;\n  use-select: none;\n}\n.select > .icon {\n  width: 30px;\n  vertical-align: middle;\n  use-select: none;\n}\n.select > .select-dropdown {\n  display: none;\n  position: absolute;\n  width: 100%;\n  max-height: 120px;\n  overflow-y: auto;\n  background-color: #fff;\n  margin-top: 15px;\n  box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.1);\n}\n.select > .select-dropdown.-show {\n  display: block;\n}\n.select > .select-dropdown > li {\n  padding: 12px 7px;\n}\n.select > .select-dropdown > li:hover {\n  background-color: #e4e4e4;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/side-bar/side-bar.styl":
-/*!**********************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/stylus-loader??ref--6-2!./app/commons/components/side-bar/side-bar.styl ***!
-  \**********************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".side-bar {\n  border-radius: 4px;\n  text-align: center;\n  padding-top: 45px;\n  padding-bottom: 30px;\n  position: -webkit-sticky;\n  position: sticky;\n  background-color: #fff;\n  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.1);\n}\n.side-bar > .user-info {\n  width: 100%;\n  text-align: center;\n  margin-top: 60px;\n}\n.side-bar > .user-info > .avatar {\n  display: block;\n  margin-bottom: 15px;\n}\n.side-bar > .user-info > .avatar > svg {\n  width: 80px;\n  height: 80px;\n}\n.side-bar > .user-info > .name {\n  color: #a6a8ad;\n  font-weight: 500;\n}\n.side-bar > img.logo {\n  width: 35px;\n  padding-bottom: 45px;\n  border-bottom: solid 1px rgba(166,168,173,0.3);\n}\n.side-bar > .navigation {\n  margin-top: 60px;\n  text-align: left;\n}\n.side-bar > .navigation > a.link {\n  display: block;\n  color: #a6a8ad;\n  padding: 15px;\n  font-size: 1em;\n}\n.side-bar > .navigation > a.link.active {\n  box-shadow: 3px 0px 0px 0px #e1a246 inset;\n  color: #000;\n  font-weight: 500;\n}\n.side-bar > .navigation > a.link > img {\n  vertical-align: middle;\n  margin-right: 10px;\n  display: inline-block;\n  width: 20px;\n}\n.side-bar > .navigation > a.link + a.link {\n  margin-top: 5px;\n}\n", ""]);
 
 // exports
 

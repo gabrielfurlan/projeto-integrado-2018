@@ -663,6 +663,11 @@ __webpack_require__(/*! ./side-bar.styl */ "./app/commons/components/side-bar/si
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var rolesLabel = {
+	manager: 'Gerente',
+	analyst: 'Analista'
+};
+
 var SideBar = function (_Component) {
 	(0, _inherits3.default)(SideBar, _Component);
 
@@ -674,10 +679,17 @@ var SideBar = function (_Component) {
 	(0, _createClass3.default)(SideBar, [{
 		key: 'renderLinks',
 		value: function renderLinks() {
-			return _links2.default.map(function (_ref) {
-				var icon = _ref.icon,
-				    label = _ref.label,
-				    to = _ref.to;
+			var auth = this.props.auth;
+
+			return _links2.default.filter(function (_ref) {
+				var access = _ref.access;
+				return access.findIndex(function (role) {
+					return role === auth.role;
+				}) != -1;
+			}).map(function (_ref2) {
+				var icon = _ref2.icon,
+				    label = _ref2.label,
+				    to = _ref2.to;
 				return _react2.default.createElement(
 					_reactRouterDom.NavLink,
 					{ exact: true, title: label, className: 'link', to: to },
@@ -689,6 +701,12 @@ var SideBar = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
+			var _props = this.props,
+			    handleLogout = _props.handleLogout,
+			    auth = _props.auth;
+
+			var name = auth.first_name + ' ' + auth.last_name;
+
 			return _react2.default.createElement(
 				'div',
 				{ className: 'side-bar' },
@@ -716,13 +734,19 @@ var SideBar = function (_Component) {
 					_react2.default.createElement(
 						'span',
 						{ className: 'name' },
-						'Gabriel Furlan'
+						name
 					)
 				),
 				_react2.default.createElement(
 					'nav',
 					{ className: 'navigation' },
-					this.renderLinks()
+					this.renderLinks(),
+					_react2.default.createElement(
+						'a',
+						{ title: 'Sair', className: 'link -logout', onClick: handleLogout },
+						_react2.default.createElement('img', { src: '/icons/exit.svg', alt: 'Sair' }),
+						'Sair'
+					)
 				)
 			);
 		}
@@ -733,9 +757,16 @@ var SideBar = function (_Component) {
 exports.default = SideBar;
 
 
-SideBar.propTypes = {};
+SideBar.propTypes = {
+	name: _propTypes2.default.string,
+	role: _propTypes2.default.string,
+	handleLogout: _propTypes2.default.func.isRequired
+};
 
-SideBar.defualtProps = {};
+SideBar.defualtProps = {
+	name: 'Nome do Usuário',
+	role: 'analyst'
+};
 
 /***/ }),
 
@@ -779,23 +810,28 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = [{
 	icon: '/icons/dashboard.svg',
 	label: 'Home',
-	to: '/painel'
+	to: '/painel',
+	access: ['manager', 'analyst']
 }, {
 	icon: '/icons/puzzle.svg',
 	label: 'Projects',
-	to: '/painel/projetos'
+	to: '/painel/projetos',
+	access: ['manager', 'analyst']
 }, {
 	icon: '/icons/conversation.svg',
 	label: 'Clientes',
-	to: '/painel/clientes'
+	to: '/painel/clientes',
+	access: ['manager']
 }, {
 	icon: '/icons/user.svg',
 	label: 'Analistas',
-	to: '/painel/analistas'
+	to: '/painel/analistas',
+	access: ['manager']
 }, {
 	icon: '/icons/configuration.svg',
 	label: 'Configuração',
-	to: '/painel/configuracao'
+	to: '/painel/configuracao',
+	access: ['manager', 'analyst']
 }];
 
 /***/ }),
@@ -1082,6 +1118,8 @@ var _sideBar = __webpack_require__(/*! ../../commons/components/side-bar */ "./a
 
 var _sideBar2 = _interopRequireDefault(_sideBar);
 
+var _authActions = __webpack_require__(/*! ../../commons/actions/authActions */ "./app/commons/actions/authActions.js");
+
 __webpack_require__(/*! ./painel.styl */ "./app/modules/painel/painel.styl");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -1098,6 +1136,7 @@ var Painel = exports.Painel = function (_Component) {
 		_this.renderProjects = _this.renderProjects.bind(_this);
 		_this.renderClients = _this.renderClients.bind(_this);
 		_this.renderAnalysts = _this.renderAnalysts.bind(_this);
+		_this.handleLogout = _this.handleLogout.bind(_this);
 		return _this;
 	}
 
@@ -1122,12 +1161,23 @@ var Painel = exports.Painel = function (_Component) {
 			return _react2.default.createElement(_analysts2.default, null);
 		}
 	}, {
+		key: 'handleLogout',
+		value: function handleLogout() {
+			this.props.resetAuthAction();
+			window.sessionStorage.setItem('id', '');
+			window.sessionStorage.setItem('loggedIn', 'false');
+			this.props.history.push('/');
+		}
+	}, {
 		key: 'render',
 		value: function render() {
+			var auth = this.props.auth;
+
+
 			return _react2.default.createElement(
 				'div',
 				{ className: 'painel' },
-				_react2.default.createElement(_sideBar2.default, null),
+				_react2.default.createElement(_sideBar2.default, { auth: auth, handleLogout: this.handleLogout }),
 				_react2.default.createElement(
 					'main',
 					{ className: 'content' },
@@ -1147,10 +1197,14 @@ Painel.propTypes = {};
 Painel.defualtProps = {};
 
 var mapStateToProps = function mapStateToProps(state) {
-	return {};
+	return {
+		auth: state.auth
+	};
 };
 
-var mapDispatchToProps = {};
+var mapDispatchToProps = {
+	resetAuthAction: _authActions.resetAuthAction
+};
 
 exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Painel));
 
@@ -2043,7 +2097,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".side-bar {\n  border-radius: 4px;\n  text-align: center;\n  padding-top: 45px;\n  padding-bottom: 30px;\n  position: -webkit-sticky;\n  position: sticky;\n  background-color: #fff;\n  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.1);\n}\n.side-bar > .user-info {\n  width: 100%;\n  text-align: center;\n  margin-top: 60px;\n}\n.side-bar > .user-info > .avatar {\n  display: block;\n  margin-bottom: 15px;\n}\n.side-bar > .user-info > .avatar > svg {\n  width: 80px;\n  height: 80px;\n}\n.side-bar > .user-info > .name {\n  color: #a6a8ad;\n  font-weight: 500;\n}\n.side-bar > img.logo {\n  width: 35px;\n  padding-bottom: 45px;\n  border-bottom: solid 1px rgba(166,168,173,0.3);\n}\n.side-bar > .navigation {\n  margin-top: 60px;\n  text-align: left;\n}\n.side-bar > .navigation > a.link {\n  display: block;\n  color: #a6a8ad;\n  padding: 15px;\n  font-size: 1em;\n}\n.side-bar > .navigation > a.link.active {\n  box-shadow: 3px 0px 0px 0px #e1a246 inset;\n  color: #000;\n  font-weight: 500;\n}\n.side-bar > .navigation > a.link > img {\n  vertical-align: middle;\n  margin-right: 10px;\n  display: inline-block;\n  width: 20px;\n}\n.side-bar > .navigation > a.link + a.link {\n  margin-top: 5px;\n}\n", ""]);
+exports.push([module.i, ".side-bar {\n  border-radius: 4px;\n  text-align: center;\n  padding-top: 45px;\n  padding-bottom: 30px;\n  position: -webkit-sticky;\n  position: sticky;\n  background-color: #fff;\n  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.1);\n}\n.side-bar > .user-info {\n  width: 100%;\n  text-align: center;\n  margin-top: 60px;\n}\n.side-bar > .user-info > .avatar {\n  display: block;\n  margin-bottom: 15px;\n}\n.side-bar > .user-info > .avatar > svg {\n  width: 80px;\n  height: 80px;\n}\n.side-bar > .user-info > .name {\n  color: #a6a8ad;\n  font-weight: 500;\n}\n.side-bar > img.logo {\n  width: 35px;\n  padding-bottom: 45px;\n  border-bottom: solid 1px rgba(166,168,173,0.3);\n}\n.side-bar > .navigation {\n  margin-top: 60px;\n  text-align: left;\n}\n.side-bar > .navigation > a.link {\n  display: block;\n  color: #a6a8ad;\n  padding: 15px;\n  font-size: 1em;\n}\n.side-bar > .navigation > a.link.active {\n  box-shadow: 3px 0px 0px 0px #e1a246 inset;\n  color: #000;\n  font-weight: 500;\n}\n.side-bar > .navigation > a.link.-logout {\n  cursor: pointer;\n  box-shadow: 3px 0px 0px 0px #cc6c67 inset;\n}\n.side-bar > .navigation > a.link > img {\n  vertical-align: middle;\n  margin-right: 10px;\n  display: inline-block;\n  width: 20px;\n}\n.side-bar > .navigation > a.link + a.link {\n  margin-top: 5px;\n}\n", ""]);
 
 // exports
 

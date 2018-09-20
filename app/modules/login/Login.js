@@ -8,6 +8,8 @@ import LoginController from './LoginController';
 import SlimButton from '../../commons/components/slim-button';
 import Input from '../../commons/components/input';
 
+import { setAuthAction } from '../../commons/actions/authActions';
+
 import './login.styl';
 
 export class Login extends Component {
@@ -23,6 +25,7 @@ export class Login extends Component {
 				last_name: null,
 				email: '',
 				password: '',
+				role: '',
 				keep_logged: false
 			},
 			errors: {
@@ -88,7 +91,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-
+	setAuthAction
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

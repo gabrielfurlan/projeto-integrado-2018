@@ -20,13 +20,10 @@ class PrivateRoute extends PureComponent {
 		const { children, location : { pathname } } = this.props;
 		const logged = window.sessionStorage.getItem('loggedIn') || window.localStorage.getItem('loggedIn');
 
-		if (!this.checkRoute(children, pathname)) {
-			return <Route exact path='*' component={() => <AsyncComponent moduleProvider={this.props.notFound} />} />;
-		}
-
 		if(logged == 'true') return <div>{this.props.children}</div>;
-		else return <Redirect to={{ pathname: '/login', state: { from: this.props.location.pathname } }} />;
+		else return <Redirect to={{ pathname: '/', state: { from: this.props.location.pathname } }} />;
 	}
+
 };
 
 export default withRouter(PrivateRoute);

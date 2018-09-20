@@ -65,6 +65,7 @@ export default class LoginController {
 			first_name: response.user.firstName,
 			last_name: response.user.lastName,
 			id: response.user.id,
+			role: response.user.role,
 			email: response.email
 		};
 
@@ -97,7 +98,18 @@ export default class LoginController {
 			return;	
 		}
 
+		const user = {  
+			first_name: auth.first_name,
+			last_name: auth.last_name,
+			id: auth.id,
+			email: auth.email,
+			role: auth.role
+		};
 
+		window.sessionStorage.setItem('id', user.id);
+		window.sessionStorage.setItem('loggedIn', 'true');
+
+		this.getProps().setAuthAction(user);
 		this.getProps().history.push('/painel');
 	}
 
@@ -108,5 +120,4 @@ export default class LoginController {
 		auth[id] = value;
 		this.setState({ auth });
 	}
-
 }
