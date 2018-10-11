@@ -17,11 +17,15 @@ class ProjectCard extends Component {
 	}
 
 	render() {
-		const { name } = this.props;
+		const { id, name, client, description } = this.props;
 
 		return (
 			<div className='project-card' onClick={this.toProject}>
 				<h3 className='title'>{name}</h3>
+				<div className='info'>
+					<p className='id'>ID: {id}</p>
+					<p className='client-name'>Cliente: {client.name}</p>
+				</div>
 			</div>
 		);
 	}
@@ -35,11 +39,12 @@ const clientShape = {
 ProjectCard.propTypes = {
 	id: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
-	client: PropTypes.shape(clientShape).isRequired
+	client: PropTypes.shape(clientShape),
+	description: PropTypes.string.isRequired
 };
 
 ProjectCard.defaultProps = {
-
+	client: {}
 };
 
 export default withRouter(ProjectCard);

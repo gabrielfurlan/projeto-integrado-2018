@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter, Router } from 'react-router-dom';
 
 import { resetAuthAction, setAuthAction } from './commons/actions/authActions';
+import { setSectorsAction } from './commons/actions/sectorsActions';
 
 import ApplicationController from './ApplicationController';
 
@@ -44,6 +45,8 @@ export class Application extends Component {
 			window.sessionStorage.setItem('loggedIn', 'false');
 			this.props.resetAuthAction();
 		}
+
+		this.controller.setModels();
 	}
 
 	renderLoading() {
@@ -80,7 +83,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
 	resetAuthAction,
-	setAuthAction
+	setAuthAction,
+	setSectorsAction
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Application));

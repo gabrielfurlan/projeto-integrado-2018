@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Avatar from 'avataaars';
 
+import Button from '../../commons/components/button';
+import LinkButton from '../../commons/components/link-button';
 import PlusButton from '../../commons/components/plus-button';
 import InputGroup from '../../commons/components/input-group';
 import Input from '../../commons/components/input';
@@ -10,8 +13,17 @@ import Modal from '../../commons/components/modal';
 import Select from '../../commons/components/select';
 import SideBar from '../../commons/components/side-bar';
 import TaskCard from '../../commons/components/task-card';
+import TextArea from '../../commons/components/text-area';
 
 import priorities from '../../commons/assets/priorities';
+const priorityOptions = priorities.map(({ id, label, icon }) => ({ 
+	id,
+	label: (<span><img src={icon} />{label}</span>)
+}));
+
+import ProjectViewController from './ProjectViewController';
+
+import { resetAuthAction } from '../../commons/actions/authActions';
 
 import './project-view.styl';
 
@@ -30,61 +42,68 @@ const toDoTasks = [
 	}
 ];
 
-const inProgressTasks = [
-	{
-		id: 'e23qwedsds',
-		title: 'Titulo da tarefa #04',
-		priority: 'high',
-		estimate_hours: 5
-	},
-	{
-		id: 'ersas343ds',
-		title: 'Titulo da tarefa #02',
-		priority: 'medium',
-		estimate_hours: 6		
-	},
-	{
-		id: 'ersas343ds',
-		title: 'Titulo da tarefa #07',
-		priority: 'high',
-		estimate_hours: 6		
-	},
-];
+const initial_project = {
+	id: '',
+	name: '',
+	description: ''
+};
 
-const doneTasks = [
-	{
-		id: 'as3qwedsds',
-		title: 'Titulo da tarefa #03',
-		priority: 'high',
-		estimate_hours: 5
-	}
-];
+export const initial_task_errors = {
+	name: []
+};
 
-export default class ProjectView extends Component {
+export const initial_task = {
+	name: '',
+	description: '',
+	priority: priorityOptions[2]
+};
+
+export class ProjectView extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			isOpenedNewTaskModal: false
+			isOpenedNewTaskModal: false,
+			project: { ...initial_project },
+			todo: [],
+			inProgress: [],
+			done: [],
+			qa: [],
+			task: { ...initial_task },
+			taskErrors: { ...initial_task_errors },
+			taskStatus: ''
 		};
 
 		this.handleToggleNewTaskModal = this.handleToggleNewTaskModal.bind(this); 
+		this.handleLogout = this.handleLogout.bind(this); 
+
+		// instacing controller 
+		this.controller = new ProjectViewController(
+			() => this.props,
+			() => this.state,
+			(state) => this.setState({ ...this.state, ...state })
+		);
+	}
+
+	componentDidMount() {
+		this.controller.setInfo();
+		this.controller.findAll();
 	}
 
 	renderToDoTasks() {
-		return toDoTasks.map(task => <TaskCard small {...task} />);
+		return this.state.todo.map(task => <TaskCard {...task} />);
 	}
 
 	renderInProgressTasks() {
-		return inProgressTasks.map(task => <TaskCard small {...task} />);
+		return this.state.inProgress.map(task => <TaskCard {...task} />);
 	}
 
 	renderDoneTasks() {
-		return doneTasks.map(task => <TaskCard small {...task} />);
+		return this.state.done.map(task => <TaskCard {...task} />);
 	}
 
 	renderQATasks() {
-		return [].map(task => <TaskCard small {...task} />);
+		return this.state.qa.map(task => <TaskCard {...task} />);
 	}
 
 	handleToggleNewTaskModal() {
@@ -93,18 +112,38 @@ export default class ProjectView extends Component {
 		this.setState({ isOpenedNewTaskModal });
 	}
 
+	handleLogout() {
+		this.props.resetAuthAction();
+		window.sessionStorage.setItem('id', '');
+		window.sessionStorage.setItem('loggedIn', 'false');
+		this.props.history.push('/');
+	}
+
+	renderAlert() {
+		switch (this.state.taskStatus) {
+			case 'error':
+				return <div className='alert -error'>Erro ao cadastrar o projeto! Por favor contate o administrador do sistema.</div>;
+			case 'saved':
+				return <div className='alert -success'>Projeto cadastrado com sucesso!</div>;
+			default:
+				return null;
+		}
+	}
+
 	render() {
-		const { isOpenedNewTaskModal } = this.state;
+		const { auth } = this.props;
+		const { isOpenedNewTaskModal, project, task, taskErrors } = this.state;
+		const { handleTextChange, handleSelectChange, handleSubmit } = this.controller;
 
 		return (
 			<div className='project-view'>
-				<SideBar />
+				<SideBar auth={auth} handleLogout={this.handleLogout} />
 				<main className='content'>
 					<h1 className='title'>
 						<Link to='/'>Projetos</Link> /
-						<div className='project-name'>Nome do projeto vai aqui <span className='code'>(e23qwe22ds)</span></div>
+						<div className='project-name'>{project.name} <span className='code'>({project.id})</span></div>
 					</h1>
-					<p className='description'>Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. Não sou faixa preta cumpadi, sou preto inteiris, inteiris. Cevadis im ampola pa arma uma pindureta. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. </p>
+					<p className='description'>{project.description}</p>
 					<div className='project-view-header'>
 						<PlusButton handleClick={this.handleToggleNewTaskModal} />
 					</div>
@@ -136,7 +175,29 @@ export default class ProjectView extends Component {
 					</section>
 				</main>
 				<Modal opened={isOpenedNewTaskModal} className='new-task-modal' handleClose={this.handleToggleNewTaskModal}>
-				
+					<h2 className='title'>Cadastre uma nova tarefa</h2>
+					<form className='task-form' onSubmit={handleSubmit}>
+						{	this.renderAlert() }
+						<div className='row-1'>
+							<InputGroup label='Nome da tarefa' error={taskErrors.name[0]} className='name-ig'>
+								<Input id='name' value={task.name} handleChange={handleTextChange} />
+							</InputGroup>
+							<InputGroup label='Prioridade' className='role-ig'>
+								<Select className='-white' id='priority' options={priorityOptions} value={task.priority} handleChange={handleSelectChange} />
+							</InputGroup>
+						</div>
+						
+						<div className='row-2'>
+							<InputGroup label='Descrição' error={''} className='description-ig'>
+								<TextArea id='description' value={task.description} handleChange={handleTextChange} />
+							</InputGroup>
+						</div>
+
+						<div className='actions'>
+							<Button color='-orange' type='submit' handleClick={() => {}}>Cadastrar</Button>
+							<LinkButton handleClick={this.handleToggleNewTaskModal} color='-orange'>Cancelar</LinkButton>
+						</div>
+					</form>
 				</Modal>
 			</div>
 		);
@@ -146,3 +207,13 @@ export default class ProjectView extends Component {
 ProjectView.propTypes = {
 
 };
+
+const mapStateToProps = state => ({
+	auth: state.auth
+});
+
+const mapDispatchToProps = {
+	resetAuthAction
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProjectView));

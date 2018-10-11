@@ -1,4 +1,5 @@
 import UsersRepository from './commons/repositories/UsersRepository';
+import SectorsRepository from './commons/repositories/SectorsRepository';
 
 export default class ApplicationController {
 
@@ -8,6 +9,7 @@ export default class ApplicationController {
 		this.setState = setState;
 	
 		this.usersRepository = new UsersRepository();
+		this.sectorsRepository = new SectorsRepository();
 	}
 
 	async setAuth(id) {
@@ -37,4 +39,12 @@ export default class ApplicationController {
 		window.sessionStorage.setItem('loggedIn', 'true');
 		this.setState({ loading: false });
 	}
+
+	async setModels() {
+		let sectors = await this.sectorsRepository.find(); 
+		sectors = sectors.map(({ name, id }) => ({ id, label: name }));
+
+		this.getProps().setSectorsAction(sectors);
+	}
+
 }

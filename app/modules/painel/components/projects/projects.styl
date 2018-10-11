@@ -14,4 +14,61 @@
 		font-size 1.4em
 		font-weight 400
 		margin-bottom 60px	
+	
+	> .projects-header
+			margin-bottom 30px
+			text-align right
+			
+			> .plus-button
+				display inline-block
+				
+				> img
+					padding 5px
+					width 40px
+	
+	> .list 
+		display grid 
+		grid-gap 15px
+		grid-template-columns 1fr 1fr
+
+	.project-form
+			margin-top 45px
+			
+			> .alert
+				padding 15px
+				margin-bottom 30px
+				border solid 1px
+				border-radius 4px
+				
+				&.-error
+					border-color $red
+					background-color rgba($red, .4)
+				
+				&.-success
+					border-color $green
+					background-color rgba($green, .4)
+					
+
+			> .row-1
+				display grid
+				grid-column-gap 15px 
+				grid-template-columns 1fr 1fr
 		
+			> .row-2
+				display grid
+				grid-column-gap 15px 
+				grid-template-columns 1fr
+				
+			.input
+				width 100%
+						
+			.input-group
+				margin-bottom 15px
+				
+			> .actions
+				margin-top 45px
+				
+				> .button
+				> .link-button
+					display inline-block
+					width 120px

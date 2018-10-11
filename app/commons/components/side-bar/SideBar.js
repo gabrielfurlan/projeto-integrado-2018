@@ -29,7 +29,6 @@ export default class SideBar extends Component {
 	render() {
 		const { handleLogout, auth } = this.props;
 		const name = `${auth.first_name} ${auth.last_name}`;
-
 		return (
 			<div className='side-bar'>
 				<Brand />
@@ -50,6 +49,7 @@ export default class SideBar extends Component {
 						/>
 					</figure>
 					<span className='name'>{name}</span>
+					<span className='role'>{rolesLabel[auth.role]}</span>
 				</div>
 				<nav className='navigation'>
 					{ this.renderLinks() }
@@ -64,12 +64,10 @@ export default class SideBar extends Component {
 } 
 
 SideBar.propTypes = {
-	name: PropTypes.string,
-	role: PropTypes.string,
+	auth: PropTypes.object,
 	handleLogout: PropTypes.func.isRequired
 };
 
 SideBar.defualtProps = {
-	name: 'Nome do Usuário',
-	role: 'analyst'
+	auth: {}
 };

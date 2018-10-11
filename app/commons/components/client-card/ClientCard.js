@@ -17,24 +17,27 @@ class ClientCard extends Component {
 	}
 
 	render() {
-		const { name } = this.props;
+		const { name, email, phoneNumber, cnpj, sectorId, sectors } = this.props;
+		const sector = sectors.find(sector => sector.id === sectorId);
 
 		return (
 			<div className='client-card' onClick={this.toClient}>
-				<h3 className='title'>{name}</h3>
+				<h3 className='title'>{name} <span>({cnpj})</span></h3>
+				<div className='info'>
+					<p className='sector'>Setor: {sector.label}</p>
+					<p className='email'>Email: {email}</p>
+					<p className='phone'>Phone: {phoneNumber}</p>
+				</div>
 			</div>
 		);
 	}
 }
 
-const clientShape = {
-	id: PropTypes.string.isRequired,
-	name: PropTypes.string.isRequired,
-};
-
 ClientCard.propTypes = {
 	id: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
+	email: PropTypes.string.isRequired,
+	sectors: PropTypes.string.isRequired
 };
 
 ClientCard.defaultProps = {

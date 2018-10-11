@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["task"],{
 
-/***/ "./app/commons/components/button/Button.js":
-/*!*************************************************!*\
-  !*** ./app/commons/components/button/Button.js ***!
-  \*************************************************/
+/***/ "./app/commons/repositories/TasksRepository.js":
+/*!*****************************************************!*\
+  !*** ./app/commons/repositories/TasksRepository.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -34,119 +34,45 @@ var _inherits2 = __webpack_require__(/*! babel-runtime/helpers/inherits */ "./no
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var _BaseRepository2 = __webpack_require__(/*! ./BaseRepository */ "./app/commons/repositories/BaseRepository.js");
 
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-__webpack_require__(/*! ./button.styl */ "./app/commons/components/button/button.styl");
+var _BaseRepository3 = _interopRequireDefault(_BaseRepository2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Button = function (_Component) {
-	(0, _inherits3.default)(Button, _Component);
+var TasksRepository = function (_BaseRepository) {
+	(0, _inherits3.default)(TasksRepository, _BaseRepository);
 
-	function Button() {
-		(0, _classCallCheck3.default)(this, Button);
-		return (0, _possibleConstructorReturn3.default)(this, (Button.__proto__ || (0, _getPrototypeOf2.default)(Button)).apply(this, arguments));
+	function TasksRepository() {
+		(0, _classCallCheck3.default)(this, TasksRepository);
+		return (0, _possibleConstructorReturn3.default)(this, (TasksRepository.__proto__ || (0, _getPrototypeOf2.default)(TasksRepository)).apply(this, arguments));
 	}
 
-	(0, _createClass3.default)(Button, [{
-		key: 'render',
-		value: function render() {
-			var _props = this.props,
-			    className = _props.className,
-			    children = _props.children,
-			    color = _props.color,
-			    handleClick = _props.handleClick,
-			    type = _props.type;
-
-			return _react2.default.createElement(
-				'button',
-				{
-					type: type,
-					className: 'button ' + className + ' ' + color,
-					onClick: handleClick
-				},
-				children
-			);
+	(0, _createClass3.default)(TasksRepository, [{
+		key: 'save',
+		value: function save(task) {
+			return this.post('/tasks', task);
+		}
+	}, {
+		key: 'findAll',
+		value: function findAll() {
+			return this.get('/tasks');
+		}
+	}, {
+		key: 'findOne',
+		value: function findOne(id) {
+			return this.get('/task/' + id);
+		}
+	}, {
+		key: 'findByProjectId',
+		value: function findByProjectId(projectId) {
+			return this.get('/projects/' + projectId + '/tasks');
 		}
 	}]);
-	return Button;
-}(_react.Component);
+	return TasksRepository;
+}(_BaseRepository3.default);
 
-exports.default = Button;
-
-
-Button.propTypes = {
-	className: _propTypes2.default.string,
-	children: _propTypes2.default.any,
-	color: _propTypes2.default.string,
-	handleClick: _propTypes2.default.func,
-	type: _propTypes2.default.string
-};
-
-Button.defaultProps = {
-	className: '',
-	children: 'Button',
-	color: '-green',
-	handleClick: function handleClick() {
-		return console.log('Not Implemented.');
-	},
-	type: 'button'
-};
-
-/***/ }),
-
-/***/ "./app/commons/components/button/button.styl":
-/*!***************************************************!*\
-  !*** ./app/commons/components/button/button.styl ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/stylus-loader??ref--6-2!./button.styl */ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/button/button.styl");
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {}
-
-/***/ }),
-
-/***/ "./app/commons/components/button/index.js":
-/*!************************************************!*\
-  !*** ./app/commons/components/button/index.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Button = __webpack_require__(/*! ./Button */ "./app/commons/components/button/Button.js");
-
-var _Button2 = _interopRequireDefault(_Button);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Button2.default;
+exports.default = TasksRepository;
 
 /***/ }),
 
@@ -163,6 +89,7 @@ exports.default = _Button2.default;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+exports.Task = undefined;
 
 var _extends2 = __webpack_require__(/*! babel-runtime/helpers/extends */ "./node_modules/babel-runtime/helpers/extends.js");
 
@@ -195,6 +122,8 @@ var _react2 = _interopRequireDefault(_react);
 var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
@@ -230,9 +159,22 @@ var _priorities = __webpack_require__(/*! ../../commons/assets/priorities */ "./
 
 var _priorities2 = _interopRequireDefault(_priorities);
 
+var _authActions = __webpack_require__(/*! ../../commons/actions/authActions */ "./app/commons/actions/authActions.js");
+
 __webpack_require__(/*! ./task.styl */ "./app/modules/task/task.styl");
 
+var _TaskController = __webpack_require__(/*! ./TaskController */ "./app/modules/task/TaskController.js");
+
+var _TaskController2 = _interopRequireDefault(_TaskController);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initial_task = {
+	name: '',
+	description: '',
+	id: '',
+	priority: 'low'
+};
 
 var status = [{
 	id: 'aaa',
@@ -242,7 +184,7 @@ var status = [{
 	label: 'bbb'
 }];
 
-var Task = function (_Component) {
+var Task = exports.Task = function (_Component) {
 	(0, _inherits3.default)(Task, _Component);
 
 	function Task(props) {
@@ -251,14 +193,30 @@ var Task = function (_Component) {
 		var _this = (0, _possibleConstructorReturn3.default)(this, (Task.__proto__ || (0, _getPrototypeOf2.default)(Task)).call(this, props));
 
 		_this.state = {
+			task: (0, _extends3.default)({}, initial_task),
 			logTimeModalIsOpened: false
 		};
 
 		_this.handleToggleLogTimeModal = _this.handleToggleLogTimeModal.bind(_this);
+		_this.handleLogout = _this.handleLogout.bind(_this);
+
+		// instacing controller 
+		_this.controller = new _TaskController2.default(function () {
+			return _this.props;
+		}, function () {
+			return _this.state;
+		}, function (state) {
+			return _this.setState((0, _extends3.default)({}, _this.state, state));
+		});
 		return _this;
 	}
 
 	(0, _createClass3.default)(Task, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			this.controller.setInfo();
+		}
+	}, {
 		key: 'handleToggleLogTimeModal',
 		value: function handleToggleLogTimeModal() {
 			var _state = (0, _extends3.default)({}, this.state),
@@ -267,15 +225,30 @@ var Task = function (_Component) {
 			this.setState({ logTimeModalIsOpened: !logTimeModalIsOpened });
 		}
 	}, {
+		key: 'handleLogout',
+		value: function handleLogout() {
+			this.props.resetAuthAction();
+			window.sessionStorage.setItem('id', '');
+			window.sessionStorage.setItem('loggedIn', 'false');
+			this.props.history.push('/');
+		}
+	}, {
 		key: 'render',
 		value: function render() {
-			var _state2 = (0, _extends3.default)({}, this.state),
-			    logTimeModalIsOpened = _state2.logTimeModalIsOpened;
+			var auth = this.props.auth;
+			var _state2 = this.state,
+			    logTimeModalIsOpened = _state2.logTimeModalIsOpened,
+			    task = _state2.task;
+
+			var priority = _priorities2.default.find(function (_ref) {
+				var id = _ref.id;
+				return id === task.priority;
+			});
 
 			return _react2.default.createElement(
 				'div',
 				{ className: 'task' },
-				_react2.default.createElement(_sideBar2.default, null),
+				_react2.default.createElement(_sideBar2.default, { auth: auth, handleLogout: this.handleLogout }),
 				_react2.default.createElement(
 					'main',
 					{ className: 'content' },
@@ -297,18 +270,21 @@ var Task = function (_Component) {
 						_react2.default.createElement(
 							'div',
 							{ className: 'task-name' },
-							'Nome da task vai aqui ',
+							task.name,
+							' ',
 							_react2.default.createElement(
 								'span',
 								{ className: 'code' },
-								'(e23qwe22ds)'
+								'(',
+								task.id,
+								')'
 							)
 						)
 					),
 					_react2.default.createElement(
 						'p',
 						{ className: 'description' },
-						'Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. N\xE3o sou faixa preta cumpadi, sou preto inteiris, inteiris. Cevadis im ampola pa arma uma pindureta. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. '
+						task.description || 'Sem descrição.'
 					),
 					_react2.default.createElement(
 						'div',
@@ -566,8 +542,8 @@ var Task = function (_Component) {
 								{ className: 'label' },
 								'Prioridade'
 							),
-							_react2.default.createElement('img', { src: _priorities2.default[0].icon }),
-							_priorities2.default[0].label
+							_react2.default.createElement('img', { src: priority.icon }),
+							priority.label
 						)
 					)
 				),
@@ -605,10 +581,133 @@ var Task = function (_Component) {
 	return Task;
 }(_react.Component);
 
-exports.default = Task;
-
-
 Task.propTypes = {};
+
+Task.defualtProps = {};
+
+var mapStateToProps = function mapStateToProps(state) {
+	return {
+		auth: state.auth
+	};
+};
+
+var mapDispatchToProps = {
+	resetAuthAction: _authActions.resetAuthAction
+};
+
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Task));
+
+/***/ }),
+
+/***/ "./app/modules/task/TaskController.js":
+/*!********************************************!*\
+  !*** ./app/modules/task/TaskController.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _extends2 = __webpack_require__(/*! babel-runtime/helpers/extends */ "./node_modules/babel-runtime/helpers/extends.js");
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/babel-runtime/regenerator/index.js");
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(/*! babel-runtime/helpers/asyncToGenerator */ "./node_modules/babel-runtime/helpers/asyncToGenerator.js");
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _TasksRepository = __webpack_require__(/*! ../../commons/repositories/TasksRepository */ "./app/commons/repositories/TasksRepository.js");
+
+var _TasksRepository2 = _interopRequireDefault(_TasksRepository);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var TasksController = function () {
+	function TasksController(getProps, getState, setState) {
+		(0, _classCallCheck3.default)(this, TasksController);
+
+		this.getProps = getProps;
+		this.getState = getState;
+		this.setState = setState;
+
+		this.tasksRepository = new _TasksRepository2.default();
+		this.handleTextChange = this.handleTextChange.bind(this);
+		this.handleSelectChange = this.handleSelectChange.bind(this);
+	}
+
+	(0, _createClass3.default)(TasksController, [{
+		key: 'setInfo',
+		value: function () {
+			var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+				var id, response;
+				return _regenerator2.default.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								id = this.getProps().match.params.id;
+								_context.next = 3;
+								return this.tasksRepository.findOne(id);
+
+							case 3:
+								response = _context.sent;
+
+								console.log(response);
+								this.setState({ task: response.task });
+
+							case 6:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
+
+			function setInfo() {
+				return _ref.apply(this, arguments);
+			}
+
+			return setInfo;
+		}()
+	}, {
+		key: 'handleTextChange',
+		value: function handleTextChange(e) {
+			var _e$target = e.target,
+			    value = _e$target.value,
+			    id = _e$target.id;
+
+			var task = (0, _extends3.default)({}, this.getState().task);
+			task[id] = value;
+			this.setState({ task: task });
+		}
+	}, {
+		key: 'handleSelectChange',
+		value: function handleSelectChange(ref, value) {
+			var task = (0, _extends3.default)({}, this.getState().task);
+			task[ref] = value;
+			this.setState({ task: task });
+		}
+	}]);
+	return TasksController;
+}();
+
+exports.default = TasksController;
 
 /***/ }),
 
@@ -685,25 +784,6 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/commons/components/button/button.styl":
-/*!******************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/stylus-loader??ref--6-2!./app/commons/components/button/button.styl ***!
-  \******************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".button {\n  display: block;\n  height: 40px;\n  color: #fff;\n  background-color: #a6a8ad;\n  border-radius: 4px;\n  cursor: pointer;\n  transition-duration: 0.5s;\n}\n.button.-green {\n  background-color: #3eeeb0;\n}\n.button.-green:hover {\n  background-color: #4f9488;\n}\n.button.-orange {\n  background-color: #e1a246;\n}\n.button.-orange:hover {\n  background-color: #c7903e;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/index.js??ref--6-1!./node_modules/stylus-loader/index.js??ref--6-2!./app/modules/task/task.styl":
 /*!***************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/stylus-loader??ref--6-2!./app/modules/task/task.styl ***!
@@ -716,7 +796,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".task {\n  display: -ms-grid;\n  display: grid;\n  width: 100%;\n  -ms-grid-columns: 200px auto;\n      grid-template-columns: 200px auto;\n  -ms-grid-rows: calc(100vh - 3px);\n      grid-template-rows: calc(100vh - 3px);\n}\n.task > .content {\n  padding: 40px 80px;\n  overflow: auto;\n  height: calc(100vh - 3px);\n}\n.task > .content:after {\n  content: '';\n  display: block;\n  height: 40px;\n}\n.task > .content .subtitle {\n  display: block;\n  font-size: 1em;\n  font-weight: 700;\n  width: 100%;\n  padding-bottom: 30px;\n}\n.task > .content > .title {\n  font-size: 1.4em;\n  font-weight: 400;\n  margin-bottom: 30px;\n  color: #a6a8ad;\n}\n.task > .content > .title > a {\n  color: #a6a8ad;\n  padding-right: 10px;\n}\n.task > .content > .title > a + a {\n  padding-left: 10px;\n}\n.task > .content > .title > .task-name {\n  display: inline;\n  color: #5d5e61;\n  padding: 10px;\n}\n.task > .content > .title > .task-name > .code {\n  margin-left: 3px;\n  margin-bottom: 60px;\n  font-size: 1em;\n  color: #a6a8ad;\n  text-transform: uppercase;\n  font-style: italic;\n}\n.task > .content > .description {\n  font-size: 1em;\n  line-height: 1.4em;\n  color: #a6a8ad;\n}\n.task > .content > .files {\n  margin-top: 30px;\n}\n.task > .content > .files > .uploader {\n  margin-bottom: 15px;\n}\n.task > .content > .files > .uploader > input {\n  display: none;\n}\n.task > .content > .files > .uploader > label {\n  display: inline-block;\n  color: #a6a8ad;\n  cursor: pointer;\n}\n.task > .content > .files > .uploader > label > img {\n  width: 30px;\n  vertical-align: middle;\n  margin-right: 10px;\n}\n.task > .content > .files > .uploader:hover {\n  color: #6d53ee;\n}\n.task > .content > .files > .file-list > .not-found {\n  font-size: 0.9em;\n  color: #a6a8ad;\n}\n.task > .content > .comments {\n  width: calc(50% - 30px);\n  display: inline-block;\n  margin-top: 60px;\n  vertical-align: top;\n  margin-right: 60px;\n}\n.task > .content > .comments > .subtitle {\n  padding-bottom: 45px;\n}\n.task > .content > .comments > .list > .comment-card {\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: 50px auto;\n      grid-template-columns: 50px auto;\n}\n.task > .content > .comments > .list > .comment-card + .comment-card {\n  margin-top: 45px;\n}\n.task > .content > .comments > .list > .comment-card > .avatar-wrapper {\n  padding-right: 10px;\n}\n.task > .content > .comments > .list > .comment-card > .avatar-wrapper > svg {\n  width: 100%;\n  height: auto;\n}\n.task > .content > .comments > .list > .comment-card > .content > .comment-header {\n  margin-bottom: 15px;\n}\n.task > .content > .comments > .list > .comment-card > .content > .comment-header > .name {\n  display: inline-block;\n  font-size: 1em;\n}\n.task > .content > .comments > .list > .comment-card > .content > .comment-header > .created-at {\n  color: #a6a8ad;\n  margin-left: 15px;\n}\n.task > .content > .comments > .list > .comment-card > .content > .text {\n  width: 100%;\n  line-height: 1.4em;\n}\n.task > .content > .comments > .list > .comment-input {\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: 50px auto;\n      grid-template-columns: 50px auto;\n  margin-top: 45px;\n}\n.task > .content > .comments > .list > .comment-input > .avatar-wrapper {\n  padding-right: 10px;\n}\n.task > .content > .comments > .list > .comment-input > .avatar-wrapper > svg {\n  width: 100%;\n  height: auto;\n}\n.task > .content > .comments > .list > .comment-input > .content > .comment-header {\n  margin-bottom: 15px;\n}\n.task > .content > .comments > .list > .comment-input > .content > .comment-header > .name {\n  display: inline-block;\n  font-size: 1em;\n  color: #3eeeb0;\n}\n.task > .content > .comments > .list > .comment-input > .content > .text-area {\n  width: 100%;\n  height: 100px;\n  border-radius: 4px;\n  resize: none;\n  border: solid 1px #a6a8ad;\n  padding: 12px;\n}\n.task > .content > .comments > .list > .comment-input > .content > .actions {\n  margin-top: 15px;\n  text-align: right;\n}\n.task > .content > .comments > .list > .comment-input > .content > .actions > .send {\n  display: inline-block;\n  padding: 0px 15px;\n}\n.task > .content > .infos {\n  width: calc(50% - 30px);\n  display: inline-block;\n  margin-top: 60px;\n}\n.task > .content > .infos > .input-group > .label {\n  width: 100%;\n  height: 40px;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  -ms-flex-align: center;\n      align-items: center;\n}\n.task > .content > .infos > .input-group + .input-group {\n  margin-top: 30px;\n}\n.task > .content > .infos > .input-group.status-group > .select {\n  width: 160px;\n}\n.task > .content > .infos > .log-time > .label span {\n  width: 100%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  -ms-flex-align: center;\n      align-items: center;\n}\n.task > .content > .infos > .log-time > .label span > img {\n  width: 40px;\n  cursor: pointer;\n}\n.task > .content > .infos > .log-time > .value {\n  font-style: italic;\n}\n.task > .content > .infos > .priority > img {\n  width: 30px;\n  vertical-align: middle;\n  margin-right: 10px;\n}\n.task > .add-log-time-modal > .modal > .title {\n  font-size: 1.2em;\n  margin-bottom: 45px;\n}\n.task > .add-log-time-modal > .modal > .input-group.time-group {\n  width: calc(50% - 5px);\n  display: inline-block;\n}\n.task > .add-log-time-modal > .modal > .input-group.time-group + .input-group {\n  margin-left: 10px;\n}\n.task > .add-log-time-modal > .modal > .input-group.time-group > .input {\n  width: 100%;\n}\n.task > .add-log-time-modal > .modal > .actions {\n  width: 100%;\n  margin-top: 45px;\n}\n.task > .add-log-time-modal > .modal > .actions > .save-action {\n  width: 100px;\n}\n", ""]);
+exports.push([module.i, ".task {\n  display: -ms-grid;\n  display: grid;\n  width: 100%;\n  -ms-grid-columns: 200px auto;\n      grid-template-columns: 200px auto;\n  -ms-grid-rows: calc(100vh - 3px);\n      grid-template-rows: calc(100vh - 3px);\n}\n.task > .content {\n  padding: 40px 80px;\n  overflow: auto;\n  height: calc(100vh - 3px);\n}\n.task > .content:after {\n  content: '';\n  display: block;\n  height: 40px;\n}\n.task > .content .subtitle {\n  display: block;\n  font-size: 1em;\n  font-weight: 700;\n  width: 100%;\n  padding-bottom: 30px;\n}\n.task > .content > .title {\n  font-size: 1.4em;\n  font-weight: 400;\n  margin-bottom: 30px;\n  color: #a6a8ad;\n}\n.task > .content > .title > a {\n  color: #a6a8ad;\n  padding-right: 10px;\n}\n.task > .content > .title > a + a {\n  padding-left: 10px;\n}\n.task > .content > .title > .task-name {\n  display: inline;\n  color: #5d5e61;\n  padding: 10px;\n}\n.task > .content > .title > .task-name > .code {\n  margin-left: 3px;\n  margin-bottom: 60px;\n  font-size: 1em;\n  color: #a6a8ad;\n  text-transform: uppercase;\n  font-style: italic;\n}\n.task > .content > .description {\n  font-size: 1em;\n  line-height: 1.4em;\n  color: #a6a8ad;\n}\n.task > .content > .files {\n  margin-top: 30px;\n}\n.task > .content > .files > .uploader {\n  margin-bottom: 15px;\n}\n.task > .content > .files > .uploader > input {\n  display: none;\n}\n.task > .content > .files > .uploader > label {\n  display: inline-block;\n  color: #a6a8ad;\n  cursor: pointer;\n}\n.task > .content > .files > .uploader > label > img {\n  width: 30px;\n  vertical-align: middle;\n  margin-right: 10px;\n}\n.task > .content > .files > .uploader:hover {\n  color: #3e6e99;\n}\n.task > .content > .files > .file-list > .not-found {\n  font-size: 0.9em;\n  color: #a6a8ad;\n}\n.task > .content > .comments {\n  width: calc(50% - 30px);\n  display: inline-block;\n  margin-top: 60px;\n  vertical-align: top;\n  margin-right: 60px;\n}\n.task > .content > .comments > .subtitle {\n  padding-bottom: 45px;\n}\n.task > .content > .comments > .list > .comment-card {\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: 50px auto;\n      grid-template-columns: 50px auto;\n}\n.task > .content > .comments > .list > .comment-card + .comment-card {\n  margin-top: 45px;\n}\n.task > .content > .comments > .list > .comment-card > .avatar-wrapper {\n  padding-right: 10px;\n}\n.task > .content > .comments > .list > .comment-card > .avatar-wrapper > svg {\n  width: 100%;\n  height: auto;\n}\n.task > .content > .comments > .list > .comment-card > .content > .comment-header {\n  margin-bottom: 15px;\n}\n.task > .content > .comments > .list > .comment-card > .content > .comment-header > .name {\n  display: inline-block;\n  font-size: 1em;\n}\n.task > .content > .comments > .list > .comment-card > .content > .comment-header > .created-at {\n  color: #a6a8ad;\n  margin-left: 15px;\n}\n.task > .content > .comments > .list > .comment-card > .content > .text {\n  width: 100%;\n  line-height: 1.4em;\n}\n.task > .content > .comments > .list > .comment-input {\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: 50px auto;\n      grid-template-columns: 50px auto;\n  margin-top: 45px;\n}\n.task > .content > .comments > .list > .comment-input > .avatar-wrapper {\n  padding-right: 10px;\n}\n.task > .content > .comments > .list > .comment-input > .avatar-wrapper > svg {\n  width: 100%;\n  height: auto;\n}\n.task > .content > .comments > .list > .comment-input > .content > .comment-header {\n  margin-bottom: 15px;\n}\n.task > .content > .comments > .list > .comment-input > .content > .comment-header > .name {\n  display: inline-block;\n  font-size: 1em;\n  color: #4f9488;\n}\n.task > .content > .comments > .list > .comment-input > .content > .text-area {\n  width: 100%;\n  height: 100px;\n  border-radius: 4px;\n  resize: none;\n  border: solid 1px #a6a8ad;\n  padding: 12px;\n}\n.task > .content > .comments > .list > .comment-input > .content > .actions {\n  margin-top: 15px;\n  text-align: right;\n}\n.task > .content > .comments > .list > .comment-input > .content > .actions > .send {\n  display: inline-block;\n  padding: 0px 15px;\n}\n.task > .content > .infos {\n  width: calc(50% - 30px);\n  display: inline-block;\n  margin-top: 60px;\n}\n.task > .content > .infos > .input-group > .label {\n  width: 100%;\n  height: 40px;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  -ms-flex-align: center;\n      align-items: center;\n}\n.task > .content > .infos > .input-group + .input-group {\n  margin-top: 30px;\n}\n.task > .content > .infos > .input-group.status-group > .select {\n  width: 160px;\n}\n.task > .content > .infos > .log-time > .label span {\n  width: 100%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  -ms-flex-align: center;\n      align-items: center;\n}\n.task > .content > .infos > .log-time > .label span > img {\n  width: 40px;\n  cursor: pointer;\n}\n.task > .content > .infos > .log-time > .value {\n  font-style: italic;\n}\n.task > .content > .infos > .priority > img {\n  width: 30px;\n  vertical-align: middle;\n  margin-right: 10px;\n}\n.task > .add-log-time-modal > .modal > .title {\n  font-size: 1.2em;\n  margin-bottom: 45px;\n}\n.task > .add-log-time-modal > .modal > .input-group.time-group {\n  width: calc(50% - 5px);\n  display: inline-block;\n}\n.task > .add-log-time-modal > .modal > .input-group.time-group + .input-group {\n  margin-left: 10px;\n}\n.task > .add-log-time-modal > .modal > .input-group.time-group > .input {\n  width: 100%;\n}\n.task > .add-log-time-modal > .modal > .actions {\n  width: 100%;\n  margin-top: 45px;\n}\n.task > .add-log-time-modal > .modal > .actions > .save-action {\n  width: 100px;\n}\n", ""]);
 
 // exports
 

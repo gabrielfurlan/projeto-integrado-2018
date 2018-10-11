@@ -15,4 +15,13 @@ export default class UsersRepository extends BaseRepository {
 		return this.post(`/user/${id}/verify`, { password });
 	}
 
+	save(user) {
+		return this.post('/users', user);
+	}
+
+	findAll() {
+		return this.get('/users');
+	}
+
+
 }

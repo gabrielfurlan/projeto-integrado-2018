@@ -55,7 +55,7 @@ export class Login extends Component {
 							<Input handleChange={this.controller.handleTextChange} value={auth.email} className='-email' id='email' placeholder='Entre com seu email corporativo' />
 							<p className={`error ${errors.email ? '' : '-hide'}`}>{errors.email}</p>
 							<SlimButton type='submit' color='-orange' handleClick={this.controller.handleValidMail}>
-								{loading ? <img className='loading' src='/icons/rolling.svg' /> : 'Continuar'}
+								{loading ? <img className='loading' src='/icons/rolling-orange.svg' /> : 'Continuar'}
 							</SlimButton>
 						</fieldset>
 					</form>
@@ -67,7 +67,7 @@ export class Login extends Component {
 							<Input handleChange={this.controller.handleTextChange} value={auth.password} className='-password' type='password' id='password' placeholder='Digite sua senha' />
 							<p className={`error ${errors.password ? '' : '-hide'}`}>{errors.password}</p>
 							<SlimButton type='submit' handleClick={null} color='-orange'>
-								{loading ? <img className='loading' src='/icons/rolling.svg' /> : 'Entrar'}
+								{loading ? <img className='loading' src='/icons/rolling-orange.svg' /> : 'Entrar'}
 							</SlimButton>
 						</fieldset>
 					</form>

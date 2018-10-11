@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 import Avatar from 'avataaars';
 
 import Button from '../../commons/components/button';
@@ -11,6 +12,15 @@ import Select from '../../commons/components/select';
 import SideBar from '../../commons/components/side-bar';
 
 import priorities from '../../commons/assets/priorities';
+
+import { resetAuthAction } from '../../commons/actions/authActions';
+
+const initial_task = {
+	name: '',
+	description: '',
+	id: '',
+	priority: 'low'
+};
 
 import './task.styl';
 
@@ -25,15 +35,30 @@ const status = [
 	}
 ];
 
-export default class Task extends Component {
+import TaskController from './TaskController';
+
+export class Task extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
+			task: { ...initial_task },
 			logTimeModalIsOpened: false
 		};
 
 		this.handleToggleLogTimeModal = this.handleToggleLogTimeModal.bind(this);
+		this.handleLogout = this.handleLogout.bind(this);
+	
+		// instacing controller 
+		this.controller = new TaskController(
+			() => this.props,
+			() => this.state,
+			(state) => this.setState({ ...this.state, ...state })
+		);
+	}
+
+	componentDidMount() {
+		this.controller.setInfo();
 	}
 
 	handleToggleLogTimeModal() {
@@ -41,19 +66,28 @@ export default class Task extends Component {
 		this.setState({ logTimeModalIsOpened: !logTimeModalIsOpened }); 
 	}
 
+	handleLogout() {
+		this.props.resetAuthAction();
+		window.sessionStorage.setItem('id', '');
+		window.sessionStorage.setItem('loggedIn', 'false');
+		this.props.history.push('/');
+	}
+
 	render() {
-		const { logTimeModalIsOpened } = { ...this.state };
+		const { auth } = this.props;
+		const { logTimeModalIsOpened, task } = this.state;
+		const priority = priorities.find(({ id }) => id === task.priority);
 
 		return (
 			<div className='task'>
-				<SideBar />
+				<SideBar auth={auth} handleLogout={this.handleLogout} />
 				<main className='content'>
 					<h1 className='title'>
 						<Link to='/'>Projetos</Link> /
 						<Link to='/'>Nome do Projeto</Link> / 
-						<div className='task-name'>Nome da task vai aqui <span className='code'>(e23qwe22ds)</span></div>
+						<div className='task-name'>{task.name} <span className='code'>({task.id})</span></div>
 					</h1>
-					<p className='description'>Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. Não sou faixa preta cumpadi, sou preto inteiris, inteiris. Cevadis im ampola pa arma uma pindureta. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. </p>
+					<p className='description'>{ task.description || 'Sem descrição.' }</p>
 					<div className='files'>
 						<div className='uploader'>
 							<input type='file' id='file' />
@@ -188,8 +222,8 @@ export default class Task extends Component {
 						</div>
 						<div className='input-group priority'>
 							<label className='label'>Prioridade</label>
-							<img src={priorities[0].icon} />
-							{priorities[0].label}
+							<img src={priority.icon} />
+							{priority.label}
 						</div>
 					</section>
 				</main>
@@ -214,3 +248,17 @@ export default class Task extends Component {
 Task.propTypes = {
 
 };
+
+Task.defualtProps = {
+
+};
+
+const mapStateToProps = state => ({
+	auth: state.auth
+});
+
+const mapDispatchToProps = {
+	resetAuthAction
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Task));

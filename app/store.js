@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import authReducer from './commons/reducers/authReducer';
+import sectorsReducer from './commons/reducers/sectorsReducer';
 
 export default (() => {
 	const initialState = {};
@@ -23,6 +24,7 @@ function createReducer(reducers) {
 	return combineReducers({
 		root: (state = null) => state,
 		...reducers,
-		auth: authReducer
+		auth: authReducer,
+		sectors: sectorsReducer
 	});
 }

@@ -19,8 +19,8 @@ export default [
 	},
 	{
 		icon: '/icons/user.svg', 
-		label: 'Analistas', 
-		to: '/painel/analistas',
+		label: 'Usuários', 
+		to: '/painel/users',
 		access: ['manager']
 	},
 	{

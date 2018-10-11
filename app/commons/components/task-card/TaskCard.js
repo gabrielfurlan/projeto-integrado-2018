@@ -18,18 +18,18 @@ class TaskCard extends Component {
 	}
 
 	render() {
-		const { id, priority, title, small } = this.props;
+		const { id, priority, name, small } = this.props;
 		const priorityData = priorities.find(({ id }) => priority === id);
 
 		return (
 			<div id={id} className='task-card' onClick={this.handleClick} >
-				<h4 className='title'>{ title }</h4>
+				<h4 className='name'>{ name }</h4>
+				<span className='code'>{id}</span>
 				<div className='basic-infos'>
 					<span className={`priority -${priorityData.id}`}>
 						<img src={priorityData.icon} />
 						<span className={small ? '-hide' : ''}>{priorityData.label} Prioridade</span>
 					</span>
-					<span className='code'>{id}</span>
 				</div>
 			</div>
 		);
@@ -39,7 +39,7 @@ class TaskCard extends Component {
 
 TaskCard.propTypes = {
 	id: PropTypes.string,
-	title: PropTypes.string,
+	name: PropTypes.string,
 	priority: PropTypes.string,
 	estimate_hours: PropTypes.number,
 	small: PropTypes.bool
@@ -47,7 +47,7 @@ TaskCard.propTypes = {
 
 TaskCard.defaultProps = {
 	id: 'XXX-X',
-	title: 'Tarefa com um título padrão',
+	name: 'Tarefa com um título padrão',
 	priority: 'low',
 	estimate_hours: 0,
 	small: false

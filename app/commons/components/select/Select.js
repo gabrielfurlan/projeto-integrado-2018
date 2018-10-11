@@ -15,7 +15,6 @@ export default class Select extends Component {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-
 	renderOptions() {
 		const { options, id } = this.props;
 		return options.map((option, i) => <li key={i} id={id} onClick={e => this.handleChange(id, option)} className="option">{option.label}</li>);
@@ -30,10 +29,11 @@ export default class Select extends Component {
 	}
 
 	render() {
-		const { state: { isOpened }, props: { options, value, placeholder, disabled } } = this;
+		const { state: { isOpened }, props: { className, options, value, placeholder, disabled } } = this;
+
 		return (
-			<div className={`select ${disabled ? '-disabled' : ''}`} onClick={disabled ? null : this.handleToggleClick}>
-				<label className={value.label ? '' : 'placeholder'}>{value.label ? value.label : placeholder}</label>
+			<div className={`select ${className} ${disabled ? '-disabled' : ''}`} onClick={disabled ? null : this.handleToggleClick}>
+				<label className={value.label ? '' : 'placeholder'}>{value.label ? value.label : <span className='placeholder'>{placeholder}</span>}</label>
 				<img className='icon' src='/icons/dropdown.svg' />
 				<ul className={`select-dropdown ${isOpened && options.length ? '-show' : ''}`}>
 					{this.renderOptions()}
@@ -44,6 +44,7 @@ export default class Select extends Component {
 }
 
 Select.propTypes = {
+	className: PropTypes.string,
 	id: PropTypes.string,
 	options: PropTypes.array.isRequired,
 	handleChange: PropTypes.func.isRequired,
@@ -53,6 +54,7 @@ Select.propTypes = {
 };
 
 Select.defaultProps = {
+	className: '',
 	id: '',
 	options: [],
 	placeholder: 'Selecione',
