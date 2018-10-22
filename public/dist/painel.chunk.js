@@ -1561,77 +1561,6 @@ exports.default = ClientsRepository;
 
 /***/ }),
 
-/***/ "./app/commons/repositories/ProjectsRepository.js":
-/*!********************************************************!*\
-  !*** ./app/commons/repositories/ProjectsRepository.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _getPrototypeOf = __webpack_require__(/*! babel-runtime/core-js/object/get-prototype-of */ "./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(/*! babel-runtime/helpers/possibleConstructorReturn */ "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(/*! babel-runtime/helpers/inherits */ "./node_modules/babel-runtime/helpers/inherits.js");
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _BaseRepository2 = __webpack_require__(/*! ./BaseRepository */ "./app/commons/repositories/BaseRepository.js");
-
-var _BaseRepository3 = _interopRequireDefault(_BaseRepository2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ProjectsRepository = function (_BaseRepository) {
-	(0, _inherits3.default)(ProjectsRepository, _BaseRepository);
-
-	function ProjectsRepository() {
-		(0, _classCallCheck3.default)(this, ProjectsRepository);
-		return (0, _possibleConstructorReturn3.default)(this, (ProjectsRepository.__proto__ || (0, _getPrototypeOf2.default)(ProjectsRepository)).apply(this, arguments));
-	}
-
-	(0, _createClass3.default)(ProjectsRepository, [{
-		key: 'save',
-		value: function save(project) {
-			return this.post('/projects', project);
-		}
-	}, {
-		key: 'findAll',
-		value: function findAll() {
-			return this.get('/projects');
-		}
-	}, {
-		key: 'findOne',
-		value: function findOne(id) {
-			return this.get('/project/' + id);
-		}
-	}]);
-	return ProjectsRepository;
-}(_BaseRepository3.default);
-
-exports.default = ProjectsRepository;
-
-/***/ }),
-
 /***/ "./app/modules/painel/Painel.js":
 /*!**************************************!*\
   !*** ./app/modules/painel/Painel.js ***!
@@ -1851,7 +1780,8 @@ var Painel = exports.Painel = function (_Component) {
 				clients: this.state.project_clients_data,
 				project: this.state.project,
 				errors: this.state.projectError,
-				status: this.state.projectStatus
+				status: this.state.projectStatus,
+				auth: this.props.auth
 			});
 		}
 	}, {
@@ -2670,6 +2600,7 @@ var Projects = function (_Component) {
 		value: function render() {
 			var isOpenedNewProjectModal = this.state.isOpenedNewProjectModal;
 			var _props = this.props,
+			    auth = _props.auth,
 			    controller = _props.controller,
 			    clients = _props.clients,
 			    project = _props.project,
@@ -2688,7 +2619,7 @@ var Projects = function (_Component) {
 				_react2.default.createElement(
 					'div',
 					{ className: 'projects-header' },
-					_react2.default.createElement(_plusButton2.default, { handleClick: this.handleToggleNewProjectModal })
+					auth.role === 'manager' ? _react2.default.createElement(_plusButton2.default, { handleClick: this.handleToggleNewProjectModal }) : null
 				),
 				_react2.default.createElement(
 					'div',
@@ -3945,6 +3876,41 @@ if(false) {}
 
 "use strict";
 
+
+/***/ }),
+
+/***/ "./node_modules/babel-runtime/helpers/defineProperty.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/babel-runtime/helpers/defineProperty.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _defineProperty = __webpack_require__(/*! ../core-js/object/define-property */ "./node_modules/babel-runtime/core-js/object/define-property.js");
+
+var _defineProperty2 = _interopRequireDefault(_defineProperty);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (obj, key, value) {
+  if (key in obj) {
+    (0, _defineProperty2.default)(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+};
 
 /***/ }),
 

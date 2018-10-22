@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Avatar from 'avataaars';
+import Avatar from 'react-avatar';
 
 import Brand from '../brand';
 
 import { NavLink } from 'react-router-dom';
 import links from './links';
- 
+
 import './side-bar.styl';
 
 const rolesLabel = {
 	manager: 'Gerente',
 	analyst: 'Analista'
 };
+
+const colors = ['#F83A67', '#4F9488', '#3E6E99', '#CED481', '#CC6C67', '#E1A246'];
 
 export default class SideBar extends Component {
 
@@ -34,19 +36,7 @@ export default class SideBar extends Component {
 				<Brand />
 				<div className='user-info'>
 					<figure className='avatar'>
-						<Avatar
-					  	avatarStyle='Circle'
-							topType='WinterHat3'
-							accessoriesType='Blank'
-							hatColor='Black'
-							facialHairType='BeardLight'
-							facialHairColor='Black'
-							clotheType='BlazerSweater'
-							eyeType='Wink'
-							eyebrowType='SadConcernedNatural'
-							mouthType='Smile'
-							skinColor='Brown'
-						/>
+						<Avatar colors={colors} name={auth.first_name} size="90" textSizeRatio="1.75" round />
 					</figure>
 					<span className='name'>{name}</span>
 					<span className='role'>{rolesLabel[auth.role]}</span>

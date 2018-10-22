@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Avatar from 'avataaars';
 
 import Button from '../../commons/components/button';
 import LinkButton from '../../commons/components/link-button';

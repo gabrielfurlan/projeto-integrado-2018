@@ -133,6 +133,7 @@ export class Painel extends Component {
 				project={this.state.project}
 				errors={this.state.projectError}
 				status={this.state.projectStatus}
+				auth={this.props.auth}
 			/>
 		);
 	}

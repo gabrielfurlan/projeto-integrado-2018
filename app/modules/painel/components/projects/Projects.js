@@ -80,13 +80,15 @@ export default class Projects extends Component {
 
 	render() {
 		const { isOpenedNewProjectModal } = this.state;
-		const { controller, clients, project, projects, errors } = this.props;
+		const { auth, controller, clients, project, projects, errors } = this.props;
 
 		return (
 			<section className='projects'>
 				<h1 className='title'>Projetos</h1>
 				<div className='projects-header'>
-					<PlusButton handleClick={this.handleToggleNewProjectModal} />
+					{ auth.role === 'manager' ?
+						 <PlusButton handleClick={this.handleToggleNewProjectModal} />
+					: null }
 				</div>
 				<div className='list'>
 					{this.renderProjects()}

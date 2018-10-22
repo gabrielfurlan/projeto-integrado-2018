@@ -18,4 +18,8 @@ export default class TasksRepository extends BaseRepository {
 		return this.get(`/projects/${projectId}/tasks`);
 	}
 
+	editStatus(id, status) {
+		return this.post(`/task/${id}/edit-status`, { status });
+	}
+
 }

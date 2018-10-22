@@ -20,12 +20,12 @@ export default class ProjectViewController {
 	async findAll() {
 		const { id } = this.getProps().match.params;
 		let response = await this.tasksRepository.findByProjectId(id);
-		// console.log(response);
 		const todo = response.filter(task => task.status === 'to-do');
 		const done = response.filter(task => task.status === 'done');
+		const qa = response.filter(task => task.status === 'qa');
 		const inProgress = response.filter(task => task.status === 'in-progress');
 
-		this.setState({ todo, done, inProgress });
+		this.setState({ todo, done, inProgress, qa });
 	}
 
 	async handleSubmit(e) {
