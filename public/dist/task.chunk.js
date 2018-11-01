@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendors~painel~project-view"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["task"],{
 
 /***/ "./app/commons/assets/taskStatusList.js":
 /*!**********************************************!*\

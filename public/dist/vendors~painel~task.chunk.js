@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["painel~project-view~task"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendors~painel~task"],{
 
 /***/ "./node_modules/moment/locale/af.js":
 /*!******************************************!*\
