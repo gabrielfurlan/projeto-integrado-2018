@@ -48,6 +48,7 @@ export class Task extends Component {
 			task: { ...initial_task },
 			project: {},
 			comment: '',
+			files: [],
 			comments: [],
 			logTimeModalIsOpened: false
 		};
@@ -82,7 +83,6 @@ export class Task extends Component {
 	renderComments() {
 		const { comments } = this.state;
 		if(!comments.length) return <span className='not-found'>Nenhum comentário.</span>;
-
 
 		return comments.map(resource => {
 			const { user, comment, createdAt } = resource;
@@ -154,20 +154,26 @@ export class Task extends Component {
 							<span className='created-at'>{createdAtString}</span>
 						</header>
 						{ !!comment ? <p className='text'>{comment}</p> : null }
+						<div className='file-list'>
+							{this.renderFiles(resource.files)}
+						</div>
 					</div>
 				</li>
 			);
 		});
 	}
 	
+	renderFiles(files) {
+		return files.map(({ name, file }) => <a href={file} className='file'>{name}</a>);
+	}
 
 	render() {
 		const { auth } = this.props;
-		const { logTimeModalIsOpened, project, task, comment } = this.state;
+		const { logTimeModalIsOpened, project, task, comment, files } = this.state;
 		const priority = priorities.find(({ id }) => id === task.priority);
 		const taskStatus = taskStatusList.find(({ id }) => id === task.status);
 		const name = `${auth.first_name} ${auth.last_name}`;
-		
+
 		return (
 			<div className='task'>
 				<SideBar auth={auth} handleLogout={this.handleLogout} />
@@ -178,18 +184,6 @@ export class Task extends Component {
 						<div className='task-name'>{task.name} {<span className='code'>({task.id})</span>}</div>
 					</h1>
 					<p className='description'>{ task.description || 'Sem descrição.' }</p>
-					{/*<div className='files'>
-						<div className='uploader'>
-							<input type='file' id='file' />
-							<label className='icon' htmlFor='file'>
-								<img src='/icons/file-upload.svg'/>
-								Anexar
-							</label>
-						</div>
-						<ul className='file-list'>
-							<span className='not-found'>Nenhum arquivo anexado.</span>
-						</ul>
-					</div>*/}
 					<section className='comments'>
 						<h2 className='subtitle'>Feed</h2>
 						<ul className='list'>
@@ -198,8 +192,10 @@ export class Task extends Component {
 								first_name={auth.first_name}
 								last_name={auth.last_name}
 								comment={comment}
+								files={files}
 								handleSend={this.controller.handleSendComment}
 								handleChange={this.controller.handleCommentChange}
+								handleFileChange={this.controller.handleFileChange}
 							/>
 						</ul>
 					</section>

@@ -10,8 +10,13 @@ import './comment-input.styl';
 
 export default class CommentInput extends Component {
 
+	renderFiles() {
+		const { files } = this.props;
+		return files.map(({ data }) => <div className='file'>{data.name}</div>);
+	}
+	
 	render() {
-		const { comment, first_name, last_name, handleSend, handleChange } = this.props;
+		const { comment, first_name, last_name, handleSend, handleChange, handleFileChange, files } = this.props;
 		const name = `${first_name} ${last_name}`;
 		return (
 			<form className='comment-input' onSubmit={handleSend}>
@@ -22,6 +27,7 @@ export default class CommentInput extends Component {
 					<header className='comment-header'>
 						<h3 className='name'>{name}</h3>
 					</header>
+					<div className='file-list'>{ this.renderFiles() }</div>
 					<div className='input-wrapper'>
 						<textarea 
 							onChange={handleChange} 
@@ -30,6 +36,10 @@ export default class CommentInput extends Component {
 							value={comment} 
 						/>
 						<div className='actions'>
+							<label htmlFor='file' className='clip'>
+								<input id='file' type='file' onChange={handleFileChange} />
+								<img src='/icons/file-upload.svg' className='clip' />
+							</label>
 							<img src='/icons/send.svg' className='send' onClick={handleSend} />
 						</div>
 					</div>
@@ -43,7 +53,9 @@ CommentInput.propTypes = {
 	first_name: PropTypes.string,
 	last_name: PropTypes.string,
 	comment: PropTypes.string,
+	files: PropTypes.array,
 	handleChange: PropTypes.func.isRequired,
+	handleFileChange: PropTypes.func.isRequired,
 	handleSave: PropTypes.func.isRequired
 };
 

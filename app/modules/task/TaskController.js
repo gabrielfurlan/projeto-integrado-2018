@@ -1,7 +1,11 @@
 import ProjectsRepository from '../../commons/repositories/ProjectsRepository';
+import FilesRepository from '../../commons/repositories/FilesRepository';
 import TasksRepository from '../../commons/repositories/TasksRepository';
+import CommentFilesRepository from '../../commons/repositories/CommentFilesRepository';
 import ResourcesRepository from '../../commons/repositories/ResourcesRepository';
 import UsersRepository from '../../commons/repositories/UsersRepository';
+
+import b64toBlob from 'b64-to-blob';
 
 export default class TasksController {
 
@@ -12,6 +16,8 @@ export default class TasksController {
 		
 		this.projectsRepository = new ProjectsRepository(); 
 		this.tasksRepository = new TasksRepository(); 
+		this.filesRepository = new FilesRepository(); 
+		this.commentFilesRepository = new CommentFilesRepository(); 
 		this.resourcesRepository = new ResourcesRepository(); 
 		this.usersRepository = new UsersRepository(); 
 		this.handleCommentChange = this.handleCommentChange.bind(this);
@@ -19,6 +25,7 @@ export default class TasksController {
 		this.handleSelectChange = this.handleSelectChange.bind(this);
 		this.handleSendComment = this.handleSendComment.bind(this);
 		this.handleStatusChange = this.handleStatusChange.bind(this);
+		this.handleFileChange = this.handleFileChange.bind(this);
 	}
 
 	async setInfo() {
@@ -34,21 +41,6 @@ export default class TasksController {
 
 		this.setState({ project });
 		this.setComments();
-	}
-
-	async setComments() {
-		const { id } = this.getProps().match.params;
-		const comments = await this.resourcesRepository.findAll(id);
-		const fetchCommentsUser = comments.map(({ userId }) => this.usersRepository
-																															 	.findOne(userId));
-
-		const users = await Promise.all(fetchCommentsUser);
-		Repository = new ResourcesRepository(); 
-		this.handleCommentChange = this.handleCommentChange.bind(this);
-		this.handleTextChange = this.handleTextChange.bind(this);
-		this.handleSelectChange = this.handleSelectChange.bind(this);
-		this.handleSendComment = this.handleSendComment.bind(this);
-		this.handleStatusChange = this.handleStatusChange.bind(this);
 	}
 
 	async setInfo() {
@@ -69,11 +61,10 @@ export default class TasksController {
 	async setComments() {
 		const { id } = this.getProps().match.params;
 		let comments = await this.resourcesRepository.findAll(id);
-		console.log(comments);
 		const fetchCommentsUser = comments.map(({ userId }) => this.usersRepository
 																															 	.findOne(userId));
 
-		const response = await Promise.all(fetchCommentsUser);
+		let response = await Promise.all(fetchCommentsUser);
 		const users = response.map(({ user }) => user);
 
 		comments = comments.map(comment => { 
@@ -83,6 +74,22 @@ export default class TasksController {
 			};
 		}).sort((a,b) => new Date(b.createdAt) < new Date(a.createdAt));
 
+		const fetchCommentsFiles = comments.map(({ id }) => this.filesRepository
+																															.findByCommentId(id));
+		response = await Promise.all(fetchCommentsFiles);
+		
+		const files = [];
+		response.forEach(list => {
+			list.forEach(file => files.push(file));
+		});
+
+		comments = comments.map(comment => { 
+			console.log(response);
+			return {
+				...comment, 
+				files: files.filter(({ resourceId }) => resourceId == comment.id)
+			};
+		});
 
 		this.setState({ comments });
 	}
@@ -100,12 +107,44 @@ export default class TasksController {
 		this.setState({ task });
 	} 
 
+	handleFileChange(e) {
+		e.preventDefault();
+		const { files, id } = e.target;
+
+		const reader = new FileReader();
+
+		reader.onload = (e) => {
+			const file = { data: files[0], src: e.target.result, id: e.target.result + files[0].name, name: files[0].name };
+			const newFiles = [...this.getState().files];
+			newFiles.push(file);
+			this.setState({ files: newFiles });
+		};
+
+		reader.readAsDataURL(files[0]);
+	}
+
 	async handleSendComment(e) {
 		e.preventDefault();
-		const comment = await this.resourcesRepository
+
+		const { comment, files } = this.getState();
+		if(!comment && !files.length) return;
+
+		const response = await this.resourcesRepository
 												.save(this.getCommentToApi());
-		
+
+		const filePromises = this.getState().files.map(file => this.upload(file, response.data.id));
+		const result = await Promise.all(filePromises);
+
 		this.setComments();
+	}
+
+	async upload(file, id) {
+		let data = new FormData();
+		data.append('files', new Blob([file.data], { type: 'multipart/form-data' }));
+		data.append('info', JSON.stringify({ ext: file.data.type.split('/')[1] }));
+		
+		const response = await this.filesRepository.upload({ data, id: file.data.name });
+		return this.filesRepository.save({ resourceId: id, file: response.Location, name: file.data.name }, id);
 	}
 
 	getCommentToApi() {
