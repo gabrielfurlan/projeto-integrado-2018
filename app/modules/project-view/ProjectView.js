@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import moment from 'moment';
+
+const localizer = BigCalendar.momentLocalizer(moment);
 
 import Button from '../../commons/components/button';
 import LinkButton from '../../commons/components/link-button';
@@ -24,6 +27,9 @@ import ProjectViewController from './ProjectViewController';
 
 import { resetAuthAction } from '../../commons/actions/authActions';
 
+import BigCalendar from 'react-big-calendar';
+
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './project-view.styl';
 
 const toDoTasks = [
@@ -70,7 +76,8 @@ export class ProjectView extends Component {
 			qa: [],
 			task: { ...initial_task },
 			taskErrors: { ...initial_task_errors },
-			taskStatus: ''
+			taskStatus: '',
+			events: []
 		};
 
 		this.handleToggleNewTaskModal = this.handleToggleNewTaskModal.bind(this); 
@@ -131,7 +138,7 @@ export class ProjectView extends Component {
 
 	render() {
 		const { auth } = this.props;
-		const { isOpenedNewTaskModal, project, task, taskErrors } = this.state;
+		const { events, isOpenedNewTaskModal, project, task, taskErrors } = this.state;
 		const { handleTextChange, handleSelectChange, handleSubmit } = this.controller;
 
 		return (
@@ -160,7 +167,7 @@ export class ProjectView extends Component {
 							</ul>
 						</div>
 						<div className='state'>
-							<h3 className='title'>Homologação</h3>
+							<h3 className='title'>QA</h3>
 							<ul className='list'>
 								{this.renderQATasks()}
 							</ul>
@@ -172,6 +179,12 @@ export class ProjectView extends Component {
 							</ul>
 						</div>
 					</section>
+					<BigCalendar 
+						events={[]}
+						startAccessor="start"
+			      endAccessor="end"
+			      localizer={localizer}
+					/>
 				</main>
 				<Modal opened={isOpenedNewTaskModal} className='new-task-modal' handleClose={this.handleToggleNewTaskModal}>
 					<h2 className='title'>Cadastre uma nova tarefa</h2>
